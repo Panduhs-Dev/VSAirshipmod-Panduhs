@@ -143,7 +143,7 @@ namespace VSAirshipmod
         {
             travelSound = capi.World.LoadSound(new SoundParams()
             {
-                Location = new AssetLocation("vsairshipmod:sounds/ship_metal_stress.ogg"),// If I set these to vinila sound they work, but the sounds I put in our folder I cant hear
+                Location = new AssetLocation("sounds/environment/wind.ogg"),// Sounds seem to need to be longer than 10 seconds to work right
                 ShouldLoop = true,
                 RelativePosition = false,
                 DisposeOnFinish = false,
@@ -152,11 +152,11 @@ namespace VSAirshipmod
 
             idleSound = capi.World.LoadSound(new SoundParams()
             {
-                Location = new AssetLocation("sounds/environment/wind.ogg"),
+                Location = new AssetLocation("sounds/weather/lowgrumble.ogg"),
                 ShouldLoop = true,
                 RelativePosition = false,
                 DisposeOnFinish = false,
-                Volume = 1f
+                Volume = 0.1f
             });
         }
 
@@ -690,7 +690,7 @@ namespace VSAirshipmod
 
         public void Dispose()
         {
-
+            Api.Logger.Notification("");
         }
 
         public IMountableSeat CreateSeat(IMountable mountable, string seatId, SeatConfig config)

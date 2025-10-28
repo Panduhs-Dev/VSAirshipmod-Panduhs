@@ -7,6 +7,8 @@ using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using Vintagestory.GameContent;
+using VSAirshipmod.NSBlock;
+using VSAirshipmod.NSBlockEntity;
 
 namespace VSAirshipmod
 {
@@ -21,7 +23,13 @@ namespace VSAirshipmod
             api.RegisterEntity("EntityAirship", typeof(EntityAirship));
             api.RegisterMountable("airship", EntityAirshipSeat.GetMountable);
 
+            api.RegisterBlockClass("BlockSpinner", typeof(BlockSpinner));
+            api.RegisterBlockClass("BlockSewingMachine", typeof(BlockSewingMachine));
+            api.RegisterBlockClass("BlockAutoloom", typeof(BlockAutoloom));
 
+            api.RegisterBlockEntityClass("SewingMachine", typeof(BlockEntitySewingMachine)); 
+            api.RegisterBlockEntityClass("Spinner", typeof(BlockEntitySpinner));
+            api.RegisterBlockEntityClass("Autoloom", typeof(BlockEntityAutoloom));
 
             //Mod.Logger.Notification("Hello there from template mod: " + api.Side);
         }

@@ -1,3 +1,6 @@
 {
-  "game:tabname-airship": "Airship mod!"
+  "game:tabname-airship": "Airship mod!",
+  "vsairshipmod:block-autoloom-*": "Autoloom",
+  "vsairshipmod:block-spinner-*": "Spinner",
+  "vsairshipmod:block-sewingmachine-*": "Sewing Machine"
 }
