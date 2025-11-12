@@ -1,0 +1,383 @@
+{
+	"editor": {
+		"collapsedPaths": "Root/MechanismLBase2,Root/waterframe ROOT/mover-baseframe/frame-leg-nw/FrameWHoriz8/Cube44/WHEEL GEAR2/Cube153,Root/Autoloom/tinb rod56,Root/waterframe ROOT/mover-baseframe/frame-leg-nw/FrameWHoriz8/Cube44/Cube89/Cube90,Root/MechanismLBase/GearLarger26/GearSpindle2/GearSpindle4/LEATHER ROLLERS 1,Root/Autoloom/tinb rod15/BigGearHub4/Cube179/Tooth109,Root/Autoloom/tinb rod17/WHEEL GEAR2/Cube166,Root/Autoloom/Cube224,Root/MechanismLBase/GearLarger26/GearSpindle2/GearSpindle4/Cube68,Root/Autoloom/movers origin,Root/Autoloom/lumber/wood 7/wood 1,Root/Autoloom/tinb rod,Root,Root/mover-toggle/axle-horizontal/HUB/RIMHUB/ArmEW,Root/origin2,Root/waterframe ROOT/BigGearHub4,Root/Autoloom/tinb rod4/Linen12/Linen16,Root/mover-toggle/axle-horizontal/HUB/PGearW1,Root/mover-toggle/axle-horizontal/HUB/RIMHUB/ArmNS,Root/Autoloom/tinb rod17/WHEEL GEAR2/Cube153,Root/MechanismLBase/GearLarger26/GearSpindle2/GearSpindle4/LEATHER ROLLERS 3,Root/Autoloom/tinb rod15/BigGearHub4/Cube179/GearRim136,Root/Autoloom/tinb rod19/jonasspring1/trunionside1,Root/HUB/PGearS1,Root/reinforcingMover2,Root/waterframe ROOT/mover-baseframe/frame-leg-nw/FrameWHoriz8/Cube44/WHEEL GEAR/Cube76,Root/reinforcingMover1,Root/Autoloom/movers origin/HOLDER 1/Cube232,Root/mover-toggle/axle-horizontal/WHEEL GEAR2/Cube136,Root/Autoloom/Cube208,Root/Autoloom/tinb rod17/SMALLER  GEAR4,Root/BigGearHub3,Root/Autoloom/tinb rod19/Cube216/SHUTTLE2/shuttle10/shuttle14,Root/MechanismLBase,Root/Autoloom/tinb rod19/Cube216/SHUTTLE2/shuttle10/shuttle12,Root/Autoloom/tinb rod56/Cube48/gearmid 4,Root/waterframe ROOT/mover-baseframe/frame-leg-nw/FrameWHoriz8/Cube44/WHEEL GEAR2/Cube166,Root/mover-toggle/axle-horizontal/HUB/RIMHUB,Root/Autoloom/tinb rod19/Cube216/Cube268/Cube269,Root/waterframe ROOT/mover-baseframe/frame-leg-nw/FrameWHoriz8/Cube44/WHEEL GEAR/Cube89,Root/waterframe ROOT/mover-baseframe/frame-leg-nw/FrameWHoriz8/Cube44/Cube89,Root/Autoloom/Cube211,Root/Cube7,Root/waterframe ROOT/mover-baseframe/frame-leg-nw/FrameWHoriz8/Cube44/WHEEL GEAR/Cube90,Root/Autoloom/tinb rod15/BigGearHub4/Tooth109,Root/Autoloom/tinb rod15,Root/Autoloom/tinb rod13,Root/Autoloom/tinb rod11,Root/MechanismLBase/GearLarger26/GearSpindle2/ROLLERS3,Root/waterframe ROOT/mover-baseframe/frame-leg-nw/FrameWHoriz8/Cube44/Cube89/Cube115,Root/Autoloom/Linen3,Root/mover-baseframe,Root/Autoloom/tinb rod4,Root/Autoloom/tinb rod7,Root/Autoloom/tinb rod19,Root/Autoloom/tinb rod9,Root/HUB/PGearE1,Root/mover-toggle/axle-horizontal/WHEEL GEAR2/Cube153,Root/HUB/PGearN1,Root/Autoloom/tinb rod15/BigGearHub4/GearRim136,Root/mover-toggle/axle-horizontal2,Root/mover-toggle/axle-horizontal/WHEEL GEAR2,Root/Autoloom/Linen3/Linen2/Linen7/Linen8/Linen9/Linen130,Root/Autoloom/tinb rod/Linen3/Linen2/Linen7/Linen8/Linen9/LINEN PIVOT 3,Root/Autoloom/tinb rod/Linen3/Linen2/Linen7/Linen8/Linen9/LINEN PIVOT 1,Root/Autoloom/tinb rod19/jonasspring2,Root/mover-toggle/axle-horizontal/HUB/PGearS1,Root/Autoloom/lumber/wood 1,Root/mover-topframe,Root/mover-toggle/axle-horizontal/HUB/RIMHUB/Rim1,Root/mover-toggle/axle-horizontal/HUB/RIMHUB/Rim3,Root/Autoloom/tinb rod17/WHEEL GEAR2,Root/mover-toggle/axle-horizontal/HUB/RIMHUB/Rim2,Root/mover-toggle/axle-horizontal/HUB/RIMHUB/Rim5,Root/mover-toggle/axle-horizontal/HUB/RIMHUB/Rim4,Root/mover-toggle/axle-horizontal/HUB/RIMHUB/Rim7,Root/Autoloom/Linen3/Linen2/Linen7/Linen8/Linen9/Linen90,Root/mover-toggle/axle-horizontal/HUB/RIMHUB/Rim6,Root/Autoloom/Linen3/Linen2/Linen7/Linen8/Linen9/Linen11,Root/Gear1p6x30a,Root/HUB/PGearW1,Root/mover-toggle/axle-horizontal/HUB/RIMHUB/Rim8,Root/Autoloom/lumber,Root/Autoloom/tinb rod4/Linen12/Linen52,Root/waterframe ROOT/mover-baseframe/frame-leg-nw/FrameWHoriz8/Cube44/WHEEL GEAR2,Root/Autoloom/tinb rod38,Root/waterframe ROOT/mover-baseframe/frame-leg-nw/FrameWHoriz8/Cube44/WHEEL GEAR2/Cube136,Root/Autoloom/tinb rod19/Cube214,Root/mover-toggle/axle-horizontal/HUB/PGearN1,Root/Autoloom/tinb rod19/Cube215,Root/HUB/RIMHUB/Rim3,Root/Autoloom/Cube224/Cube225,Root/Autoloom/tinb rod19/Cube216,Root/HUB/RIMHUB/Rim4,Root/HUB/RIMHUB/Rim2,Root/Autoloom/tinb rod31,Root/HUB/RIMHUB/Rim7,Root/HUB/RIMHUB/Rim8,Root/HUB/RIMHUB/Rim5,Root/HUB/RIMHUB/Rim6,Root/waterframe ROOT/ingot/WEIGHT,Root/Autoloom/movers origin/HOLDER 1/tinb rod41,Root/mover-toggle/axle-horizontal/HUB/PGearE1,Root/Autoloom/tinb rod19/Cube216/Cube217/Cube231,Root/Autoloom/Linen3/Linen2/Linen7/Linen8/Linen9/Linen20,Root/Autoloom/movers origin/HOLDER 2/Cube225,Root/Autoloom/tinb rod25,Root/waterframe ROOT/mover-baseframe/frame-leg-nw/FrameWHoriz8/Cube44/Cube89/Cube76/Cube91,Root/Autoloom/tinb rod23,Root/Autoloom/tinb rod21,Root/MOVER,Root/mover-toggle/axle-horizontal/WHEEL GEAR2/Cube166,Root/mover-toggle/axle-horizontal/HUB/RIMHUB/RIMHUB2,Root/Autoloom/tinb rod17/WHEEL GEAR2/Cube136,Root/Autoloom/tinb rod4/Linen12/Linen32,Root/Autoloom/tinb rod4/Linen12/Linen35,Root/Autoloom/tinb rod56/gearmid 4,Root/MechanismLBase/GearLarger26/GearSpindle2/LEATHER 3,Root/Autoloom/tinb rod56/gearmid 3,Root/Autoloom,Root/MechanismLBase/GearLarger26/GearSpindle2/GearSpindle4/Cube72,Root/Autoloom/Linen3/Linen2/Linen7/Linen8/Linen9/Linen30,Root/HUB/RIMHUB/RIMHUB2,Root/Autoloom/tinb rod19/Cube216/Cube217/Cube241",
+		"allAngles": true,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {
+		"red15": [16,16],
+		"red14": [16,16],
+		"steel9": [64,64],
+		"red17": [16,16],
+		"steel8": [64,64],
+		"red16": [16,16],
+		"steel7": [64,64],
+		"red11": [16,16],
+		"steel6": [64,64],
+		"red10": [16,16],
+		"steel5": [64,64],
+		"earthtone": [16,24],
+		"red13": [16,16],
+		"steel4": [64,64],
+		"red12": [16,16],
+		"steel3": [64,64],
+		"brown3": [16,16],
+		"steel2": [16,16],
+		"brown2": [16,16],
+		"red19": [16,16],
+		"med-pattern": [12,12],
+		"red18": [16,16],
+		"chateau": [16,24],
+		"yellow4": [16,16],
+		"plaidblue": [16,24],
+		"breeches": [64,64],
+		"purple7": [16,16],
+		"orange4": [16,16],
+		"azure-embroidered": [16,24],
+		"purple6": [16,16],
+		"orange5": [16,16],
+		"alchemist": [16,24],
+		"purple5": [16,16],
+		"orange2": [16,16],
+		"blackbronze": [16,16],
+		"purple4": [16,16],
+		"orange3": [16,16],
+		"belt": [16,16],
+		"birch": [16,16],
+		"purple9": [16,16],
+		"purple8": [16,16],
+		"metal": [16,16],
+		"merchant": [16,24],
+		"handle": [16,16],
+		"purple3": [16,16],
+		"steel17": [16,16],
+		"purple2": [16,16],
+		"leather": [16,16],
+		"orange6": [16,16],
+		"steel19": [16,16],
+		"steel18": [16,16],
+		"steel13": [64,64],
+		"steel12": [64,64],
+		"steel14": [64,64],
+		"steel11": [64,64],
+		"steel10": [64,64],
+		"white-wooden-mask": [16,16],
+		"steel": [16,16],
+		"pink": [16,16],
+		"darkbrown": [16,16],
+		"deepnoble": [16,24],
+		"yellow": [48,48],
+		"bismuthbronze": [16,16],
+		"steel20": [16,16],
+		"steel22": [16,16],
+		"steel21": [16,16],
+		"aged": [16,16],
+		"shoes": [16,28],
+		"yellow2": [16,16],
+		"survivor": [16,24],
+		"yellow3": [16,16],
+		"beige": [16,16],
+		"hide": [16,24],
+		"messenger": [16,24],
+		"gloves1": [16,16],
+		"purple": [16,16],
+		"purple10": [16,16],
+		"purple11": [16,16],
+		"wool": [16,24],
+		"straps": [16,16],
+		"tobias": [48,48],
+		"squire": [16,24],
+		"glider": [40,40],
+		"plaincloth": [16,24],
+		"fancygreen": [16,24],
+		"mossgreen": [48,48],
+		"white": [16,16],
+		"plain": [16,16],
+		"king fixed - Copy": [16,24],
+		"wood": [16,16],
+		"hat": [16,16],
+		"king": [16,24],
+		"brown": [16,16],
+		"seraph": [64,64],
+		"lackey": [16,24],
+		"leather8": [16,16],
+		"commoner": [16,24],
+		"leather2": [16,16],
+		"rope": [16,16],
+		"blackguard": [16,24],
+		"skin3": [64,64],
+		"skin1": [64,68],
+		"hair": [48,48],
+		"forlorn": [16,24],
+		"bearbrown2": [96,96],
+		"prince": [16,24],
+		"herder": [16,24],
+		"red26": [16,16],
+		"red25": [16,16],
+		"green": [16,16],
+		"red22": [16,16],
+		"red21": [16,16],
+		"wintergreendream": [48,48],
+		"red24": [16,16],
+		"alchemist fixed": [16,24],
+		"red23": [16,16],
+		"quartz": [16,16],
+		"grey": [16,16],
+		"red6": [16,16],
+		"orange": [16,16],
+		"red5": [16,16],
+		"red8": [16,16],
+		"red7": [16,16],
+		"mordant": [16,16],
+		"backpack": [16,16],
+		"iron": [16,16],
+		"acacia": [16,16],
+		"red20": [16,16],
+		"blanket": [16,24],
+		"red9": [16,16]
+	},
+	"textures": {
+		"cupronickel12": "game:block/metal/sheet-plain/cupronickel1",
+		"steel12": "game:block/metal/sheet-plain/steel1"
+	},
+	"elements": [
+		{
+			"name": "mover-toggle",
+			"from": [ 15.99, 0.0, 16.0 ],
+			"to": [ 16.99, 1.0, 17.0 ],
+			"rotationOrigin": [ 16.0, 0.0, 16.0 ],
+			"rotationX": 180.0,
+			"rotationZ": 180.0,
+			"faces": {
+				"north": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+				"east": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+				"south": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+				"west": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+				"up": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+				"down": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false }
+			},
+			"children": [
+				{
+					"name": "axle-horizontal2",
+					"from": [ 14.05, 8.0, 7.3 ],
+					"to": [ 15.45, 9.0, 8.7 ],
+					"rotationOrigin": [ 14.75, 8.0, 8.0 ],
+					"rotationX": -180.0,
+					"rotationY": 0.0,
+					"rotationZ": -90.0,
+					"faces": {
+						"north": { "texture": "#steel12", "uv": [ 12.0, 6.0, 14.0, 8.0 ] },
+						"east": { "texture": "#steel12", "uv": [ 2.0, 12.0, 4.0, 14.0 ] },
+						"south": { "texture": "#steel12", "uv": [ 14.0, 14.0, 16.0, 16.0 ] },
+						"west": { "texture": "#steel12", "uv": [ 12.0, 14.0, 14.0, 16.0 ] },
+						"up": { "texture": "#steel12", "uv": [ 14.0, 12.0, 16.0, 14.0 ] },
+						"down": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false }
+					},
+					"children": [
+						{
+							"name": "Gear02",
+							"from": [ 0.0, 0.01, 0.0 ],
+							"to": [ 1.4, 1.01, 1.4 ],
+							"rotationOrigin": [ 0.7, 0.0, 0.7 ],
+							"rotationY": 30.0,
+							"faces": {
+								"north": { "texture": "#steel12", "uv": [ 10.5, 0.5, 11.5, 1.5 ] },
+								"east": { "texture": "#steel12", "uv": [ 7.5, 14.5, 8.5, 15.5 ] },
+								"south": { "texture": "#steel12", "uv": [ 1.0, 6.5, 2.0, 7.5 ] },
+								"west": { "texture": "#steel12", "uv": [ 8.5, 0.0, 9.5, 1.0 ] },
+								"up": { "texture": "#steel12", "uv": [ 0.5, 5.5, 1.5, 6.5 ] },
+								"down": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false }
+							}
+						},
+						{
+							"name": "Gear03",
+							"from": [ 0.0, 0.02, 0.0 ],
+							"to": [ 1.4, 1.02, 1.4 ],
+							"rotationOrigin": [ 0.7, 0.0, 0.7 ],
+							"rotationY": 60.0,
+							"faces": {
+								"north": { "texture": "#steel12", "uv": [ 5.0, 11.0, 6.0, 12.0 ] },
+								"east": { "texture": "#steel12", "uv": [ 8.0, 6.0, 9.0, 7.0 ] },
+								"south": { "texture": "#steel12", "uv": [ 11.5, 7.5, 12.5, 8.5 ] },
+								"west": { "texture": "#steel12", "uv": [ 4.5, 13.0, 5.5, 14.0 ] },
+								"up": { "texture": "#steel12", "uv": [ 8.5, 6.5, 9.5, 7.5 ] },
+								"down": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false }
+							}
+						},
+						{
+							"name": "MainShaft",
+							"from": [ 0.2, -0.05, 0.2 ],
+							"to": [ 1.2, 1.15, 1.2 ],
+							"rotationOrigin": [ 0.2, -0.05, 0.2 ],
+							"faces": {
+								"north": { "texture": "#cupronickel12", "uv": [ 2.5, 2.0, 3.5, 3.0 ] },
+								"east": { "texture": "#cupronickel12", "uv": [ 3.5, 0.5, 4.5, 1.5 ] },
+								"south": { "texture": "#cupronickel12", "uv": [ 7.5, 8.5, 8.5, 9.5 ] },
+								"west": { "texture": "#cupronickel12", "uv": [ 10.0, 3.5, 11.0, 4.5 ] },
+								"up": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 1.0 ], "enabled": false },
+								"down": { "texture": "#cupronickel12", "uv": [ 2.5, 12.5, 3.5, 13.5 ], "enabled": false }
+							},
+							"children": [
+								{
+									"name": "Cube5",
+									"from": [ 1.0, 1.1, -1.0 ],
+									"to": [ 1.5, 1.3, -0.5 ],
+									"rotationOrigin": [ 1.0, 1.1, -1.0 ],
+									"faces": {
+										"north": { "texture": "#cupronickel12", "uv": [ 12.5, 3.5, 13.0, 4.0 ] },
+										"east": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+										"south": { "texture": "#cupronickel12", "uv": [ 12.0, 0.5, 12.5, 1.0 ] },
+										"west": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+										"up": { "texture": "#cupronickel12", "uv": [ 15.0, 4.0, 15.5, 4.5 ] },
+										"down": { "texture": "#cupronickel12", "uv": [ 4.0, 4.0, 4.5, 4.5 ] }
+									},
+									"children": [
+										{
+											"name": "Cube2",
+											"from": [ -1.0, 0.0, 0.0 ],
+											"to": [ 0.0, 0.2, 3.0 ],
+											"rotationOrigin": [ -1.0, 0.0, 0.0 ],
+											"faces": {
+												"north": { "texture": "#cupronickel12", "uv": [ 9.0, 8.5, 10.0, 9.0 ] },
+												"east": { "texture": "#cupronickel12", "uv": [ 2.5, 14.5, 5.5, 15.0 ] },
+												"south": { "texture": "#cupronickel12", "uv": [ 4.5, 11.5, 5.5, 12.0 ] },
+												"west": { "texture": "#cupronickel12", "uv": [ 1.0, 3.5, 4.0, 4.0 ] },
+												"up": { "texture": "#cupronickel12", "uv": [ 4.5, 5.5, 5.5, 8.5 ] },
+												"down": { "texture": "#cupronickel12", "uv": [ 6.0, 2.0, 7.0, 5.0 ] }
+											}
+										},
+										{
+											"name": "Cube7",
+											"from": [ 0.0, 0.0, 2.5 ],
+											"to": [ 0.5, 0.2, 3.0 ],
+											"rotationOrigin": [ 0.0, 0.0, 2.5 ],
+											"faces": {
+												"north": { "texture": "#cupronickel12", "uv": [ 7.0, 14.0, 7.5, 14.5 ] },
+												"east": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+												"south": { "texture": "#cupronickel12", "uv": [ 4.5, 4.5, 5.0, 5.0 ] },
+												"west": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+												"up": { "texture": "#cupronickel12", "uv": [ 2.5, 8.5, 3.0, 9.0 ] },
+												"down": { "texture": "#cupronickel12", "uv": [ 4.0, 12.5, 4.5, 13.0 ] }
+											}
+										},
+										{
+											"name": "Cube6",
+											"from": [ 0.0, 0.0, 1.0 ],
+											"to": [ 0.5, 0.2, 2.0 ],
+											"rotationOrigin": [ 0.0, 0.0, 1.0 ],
+											"faces": {
+												"north": { "texture": "#cupronickel12", "uv": [ 6.5, 0.0, 7.0, 0.5 ] },
+												"east": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 0.5 ], "enabled": false },
+												"south": { "texture": "#cupronickel12", "uv": [ 2.0, 5.0, 2.5, 5.5 ] },
+												"west": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 0.5 ], "enabled": false },
+												"up": { "texture": "#cupronickel12", "uv": [ 3.5, 10.0, 4.0, 11.0 ] },
+												"down": { "texture": "#cupronickel12", "uv": [ 1.5, 14.0, 2.0, 15.0 ] }
+											}
+										},
+										{
+											"name": "Cube4",
+											"from": [ 0.5, 0.0, 0.0 ],
+											"to": [ 1.0, 0.2, 3.0 ],
+											"rotationOrigin": [ 0.5, 0.0, 0.0 ],
+											"faces": {
+												"north": { "texture": "#cupronickel12", "uv": [ 4.5, 1.0, 5.0, 1.5 ] },
+												"east": { "texture": "#cupronickel12", "uv": [ 7.0, 0.0, 10.0, 0.5 ] },
+												"south": { "texture": "#cupronickel12", "uv": [ 12.0, 3.5, 12.5, 4.0 ] },
+												"west": { "texture": "#cupronickel12", "uv": [ 9.0, 12.5, 12.0, 13.0 ] },
+												"up": { "texture": "#cupronickel12", "uv": [ 4.5, 11.0, 5.0, 14.0 ] },
+												"down": { "texture": "#cupronickel12", "uv": [ 4.5, 12.0, 5.0, 15.0 ] }
+											}
+										},
+										{
+											"name": "Cube3",
+											"from": [ -2.0, 0.0, 0.0 ],
+											"to": [ -1.5, 0.2, 3.0 ],
+											"rotationOrigin": [ -2.0, 0.0, 0.0 ],
+											"faces": {
+												"north": { "texture": "#cupronickel12", "uv": [ 4.0, 12.5, 4.5, 13.0 ] },
+												"east": { "texture": "#cupronickel12", "uv": [ 3.0, 1.0, 6.0, 1.5 ] },
+												"south": { "texture": "#cupronickel12", "uv": [ 3.0, 6.5, 3.5, 7.0 ] },
+												"west": { "texture": "#cupronickel12", "uv": [ 11.5, 4.0, 14.5, 4.5 ] },
+												"up": { "texture": "#cupronickel12", "uv": [ 11.0, 9.0, 11.5, 12.0 ] },
+												"down": { "texture": "#cupronickel12", "uv": [ 15.0, 5.5, 15.5, 8.5 ] }
+											}
+										},
+										{
+											"name": "Cube8",
+											"from": [ -1.5, 0.0, 0.0 ],
+											"to": [ -1.0, 0.2, 0.5 ],
+											"rotationOrigin": [ -1.5, 0.0, 0.0 ],
+											"faces": {
+												"north": { "texture": "#cupronickel12", "uv": [ 2.5, 13.0, 3.0, 13.5 ] },
+												"east": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+												"south": { "texture": "#cupronickel12", "uv": [ 6.5, 12.5, 7.0, 13.0 ] },
+												"west": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+												"up": { "texture": "#cupronickel12", "uv": [ 12.5, 12.0, 13.0, 12.5 ] },
+												"down": { "texture": "#cupronickel12", "uv": [ 8.0, 2.0, 8.5, 2.5 ] }
+											},
+											"children": [
+												{
+													"name": "Cube9",
+													"from": [ 0.0, 0.0, 2.5 ],
+													"to": [ 0.5, 0.2, 3.0 ],
+													"rotationOrigin": [ 0.0, 0.0, 2.5 ],
+													"faces": {
+														"north": { "texture": "#cupronickel12", "uv": [ 2.5, 11.0, 3.0, 11.5 ] },
+														"east": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+														"south": { "texture": "#cupronickel12", "uv": [ 6.5, 8.0, 7.0, 8.5 ] },
+														"west": { "texture": "#null", "uv": [ 0.0, 0.0, 0.5, 0.5 ], "enabled": false },
+														"up": { "texture": "#cupronickel12", "uv": [ 2.0, 3.5, 2.5, 4.0 ] },
+														"down": { "texture": "#cupronickel12", "uv": [ 4.0, 7.0, 4.5, 7.5 ] }
+													}
+												},
+												{
+													"name": "Cube10",
+													"from": [ 0.0, 0.0, 1.0 ],
+													"to": [ 0.5, 0.2, 2.0 ],
+													"rotationOrigin": [ 0.0, 0.0, 1.0 ],
+													"faces": {
+														"north": { "texture": "#cupronickel12", "uv": [ 4.0, 8.0, 4.5, 8.5 ] },
+														"east": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 0.5 ], "enabled": false },
+														"south": { "texture": "#cupronickel12", "uv": [ 6.0, 3.0, 6.5, 3.5 ] },
+														"west": { "texture": "#null", "uv": [ 0.0, 0.0, 1.0, 0.5 ], "enabled": false },
+														"up": { "texture": "#cupronickel12", "uv": [ 3.5, 7.0, 4.0, 8.0 ] },
+														"down": { "texture": "#cupronickel12", "uv": [ 3.5, 6.0, 4.0, 7.0 ] }
+													}
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"animations": [
+		{
+			"name": "looming2",
+			"code": "looming2",
+			"quantityframes": 120,
+			"onActivityStopped": "PlayTillEnd",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"axle-horizontal2": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 }
+					}
+				},
+				{
+					"frame": 119,
+					"elements": {
+						"axle-horizontal2": { "rotationX": 360.0, "rotationY": 0.0, "rotationZ": 0.0 }
+					}
+				}
+			]
+		}
+	]
+}
