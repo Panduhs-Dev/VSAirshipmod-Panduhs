@@ -9,17 +9,17 @@
 	"textureSizes": {
 	},
 	"textures": {
-		"linen": "block/linen",
-		"lead": "block/metal/ingot/lead",
-		"cupronickel1": "block/metal/sheet/cupronickel1",
-		"iron4": "block/metal/sheet/iron4",
-		"steel1": "block/metal/sheet/steel1",
-		"tinbronze1": "block/metal/sheet/tinbronze1",
-		"wood-generic": "block/wood-generic",
-		"oak": "block/wood/debarked/oak",
-		"oak1": "block/wood/planks/oak1",
-		"fibers": "item/resource/fibers",
-		"rope2": "item/resource/rope"
+		"linen": "game:block/linen",
+		"lead": "game:block/metal/ingot/lead",
+		"cupronickel1": "game:block/metal/sheet/cupronickel1",
+		"iron4": "game:block/metal/sheet/iron4",
+		"steel1": "game:block/metal/sheet/steel1",
+		"tinbronze1": "game:block/metal/sheet/tinbronze1",
+		"wood-generic": "game:block/wood-generic",
+		"oak": "game:block/wood/debarked/oak",
+		"oak1": "game:block/wood/planks/oak1",
+		"fibers": "game:item/resource/fibers",
+		"rope2": "game:item/resource/rope"
 	},
 	"elements": [
 		{
@@ -5586,10 +5586,29 @@
 	],
 	"animations": [
 		{
-			"name": "Threadmaking",
-			"code": "threadmaking",
+			"name": "idle",
+			"code": "idle",
+			"quantityframes": 30,
+			"onActivityStopped": "Stop",
+			"onAnimationEnd": "Hold",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"axle-horizontal": { "offsetX": 0.0, "offsetY": 0.0, "offsetZ": 0.0 }
+					},
+                    "frame": 29,
+					"elements": {
+						"GearLarger38": { "offsetX": 0.0, "offsetY": 0.0, "offsetZ": 0.0 }
+					}
+				}
+			]
+		},
+		{
+			"name": "spinning",
+			"code": "spinning",
 			"quantityframes": 240,
-			"onActivityStopped": "Rewind",
+			"onActivityStopped": "PlayTillEnd",
 			"onAnimationEnd": "Repeat",
 			"keyframes": [
 				{
