@@ -35,7 +35,7 @@
 		},
 		width: 3,
 		height: 3,
-		requiresTrait: "tinkerer",
+		requiresTrait: "clockmaker",
 		output: {type: "item", code: "spinner-{metal}-north" }
 	},
 	{
@@ -75,7 +75,7 @@
 		},
 		width: 3,
 		height: 3,
-		requiresTrait: "tinkerer",
+		requiresTrait: "clockmaker",
 		output: {type: "item", code: "spinner-{metal}-north" }
 	}
 ]
