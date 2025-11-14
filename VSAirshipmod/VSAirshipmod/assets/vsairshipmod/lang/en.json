@@ -5,6 +5,6 @@
   "vsairshipmod:block-sewingmachine-*": "Sewing Machine",
   "vsairshipmod:item-coatingmix": "Balloon coating mixture",
   "vsairshipmod:item-coatingliquid": "Balloon coating liquid",
-  "vsairshipmod:item-treatedcloth*": "Treated balloon cloth",
-  "incontainer-item-coatingliquid": "Balloon coating mixture"
+  "incontainer-item-coatingliquid": "Balloon coating liquid",
+  "vsairshipmod:item-treatedcloth*": "Treated balloon cloth"
 }
