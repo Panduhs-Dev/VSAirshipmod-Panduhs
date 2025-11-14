@@ -10,17 +10,29 @@
 	shape: { base: "block/food/meal/liquid" },
 	ingredients: [
 		{
-			code: "wax", 
-			validStacks: [ { type: "item", code: "beeswax" } ],
-			minQuantity: 3,
-			maxQuantity: 3
+			code: "resin", 
+			validStacks: [ { type: "item", code: "game:resin" } ],
+			minQuantity: 1,
+			maxQuantity: 1
 		},
 		{
-			code: "flaxfibers", 
-			validStacks: [ { type: "item", code: "flaxfibers" } ],
+			code: "lime", 
+			validStacks: [ { type: "item", code: "game:lime", quantity: 2 } ],
+			minQuantity: 1,
+			maxQuantity: 1
+		},
+		{
+			code: "salt", 
+			validStacks: [ { type: "item", code: "game:salt", quantity: 2 } ],
+			minQuantity: 1,
+			maxQuantity: 1
+		},
+		{
+			code: "fat", 
+			validStacks: [ { type: "item", code: "game:fat" } ],
 			minQuantity: 1,
 			maxQuantity: 1
 		}
 	],
-	cooksInto: { type: "Item", code: "coatingmixture", quantity: 1 }
+	cooksInto: { type: "Item", code: "game:beeswax", quantity: 2 }
 }

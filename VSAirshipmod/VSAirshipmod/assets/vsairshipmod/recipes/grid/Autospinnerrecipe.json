@@ -16,12 +16,11 @@
 		},
 		width: 3,
 		height: 3,
-		output: {type: "block", code: "autospinner-{metal}-north" }
+		output: {type: "block", code: "spinner-{metal}-north" }
 	},
 	{
 		"code": "autospinnercraftclockmaker",
-		"RecipeGroup": 2,
-		requiresTrait: "clockmaker",
+		"RecipeGroup": 3,
 		ingredientPattern:"ABC,DEF,GHI",
 		ingredients: {
 			"A": { type: "item", code: "game:metalnailsandstrips-*", "name": "metal","allowedVariants": ["tinbronze", "bismuthbronze", "blackbronze"], quantity: 16},
@@ -36,11 +35,12 @@
 		},
 		width: 3,
 		height: 3,
-		output: {type: "item", code: "clothes-head-amonshat" }
+		requiresTrait: "tinkerer",
+		output: {type: "item", code: "spinner-{metal}-north" }
 	},
 	{
 		"code": "autospinnercraft2",
-		"RecipeGroup": 3,
+		"RecipeGroup": 2,
 		ingredientPattern:"ABC,DEF,GHI",
 		ingredients: {
 			"A": { type: "item", code: "game:metalnailsandstrips-*", "name": "metal","allowedVariants": ["tinbronze", "bismuthbronze", "blackbronze"], quantity: 20},
@@ -55,13 +55,12 @@
 		},
 		width: 3,
 		height: 3,
-		output: {type: "block", code: "autospinner-{metal}-north" },
+		output: {type: "block", code: "spinner-{metal}-north" },
 	},
 	{
 
 		"code": "autospinnercraftclockmaker2",
 		"RecipeGroup": 4,
-		requiresTrait: "clockmaker",
 		ingredientPattern:"ABC,DEF,GHI",
 		ingredients: {
 			"A": { type: "item", code: "game:metalnailsandstrips-*", "name": "metal","allowedVariants": ["tinbronze", "bismuthbronze", "blackbronze"], quantity: 16},
@@ -76,6 +75,7 @@
 		},
 		width: 3,
 		height: 3,
-		output: {type: "item", code: "clothes-head-amonshat" }
+		requiresTrait: "tinkerer",
+		output: {type: "item", code: "spinner-{metal}-north" }
 	}
 ]
