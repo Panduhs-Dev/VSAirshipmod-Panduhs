@@ -1,0 +1,94 @@
+{
+	"enabled": false,
+	code: "customboatconstruction",
+	class: "EntityCustomBoatConstruction",
+	tags: ["inanimate", "structure"],
+	variantgroups: [
+		{ code: "airshiptype", states: ["tier1"] },
+		{ code: "material", states: ["aged"], loadFromProperties: "game:block/wood" }
+	],
+	skipVariants: [
+		"*-aged"
+	],
+	hitboxSizeByType: {
+		"*": { x: 2, y: 1.2, z: 2 }
+	},
+	attributes: {
+		airshiptype: "tier1",
+		relayRopeInteractions: true,
+		stages: [
+			{ addElements: [ "ORIGIN/ORIGIN0-launchpad" ] },
+			{ requireStacks: [ { type: "block", name: "shipbuildingingredient", code: "barrel", quantity: 1 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN1-barrel"] },
+			{ requireStacks: [ { type: "block", code: "metal-scraps", quantity: 16 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN2-scrapmetal"] },
+			{ requireStacks: [ { type: "item", code: "leather-normal-*", quantity: 6 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN3-leather"], removeElements: ["ORIGIN/ORIGINAirship/ORIGIN2-scrapmetal"] },
+			{ requireStacks: [ { type: "block", code: "condenser-west", quantity: 1 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN4-condenser"] },
+			{ requireStacks: [ { type: "item", code: "rod-*", quantity: 6 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN5-metalrods"] },
+			{ requireStacks: [ { type: "item", code: "hoop-blackbronze", quantity: 1 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN6-hoop"] },
+			{ requireStacks: [ { type: "item", code: "stick", quantity: 10 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN7-sticks"] },
+			{ requireStacks: [ { type: "block", code: "linen-*-down", quantity: 2 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN8-2linenflags", "ORIGIN/ORIGINAirship/ORIGIN9-2linenoars"], removeElements: ["ORIGIN/ORIGINAirship/ORIGIN7-sticks"] },
+			{ requireStacks: [ { type: "item", code: "rope", quantity: 8 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN10-ropes"], removeElements: ["ORIGIN/ORIGINAirship/ORIGIN8-2linenflags", "ORIGIN/ORIGINAirship/ORIGIN9-2linenoars", "ORIGIN/ORIGINAirship/ORIGIN3-leather", "ORIGIN/ORIGINAirship/ORIGIN4-condenser", "ORIGIN/ORIGINAirship/ORIGIN4-condenser", "ORIGIN/ORIGINAirship/ORIGIN5-metalrods", "ORIGIN/ORIGINAirship/ORIGIN6-hoop"] },
+			{ requireStacks: [ { type: "item", code: "jonasframes-gearbox02", quantity: 1 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN11-jonaspart"] },
+			{ requireStacks: [ { type: "item", code: "gear-temporal", quantity: 1 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN12-tempgear"] },
+			{ requireStacks: [ { type: "item", code: "linensack", quantity: 4 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN13-bags"] },
+			{ requireStacks: [ { type: "item", code: "metalnailsandstrips-tinbronze", quantity: 6 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN14-tinbronzeparts"] },
+			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 4 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN15-balloon1"] },
+			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 7 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN16-balloon2"] },
+			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 8 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN17-balloon3"] },
+			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 12 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN18-balloon4"] },
+			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 16 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN19-balloon5"] },
+			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 16 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN20-balloon6"] },
+			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 28 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN21-balloon7"] },
+			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 7 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN22-balloon8"] },
+			{ requireStacks: [ ], actionLangCode: "Launch" },
+			{ removeElements: ["ORIGIN/ORIGIN1props"] }
+		],
+	},
+	behaviorConfigs: {
+		"passivephysicsmultibox": { 
+			collisionBoxes: [
+				{ x1: -1.4, y1: 0, z1: 0.1, x2: 1.4, y2: 1.2, z2: 2.9 },
+				{ x1: -1.4, y1: 0, z1: -2.9, x2: 1.4, y2: 1.2, z2: -0.1 },
+				{ x1: -1.4, y1: 0, z1: -4.9, x2: 1.4, y2: 1.2, z2: -2.9 }
+			],
+			groundDragFactor: 1,
+			airDragFallingFactor: 0.5,
+			gravityFactor: 1.0
+		},
+		"selectionboxes": {
+			selectionBoxes: ["SeleAP", "Sele2AP" ]
+		}
+	},
+	client: {
+		size: 1,
+		renderer: "Shape",
+		shapeByType: {
+			"*": { base: "entity/tier1-construction"}
+		},
+		"textures": {
+      },
+		animations: [
+			{
+				code: "launch",
+				animation: "launch", 
+				animationSpeed: 1,
+				weight: 10,
+				blendMode: "AddAverage" 
+			}
+		],
+		behaviors: [
+			{ code: "passivephysicsmultibox" },
+			{ code: "interpolateposition" },
+			{ code: "selectionboxes" },
+			{ code: "floatupwhenstuck" }
+		],
+	},
+	server: {
+		behaviors: [
+			{ code: "passivephysicsmultibox" },
+			{ code: "selectionboxes" },
+			{ code: "floatupwhenstuck" }
+		],
+	},
+	sounds: {
+	}
+}
