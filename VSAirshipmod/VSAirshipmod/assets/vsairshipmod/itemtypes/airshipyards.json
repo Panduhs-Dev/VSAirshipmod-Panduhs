@@ -33,7 +33,10 @@
 			"rope": { "base": "game:item/resource/rope"}
 		}
 	},
-	"creativeinventory": { "general": ["*"], "vsairshipmod": ["*"] },
+	"creativeinventory": {
+		"general": [ "*" ],
+		"airship": [ "*" ]
+	},
 	guiTransform: {
 		translation: { x: 3, y: 0, z: 0 },
 		rotation: { x: -22.5, y: -37, z: 180 },

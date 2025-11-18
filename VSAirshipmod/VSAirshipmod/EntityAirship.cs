@@ -259,7 +259,14 @@ namespace VSAirshipmod
         /// </summary>
         public virtual float SpeedMultiplier { get; set; } = 1f;
         public virtual float TurnMultiplier { get; set; } = 1f;
-        public virtual float Fuel { get; set; } = 0f;
+        public virtual float Fuel { 
+            get {
+                return WatchedAttributes.GetFloat("Fuel");
+            } 
+            set {
+                WatchedAttributes.SetFloat("Fuel", value);
+            } 
+        }
 
         public double RenderOrder => 0;
         public int RenderRange => 999;
@@ -273,6 +280,7 @@ namespace VSAirshipmod
         public Dictionary<string, string> MountAnimations = new Dictionary<string, string>();
         bool requiresPaddlingTool;
         bool unfurlSails;
+        string weatherVaneAnimCode;
 
         ICoreClientAPI capi;
 
@@ -283,7 +291,12 @@ namespace VSAirshipmod
             swimmingOffsetY = properties.Attributes["swimmingOffsetY"].AsDouble();
             SpeedMultiplier = properties.Attributes["speedMultiplier"].AsFloat(1f);
             TurnMultiplier = properties.Attributes["turnMultiplier"].AsFloat(1f);
-            Fuel = this.Attributes.GetFloat("Fuel");
+            if (Fuel == 0)
+                Fuel = this.Attributes.GetFloat("Fuel");
+
+            this.weatherVaneAnimCode = properties.Attributes["weatherVaneAnimCode"].AsString(null);
+
+            api.Logger.Notification("Fuel Handled: " + Fuel);
 
             MountAnimations = properties.Attributes["mountAnimations"].AsObject<Dictionary<string, string>>();
 
@@ -356,6 +369,32 @@ namespace VSAirshipmod
             esr.xangle = mountAngle.X + curRotMountAngleZ;
             esr.yangle = mountAngle.Y;
             esr.zangle = mountAngle.Z + forwardpitch; // Weird. Pitch ought to be xangle.
+            /*
+            if (this.AnimManager.Animator != null)
+            {
+                this.weatherVaneAnimCode = "t1weathervane";
+
+                if (this.weatherVaneAnimCode != null && !this.AnimManager.IsAnimationActive(new string[]
+                {
+                    this.weatherVaneAnimCode
+                }))
+                {
+                    this.AnimManager.StartAnimation(this.weatherVaneAnimCode);
+                }
+                //float targetWindDir = GameMath.Mod((float)Math.Atan2((double)GlobalConstants.CurrentWindSpeedClient.X, (double)GlobalConstants.CurrentWindSpeedClient.Z) + 6.2831855f - this.Pos.Yaw, 6.2831855f);
+                RunningAnimation anim = this.AnimManager.GetAnimationState(this.weatherVaneAnimCode);
+                if (anim != null)
+                {
+                    Api.Logger.Notification("" + anim.CurrentFrame);
+                    //anim.CurrentFrame = (Fuel/64f)*36f; // * 57.295776f / 10f;
+                    anim.BlendedWeight = 1f;
+                    anim.EasingFactor = 1f;
+                    anim.Running = true;
+                    anim.Active = true;
+                }
+                //Api.Logger.Notification(anim != null ? "Not Null":"Null");
+            }
+            */
         }
 
 
@@ -418,6 +457,8 @@ namespace VSAirshipmod
         }
 
         double horizontalmodifier = 3;
+        double FuelTimer = 0;
+
         protected void updateBoatAngleAndMotion(float dt)
         {
             // Ignore lag spikes
@@ -427,9 +468,26 @@ namespace VSAirshipmod
             var motion = SeatsToMotion(step);
 
             // Add some easing to it
+            
+
             ForwardSpeed += (motion.X * SpeedMultiplier - ForwardSpeed) * dt;
             AngularVelocity += (motion.Z * (TurnMultiplier / AngularVelocityDivider) - AngularVelocity) * dt;
-            HorizontalVelocity = motion.Y * dt;//+= (motion.Y * SpeedMultiplier - HorizontalVelocity) * dt;
+            HorizontalVelocity = 0;
+            if (motion.Y < 0 ||(motion.Y > 0 && (FuelTimer > 0 || Fuel > 0))) {
+                if (FuelTimer <= 0)
+                {
+                    FuelTimer = 6;
+                    if(Api is ICoreServerAPI sapi) { 
+                        Fuel -= 1; 
+                    }
+                    
+                }
+                else
+                {
+                    FuelTimer -= dt;
+                }
+                HorizontalVelocity = motion.Y * dt;//+= (motion.Y * SpeedMultiplier - HorizontalVelocity) * dt;
+            }
 
 
             if (!IsFlying && HorizontalVelocity == 0) return;
@@ -621,9 +679,9 @@ namespace VSAirshipmod
             {
                 if (tryPickup(byEntity, mode)) return;
             }
-            if (itemslot.Itemstack?.Collectible.Code == "rot")
+            if (itemslot.Itemstack?.Collectible.Code == "rot" && Fuel < 64)
             {
-                Fuel += itemslot.TakeOutWhole().StackSize;
+                Fuel += itemslot.TakeOut((int)(64-Math.Ceiling(Fuel))).StackSize;
                 Api.Logger.Notification("Total: " + Fuel);
                 return;
             }

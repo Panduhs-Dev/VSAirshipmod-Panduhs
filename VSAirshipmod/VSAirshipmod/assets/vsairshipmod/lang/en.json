@@ -1,6 +1,19 @@
 {
   "game:tabname-airship": "Airship mod!",
-  "vsairshipmod:block-autoloom-*": "Autoloom",
-  "vsairshipmod:block-spinner-*": "Spinner",
-  "vsairshipmod:block-sewingmachine-*": "Sewing Machine"
+
+  "vsairshipmod:block-autoloom-tinbronze-*": "Tin Bronze Autoloom",
+  "vsairshipmod:block-autoloom-bismuthbronze-*": "Bismuth Bronze Autoloom",
+  "vsairshipmod:block-autoloom-blackbronze-*": "Black Bronze Autoloom",
+
+  "vsairshipmod:block-spinner-tinbronze-*": "Tin Bronze Spinner",
+  "vsairshipmod:block-spinner-bismuthbronze-*": "Bismuth Bronze Spinner",
+  "vsairshipmod:block-spinner-blackbronze-*": "Black Bronze Spinner",
+
+  "vsairshipmod:block-sewingmachine-tinbronze-*": "Tin Bronze Sewing Machine",
+  "vsairshipmod:block-sewingmachine-bismuthbronze-*": "Bismuth Bronze Sewing Machine",
+  "vsairshipmod:block-sewingmachine-blackbronze-*": "Black Bronze Sewing Machine",
+
+  "vsairshipmod:block-sewingmachine-*": "[Metal] Sewing Machine",
+
+  "vsairshipmod:item-airship-tier1-*": "Tier 1 Airship"
 }

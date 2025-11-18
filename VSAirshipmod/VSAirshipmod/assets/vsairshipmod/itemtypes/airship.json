@@ -3,7 +3,11 @@
   "class": "ItemBoat",
   "__comment": "Provide here the entity",
   "shapeByType": {
-    "*": { "base": "entity/airshipmodel2" }
+    "*": {
+      "base": "entity/airshipmodel2",
+      "ignoreElements": [ "hideWater", "FLATBALLOON" ]
+    },
+    
   },
   "variantgroups": [
     {
