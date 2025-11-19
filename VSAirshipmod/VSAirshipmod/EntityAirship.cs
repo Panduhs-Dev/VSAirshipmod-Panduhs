@@ -786,6 +786,7 @@ namespace VSAirshipmod
             {
                 text += "\n" + Lang.Get("entity-createdbyplayer", CreatedByPlayername);
             }
+            text += "\n" + Lang.Get("vsairshipmod:float-fuel", Fuel);
             return text;
         }
     }
