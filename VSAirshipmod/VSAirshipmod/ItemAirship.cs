@@ -23,6 +23,9 @@ namespace VSAirshipmod
         {
             if (blockSel == null) return;
 
+            base.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, firstEvent, ref handHandling);
+            if (handHandling == EnumHandHandling.PreventDefault) return;
+
             IPlayer player = byEntity.World.PlayerByUid((byEntity as EntityPlayer).PlayerUID);
 
             if (!byEntity.World.Claims.TryAccess(player, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak))
