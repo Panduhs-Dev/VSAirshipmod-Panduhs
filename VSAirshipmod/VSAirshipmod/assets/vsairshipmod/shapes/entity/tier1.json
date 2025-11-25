@@ -13923,7 +13923,7 @@
 			"name": "Pump",
 			"code": "pump",
 			"quantityframes": 360,
-			"onActivityStopped": "PlayTillEnd",
+			"onActivityStopped": "Stop",
 			"onAnimationEnd": "Repeat",
 			"keyframes": [
 				{
@@ -13959,7 +13959,7 @@
 			"name": "GoUp",
 			"code": "goup",
 			"quantityframes": 15,
-			"onActivityStopped": "EaseOut",
+			"onActivityStopped": "Rewind",
 			"onAnimationEnd": "Hold",
 			"keyframes": [
 				{
@@ -14105,19 +14105,27 @@
 			"name": "Burnervalve",
 			"code": "burnervalve",
 			"quantityframes": 30,
-			"onActivityStopped": "EaseOut",
-			"onAnimationEnd": "EaseOut",
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Hold",
 			"keyframes": [
 				{
 					"frame": 0,
 					"elements": {
-						"valve PIVOT": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 0.0 }
+						"valve PIVOT": {
+							"rotationX": 0.0,
+							"rotationY": 0.0,
+							"rotationZ": 0.0
+						}
 					}
 				},
 				{
 					"frame": 29,
 					"elements": {
-						"valve PIVOT": { "rotationX": 90.0, "rotationY": 0.0, "rotationZ": 0.0 }
+						"valve PIVOT": {
+							"rotationX": 90.0,
+							"rotationY": 0.0,
+							"rotationZ": 0.0
+						}
 					}
 				}
 			]

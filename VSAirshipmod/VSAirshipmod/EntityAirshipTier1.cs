@@ -212,7 +212,7 @@ namespace VSAirshipmod
     }
 
     //public class EntityAirship : Entity, IRenderer, ISeatInstSupplier, IMountableListener // yep this is how you do it dont derive from boat or you get boat sounds
-    public class EntityAirship : Entity, IRenderer, ISeatInstSupplier, IMountableListener
+    public class EntityAirshipTier1 : Entity, IRenderer, ISeatInstSupplier, IMountableListener
     {
         public override double FrustumSphereRadius => base.FrustumSphereRadius * 2;
         public override bool IsCreature => true; // For RepulseAgents behavior to work
@@ -290,6 +290,17 @@ namespace VSAirshipmod
                 WatchedAttributes.SetBool("Ready", value);
             }
         }
+        public virtual bool Idler
+        {
+            get
+            {
+                return WatchedAttributes.GetBool("Idler");
+            }
+            set
+            {
+                WatchedAttributes.SetBool("Idler", value);
+            }
+        }
 
         public double RenderOrder => 0;
         public int RenderRange => 999;
@@ -307,7 +318,7 @@ namespace VSAirshipmod
 
         ICoreClientAPI capi;
 
-        public EntityAirship() { }
+        public EntityAirshipTier1() { }
 
         public override void Initialize(EntityProperties properties, ICoreAPI api, long InChunkIndex3d)
         {
@@ -385,6 +396,7 @@ namespace VSAirshipmod
         float curRotMountAngleZ = 0f;
         public Vec3f mountAngle = new Vec3f();
         bool Deflated = true;
+        float DialNoise = 0;
 
         public void OnRenderFrame(float dt, EnumRenderStage stage)
         {
@@ -392,6 +404,8 @@ namespace VSAirshipmod
             if (capi.IsGamePaused) return;
 
             updateBoatAngleAndMotion(dt);
+
+            DialNoise = (dt + DialNoise) % 36.0f;
 
             long ellapseMs = capi.InWorldEllapsedMilliseconds;
             float forwardpitch = 0;
@@ -417,6 +431,16 @@ namespace VSAirshipmod
 
             if (this.AnimManager.Animator != null)
             {
+                if (Idler)
+                {
+                    if (!AnimManager.IsAnimationActive("burnervalve"))
+                        AnimManager.StartAnimation("burnervalve");
+                }
+                else 
+                {
+                    AnimManager.StopAnimation("burnervalve");
+                }
+
                 if (HorizontalVelocity > 0)
                 {
                     if (!AnimManager.IsAnimationActive("goup"))
@@ -490,7 +514,7 @@ namespace VSAirshipmod
                 if (anim != null)
                 {
                     //Api.Logger.Notification("" + anim.CurrentFrame);
-                    anim.CurrentFrame = (float)Math.Floor((1-(Fuel / 64f)) * 30f); // * 57.295776f / 10f;
+                    anim.CurrentFrame = (float)Math.Clamp((1-((Fuel) / 64f )) * 30f,0,30); // * 57.295776f / 10f;
                     anim.BlendedWeight = 1f;
                     anim.EasingFactor = 0.1f;
                     //Api.Logger.Notification("" + anim.AnimProgress);
@@ -603,7 +627,35 @@ namespace VSAirshipmod
             else if (motion.Y < 0 && Ready)
             {
                 HorizontalVelocity = motion.Y * dt;
-            }
+            } 
+            else if (Idler)
+            {
+
+                if (FuelTimer <= 0 && Fuel <= 0)
+                {
+                    Idler = false;
+                }
+                else
+                    Inflate = Math.Min(Inflate + dt, 3);
+
+                if (FuelTimer > 0 || Fuel > 0)
+                {
+                    if (FuelTimer <= 0)
+                    {
+                        FuelTimer = 6;
+                        if (Api is ICoreServerAPI sapi)
+                        {
+                            Fuel -= 1;
+                        }
+                    }
+                    else
+                    {
+                        FuelTimer -= dt/2;
+                    }
+                    //if (Ready)
+                    //    HorizontalVelocity = motion.Y * dt;//+= (motion.Y * SpeedMultiplier - HorizontalVelocity) * dt;
+                }
+            } 
             else if (!Ready || (OnGround && !playerSeated))
             {
                 //Api.Logger.Notification("Try Deflate: "+ !Ready);
@@ -631,11 +683,18 @@ namespace VSAirshipmod
                     pos.Motion.Y = 0.013* horizontalmodifier;
                 }
 
-                applyGravity = IsEmptyOfPlayers() ? true : false;
+                applyGravity = IsEmptyOfPlayers();
 
                 if (HorizontalVelocity < 0.0 || (IsEmptyOfPlayers() && (!OnGround || !Swimming)))
                 {
-                    pos.Motion.Y = -0.013* horizontalmodifier;
+                    pos.Motion.Y = -0.013 * horizontalmodifier;
+                }
+
+                if (!applyGravity && !Idler && motion.Y <= 0f)
+                {
+                    
+                    pos.Motion.Y -= 0.013 * dt;
+                    pos.Motion.Y = Math.Max(pos.Motion.Y, -0.013 * horizontalmodifier);
                 }
             }
 
@@ -798,6 +857,21 @@ namespace VSAirshipmod
 
         public override void OnInteract(EntityAgent byEntity, ItemSlot itemslot, Vec3d hitPosition, EnumInteractMode mode)
         {
+            int seleBox = (byEntity as EntityPlayer).EntitySelection?.SelectionBoxIndex ?? -1;
+            var bhs = GetBehavior<EntityBehaviorSelectionBoxes>();
+
+            if (bhs != null  && seleBox > 0)
+            {
+                var apap = bhs.selectionBoxes[seleBox - 1];
+                string apname = apap.AttachPoint.Code;
+                if(apname == "burnervalveAP")
+                {
+                    Idler = !Idler;
+                    return;
+                }
+                //Api.Logger.Notification(apname);
+            }
+
             if (mode == EnumInteractMode.Interact && AllowPickup() && IsEmpty())
             {
                 if (tryPickup(byEntity, mode)) return;
@@ -870,7 +944,38 @@ namespace VSAirshipmod
 
         public override WorldInteraction[] GetInteractionHelp(IClientWorldAccessor world, EntitySelection es, IClientPlayer player)
         {
-            return base.GetInteractionHelp(world, es, player);
+            EnumHandling handled = EnumHandling.PassThrough;
+
+            List<WorldInteraction> interactions = new List<WorldInteraction>();
+
+            int seleBox = player.Entity.EntitySelection?.SelectionBoxIndex ?? -1;
+            var bhs = GetBehavior<EntityBehaviorSelectionBoxes>();
+
+            if (bhs != null && seleBox > 0)
+            {
+                var apap = bhs.selectionBoxes[seleBox - 1];
+                string apname = apap.AttachPoint.Code;
+                if (apname == "burnervalveAP")
+                {
+                    interactions.Add(new WorldInteraction
+                    {
+                        ActionLangCode = "vsairship:toggleburner",
+                        MouseButton = EnumMouseButton.Right
+                    });
+                    return interactions.ToArray();
+                }
+                //Api.Logger.Notification(apname);
+            }
+
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                WorldInteraction[] wis = behavior.GetInteractionHelp(world, es, player, ref handled);
+                if (wis != null) interactions.AddRange(wis);
+
+                if (handled == EnumHandling.PreventSubsequent) break;
+            }
+
+            return interactions.ToArray();
         }
 
 

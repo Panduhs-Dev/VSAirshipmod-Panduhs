@@ -20,7 +20,7 @@ namespace VSAirshipmod
         {
             base.Start(api);
             
-            api.RegisterEntity("EntityAirship", typeof(EntityAirship));
+            api.RegisterEntity("EntityAirshipTier1", typeof(EntityAirshipTier1));
             api.RegisterMountable("airship", EntityAirshipSeat.GetMountable);
             api.RegisterItemClass("ItemAirship", typeof(ItemAirship));
 
