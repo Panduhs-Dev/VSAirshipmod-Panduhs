@@ -10,7 +10,7 @@ namespace Vintagestory.GameContent
     public class EntityAirshipSeat : EntityRideableSeat
     {
         public override EnumMountAngleMode AngleMode => config.AngleMode;
-        Dictionary<string, string> animations => (Entity as EntityAirshipTier1).MountAnimations;
+        Dictionary<string, string> animations => (Entity as EntityAirship).MountAnimations;
         public string actionAnim;
 
         public override AnimationMetaData SuggestedAnimation
