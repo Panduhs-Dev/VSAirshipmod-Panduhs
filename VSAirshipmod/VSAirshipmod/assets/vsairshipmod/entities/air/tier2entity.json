@@ -44,8 +44,9 @@
     "TemporalGearCount": 0
   },
   "hitboxSize": {
-    "x": 0.1,
-    "y": 0.1
+    "x": 2,
+    "y": 2,
+    "z": 2
   },
   "behaviorConfigs": {
     "passivephysicsmultibox": {
@@ -254,6 +255,14 @@
         "easeInSpeed": 1,
         "easeOutSpeed": 1,
         "blendMode": "AddAverage"
+      },
+      {
+        "code": "CoalStorageClosed",
+        "animation": "CoalStorageClosed",
+        "animationSpeed": 3,
+        "weight": 10,
+        "easeInSpeed": 3,
+        "easeOutSpeed": 3
       }
     ],
     "texturesByType": {
@@ -270,9 +279,12 @@
         "rustyglow": { "base": "game:block/machine/statictranslocator/rustyglow" },
         "material-deco": { "base": "game:block/metal/lantern/copper-deco" },
         "tinbronze": { "base": "game:block/metal/lantern/tinbronze" },
+        "gold": { "base": "game:block/metal/plate/gold" },
+        "lead2": { "base": "game:block/metal/sheet-plain/lead2" },
         "tinbronze1": { "base": "game:block/metal/sheet-plain/tinbronze1" },
         "blackbronze2": { "base": "game:block/metal/sheet/blackbronze2" },
         "copper1": { "base": "game:block/metal/sheet/copper1" },
+        "cupronickel1": { "base": "game:block/metal/sheet/cupronickel1" },
         "copper-soldered": { "base": "game:block/metal/sheet/soldered-copper" },
         "rusty-iron": { "base": "game:block/metal/tarnished/rusty-iron" },
         "wattle": { "base": "game:block/wattle" },
