@@ -19,7 +19,7 @@ namespace VSAirshipmod
 
 
         /// <summary>
-        /// The speed this boat can reach at full power
+        /// Amount of Fuel the Airship has.
         /// </summary>
         public virtual float Fuel
         {
@@ -33,6 +33,10 @@ namespace VSAirshipmod
             }
         }
 
+        /// <summary>
+        /// Amount of time we have been Inflating the balloon.
+        /// Latches at 3f.
+        /// </summary>
         public virtual float Inflate
         {
             get
@@ -45,17 +49,15 @@ namespace VSAirshipmod
             }
         }
 
-        public virtual bool Ready
-        {
-            get
-            {
-                return WatchedAttributes.GetFloat("Inflate") >= 3;
-            }
-            set
-            {
-                WatchedAttributes.SetFloat("Inflate", value ? 3:0);
-            }
-        }
+        /// <summary>
+        /// If we are ready to take off.
+        /// is true if Inflate is 3f or above.
+        /// </summary>
+        public virtual bool Ready => WatchedAttributes.GetFloat("Inflate") >= 3f;
+
+        /// <summary>
+        /// If we are running the burner.
+        /// </summary>
         public virtual bool Idler
         {
             get
@@ -67,9 +69,22 @@ namespace VSAirshipmod
                 WatchedAttributes.SetBool("Idler", value);
             }
         }
-
-
-        string weatherVaneAnimCode;
+        ///<summary>
+        ///used to check when we need to retessalate the model.
+        ///</summary>
+        bool reTryTesselation = false;
+        float curRotMountAngleZ = 0f;
+        public Vec3f mountAngle = new Vec3f();
+        ///<summary>
+        ///when to hide the main balloon and show the flat one.
+        ///</summary>
+        bool Deflated = true;
+        double horizontalmodifier = 3;
+        ///<summary>
+        ///6 secound timer on fuel usage.
+        ///</summary>
+        double FuelTimer = 0;
+        //string weatherVaneAnimCode;
 
         public EntityAirshipTier1() { }
 
@@ -79,10 +94,9 @@ namespace VSAirshipmod
             if (Fuel == 0)
                 Fuel = this.Attributes.GetFloat("Fuel");
 
-            this.weatherVaneAnimCode = properties.Attributes["weatherVaneAnimCode"].AsString(null);
+            //this.weatherVaneAnimCode = properties.Attributes["weatherVaneAnimCode"].AsString(null);
 
             //api.Logger.Notification("Fuel Handled: " + Fuel);
-
 
         }
 
@@ -114,10 +128,6 @@ namespace VSAirshipmod
             base.OnTesselation(ref entityShape, shapePathForLogging);
         }
 
-        bool reTryTesselation = false;
-        float curRotMountAngleZ = 0f;
-        public Vec3f mountAngle = new Vec3f();
-        bool Deflated = true;
 
         public override void OnRenderFrame(float dt, EnumRenderStage stage)
         {
@@ -296,9 +306,6 @@ namespace VSAirshipmod
             }*/
         }
 
-        double horizontalmodifier = 3;
-        double FuelTimer = 0;
-
 
         protected void updateBoatAngleAndMotion(float dt)
         {
@@ -343,7 +350,7 @@ namespace VSAirshipmod
                     Idler = false;
                 }
             }
-            else if (!Ready || (OnGround && !playerSeated))
+            else if (!Ready || (OnGround && IsEmptyOfPlayers()))
             {
                 Inflate = 0;
             }
@@ -413,7 +420,7 @@ namespace VSAirshipmod
             pos.Roll = 0;
         }
 
-        bool playerSeated = false;
+
         public virtual Vec3d SeatsToMotion(float dt)
         {
             double linearMotion = 0;
@@ -422,12 +429,11 @@ namespace VSAirshipmod
 
             var bh = GetBehavior<EntityBehaviorSeatable>();
             bh.Controller = null;
-            playerSeated = false;
             foreach (var sseat in bh.Seats)
             {
                 var seat = sseat as EntityAirshipSeat;
                 if (seat == null || seat.Passenger == null) continue;
-                playerSeated = true;
+                
                 if (!(seat.Passenger is EntityPlayer))
                 {
                     seat.Passenger.SidedPos.Yaw = SidedPos.Yaw;
@@ -510,6 +516,7 @@ namespace VSAirshipmod
             return new Vec3d(linearMotion, horizontalMotion, angularMotion);
         }
 
+
         public override void OnInteract(EntityAgent byEntity, ItemSlot itemslot, Vec3d hitPosition, EnumInteractMode mode)
         {
             int seleBox = (byEntity as EntityPlayer).EntitySelection?.SelectionBoxIndex ?? -1;
@@ -546,6 +553,7 @@ namespace VSAirshipmod
             }
         }
 
+
         private bool AllowPickup()
         {
             return Properties.Attributes?["rightClickPickup"].AsBool(false) == true;
@@ -577,6 +585,7 @@ namespace VSAirshipmod
 
             return false;
         }
+
 
         public override bool CanCollect(Entity byEntity)
         {
@@ -620,6 +629,7 @@ namespace VSAirshipmod
             return interactions.ToArray();
         }
 
+
         public override string GetInfoText()
         {
             base.GetInfoText();
@@ -629,8 +639,5 @@ namespace VSAirshipmod
                 text += "\n" + Lang.Get("vsairshipmod:idle");
             return text;
         }
-
-
-
     }
 }
