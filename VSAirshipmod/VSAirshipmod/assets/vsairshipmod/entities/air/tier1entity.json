@@ -32,7 +32,7 @@
     "shouldSwivelFromMotion": false,
     "speedMultiplier": 0.5,
     "turnMultiplier": 6,
-    "swimmingOffsetYByType": { "*": 8 },
+    "swimmingOffsetY": 8,
     "requiresPaddlingTool": false,
     "rightClickPickup": true,
     "mountAnimations": {

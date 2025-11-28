@@ -157,21 +157,21 @@
 		"path1": [16,16]
 	},
 	"textures": {
-		"candle": "block/candle",
-		"plain": "block/cloth/linen/plain",
-		"charcoal": "block/coal/charcoal",
-		"poor": "block/leather/poor",
-		"blackbronze2": "block/metal/sheet/blackbronze2",
-		"blackbronze4": "block/metal/sheet/blackbronze4",
-		"copper1": "block/metal/sheet/copper1",
-		"tinbronze1": "block/metal/sheet/tinbronze1",
-		"rusty-iron": "block/metal/tarnished/rusty-iron",
-		"bottom": "block/wood/barrel/bottom",
-		"aged": "block/wood/debarked/aged",
-		"plainoak": "block/wood/plainoak",
-		"linen": "item/bag/linensack/linen",
-		"top": "item/bag/linensack/top",
-		"rope": "item/resource/rope"
+		"candle": "game:block/candle",
+		"plain": "game:block/cloth/linen/plain",
+		"charcoal": "game:block/coal/charcoal",
+		"poor": "game:block/leather/poor",
+		"blackbronze2": "game:block/metal/sheet/blackbronze2",
+		"blackbronze4": "game:block/metal/sheet/blackbronze4",
+		"copper1": "game:block/metal/sheet/copper1",
+		"tinbronze1": "game:block/metal/sheet/tinbronze1",
+		"rusty-iron": "game:block/metal/tarnished/rusty-iron",
+		"bottom": "game:block/wood/barrel/bottom",
+		"aged": "game:block/wood/debarked/aged",
+		"plainoak": "game:block/wood/plainoak",
+		"linen": "game:item/bag/linensack/linen",
+		"top": "game:item/bag/linensack/top",
+		"rope": "game:item/resource/rope"
 	},
 	"elements": [
 		{

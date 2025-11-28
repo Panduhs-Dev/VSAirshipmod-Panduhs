@@ -41,7 +41,7 @@ namespace VSAirshipmod
             }
             set
             {
-                WatchedAttributes.SetFloat("Inflate", value);
+                WatchedAttributes.SetFloat("Inflate", Math.Clamp(value,0,3));
             }
         }
 
@@ -53,7 +53,7 @@ namespace VSAirshipmod
             }
             set
             {
-                WatchedAttributes.SetBool("Ready", value);
+                WatchedAttributes.SetFloat("Inflate", value ? 3:0);
             }
         }
         public virtual bool Idler
@@ -84,16 +84,6 @@ namespace VSAirshipmod
             //api.Logger.Notification("Fuel Handled: " + Fuel);
 
 
-            capi = api as ICoreClientAPI;
-
-            if (capi != null)
-            {
-                if (!Ready)
-                {
-                    if (!AnimManager.IsAnimationActive("deflated"))
-                        AnimManager.StartAnimation("deflated");
-                }
-            }
         }
 
         public override void OnTesselation(ref Shape entityShape, string shapePathForLogging)
@@ -101,21 +91,22 @@ namespace VSAirshipmod
             var shape = entityShape;
 
             shape = entityShape;
-            if (Api is ICoreClientAPI && AnimManager.Animator != null)// making it so on startup it can't unload required elements, this will be refined when a better option is possible.
-            {
-                if (shape == entityShape) entityShape = entityShape.Clone();
+            if (AnimManager.Animator != null) {
+                if (Api is ICoreClientAPI)
+                {
+                    if (shape == entityShape) entityShape = entityShape.Clone();
 
-                if (Deflated)
-                {
-                    entityShape.RemoveElementByName("FULLBALLOON");
-                }
-                else
-                {
-                    entityShape.RemoveElementByName("FLATBALLOON");
+                    if (Deflated)
+                    {
+                        entityShape.RemoveElementByName("FULLBALLOON");
+                    }
+                    else
+                    {
+                        entityShape.RemoveElementByName("FLATBALLOON");
+                    }
                 }
             }
-
-            if (AnimManager.Animator == null)
+            else
             {
                 reTryTesselation = true;
             }
@@ -127,7 +118,6 @@ namespace VSAirshipmod
         float curRotMountAngleZ = 0f;
         public Vec3f mountAngle = new Vec3f();
         bool Deflated = true;
-        float DialNoise = 0;
 
         public override void OnRenderFrame(float dt, EnumRenderStage stage)
         {
@@ -136,11 +126,9 @@ namespace VSAirshipmod
 
             updateBoatAngleAndMotion(dt);
 
-            DialNoise = (dt + DialNoise) % 36.0f;
-
             long ellapseMs = capi.InWorldEllapsedMilliseconds;
             float forwardpitch = 0;
-            if (IsFlying)//(Swimming)//
+            if (IsFlying)//(!onGround)//
             {
                 double gamespeed = capi.World.Calendar.SpeedOfTime / 60f;
                 float intensity = 0.15f + GlobalConstants.CurrentWindSpeedClient.X * 0.9f;
@@ -164,7 +152,7 @@ namespace VSAirshipmod
             {
                 if (reTryTesselation)
                 {
-                    reTryTesselation = false;
+                    reTryTesselation = false;// now that the animator exists reTesselate the shape to fix
                     MarkShapeModified();
                 }
 
@@ -237,26 +225,22 @@ namespace VSAirshipmod
                         AnimManager.StartAnimation("deflated");
                 }
 
-                //AnimManager.AnimationsDirty = true;
-
                 //this.weatherVaneAnimCode = "weathervane";
+
+                //---------------------------------------Fuel Dial Code---------------------------------------//
 
                 if (!AnimManager.IsAnimationActive("fuelrot"))
                 {
                     this.AnimManager.StartAnimation("fuelrot");
                 }
-                //float targetWindDir = GameMath.Mod((float)Math.Atan2((double)GlobalConstants.CurrentWindSpeedClient.X, (double)GlobalConstants.CurrentWindSpeedClient.Z) + 6.2831855f - this.Pos.Yaw, 6.2831855f);
 
                 RunningAnimation anim = this.AnimManager.GetAnimationState("fuelrot");
                 if (anim != null)
                 {
-                    //Api.Logger.Notification("" + anim.CurrentFrame);
-                    anim.CurrentFrame = (float)Math.Clamp((1 - ((Fuel) / 64f)) * 30f, 0, 30); // * 57.295776f / 10f;
+                    anim.CurrentFrame = (float)Math.Clamp((1 - (Fuel / 64f)) * 29f, 0f, 29f);
                     anim.BlendedWeight = 1f;
                     anim.EasingFactor = 0.1f;
-                    //Api.Logger.Notification("" + anim.AnimProgress);
                 }
-                //Api.Logger.Notification(anim != null ? "Not Null":"Null");
 
             }
 
@@ -330,44 +314,15 @@ namespace VSAirshipmod
             ForwardSpeed += (motion.X * SpeedMultiplier - ForwardSpeed) * dt;
             AngularVelocity += (motion.Z * (TurnMultiplier / AngularVelocityDivider) - AngularVelocity) * dt;
             HorizontalVelocity = 0;
-            if (motion.Y > 0)
-            {
-                Inflate = Math.Min(Inflate + dt, 3);
-
-                if (FuelTimer > 0 || Fuel > 0)
-                {
-                    if (FuelTimer <= 0)
-                    {
-                        FuelTimer = 6;
-                        if (Api is ICoreServerAPI sapi)
-                        {
-                            Fuel -= 1;
-                        }
-                    }
-                    else
-                    {
-                        FuelTimer -= dt;
-                    }
-                    if (Ready)
-                        HorizontalVelocity = motion.Y * dt;//+= (motion.Y * SpeedMultiplier - HorizontalVelocity) * dt;
-                }
-            }
-            else if (motion.Y < 0 && Ready)
+            if (motion.Y < 0 && Ready)
             {
                 HorizontalVelocity = motion.Y * dt;
             }
-            else if (Idler)
+            else if (motion.Y > 0 || Idler)
             {
-
-                if (FuelTimer <= 0 && Fuel <= 0)
-                {
-                    Idler = false;
-                }
-                else
-                    Inflate = Math.Min(Inflate + dt, 3);
-
                 if (FuelTimer > 0 || Fuel > 0)
                 {
+                    Inflate = Math.Min(Inflate + dt, 3);
                     if (FuelTimer <= 0)
                     {
                         FuelTimer = 6;
@@ -378,18 +333,20 @@ namespace VSAirshipmod
                     }
                     else
                     {
-                        FuelTimer -= dt / 2;
+                        FuelTimer -= motion.Y > 0 ? dt: dt/2;
                     }
-                    //if (Ready)
-                    //    HorizontalVelocity = motion.Y * dt;//+= (motion.Y * SpeedMultiplier - HorizontalVelocity) * dt;
+                    if (Ready && motion.Y > 0)
+                        HorizontalVelocity = motion.Y * dt;//+= (motion.Y * SpeedMultiplier - HorizontalVelocity) * dt;
+                }
+                else
+                {
+                    Idler = false;
                 }
             }
             else if (!Ready || (OnGround && !playerSeated))
             {
-                //Api.Logger.Notification("Try Deflate: "+ !Ready);
                 Inflate = 0;
             }
-            //Api.Logger.Notification("Try Deflate: " + !Ready);
 
 
             if (!IsFlying && HorizontalVelocity == 0) return;
@@ -404,27 +361,23 @@ namespace VSAirshipmod
                 pos.Motion.Z = targetmotion.Z;
             }
 
-            if (true)
+            if (HorizontalVelocity > 0.0)
             {
-                if (HorizontalVelocity > 0.0)
-                {
-                    pos.Motion.Y = 0.013 * horizontalmodifier;
-                }
+                pos.Motion.Y = 0.013 * horizontalmodifier;
+            }
 
-                applyGravity = IsEmptyOfPlayers();
+            applyGravity = IsEmptyOfPlayers();
 
-                if (HorizontalVelocity < 0.0 || (IsEmptyOfPlayers() && (!OnGround || !Swimming)))
-                {
+            if (!OnGround && !Swimming && !applyGravity) {
+                if (HorizontalVelocity < 0.0)
                     pos.Motion.Y = -0.013 * horizontalmodifier;
-                }
-
-                if (!applyGravity && !Idler && motion.Y <= 0f)
+                else if (!Idler && motion.Y <= 0f)
                 {
-
                     pos.Motion.Y -= 0.013 * dt;
                     pos.Motion.Y = Math.Max(pos.Motion.Y, -0.013 * horizontalmodifier);
                 }
             }
+            
 
 
             var bh = GetBehavior<EntityBehaviorPassivePhysicsMultiBox>();
@@ -672,6 +625,8 @@ namespace VSAirshipmod
             base.GetInfoText();
             string text = base.GetInfoText();
             text += "\n" + Lang.Get("vsairshipmod:float-fuel", Fuel);
+            if (Idler)
+                text += "\n" + Lang.Get("vsairshipmod:idle");
             return text;
         }
 
