@@ -229,7 +229,7 @@
       {
         "code": "Propeller",
         "animation": "Propeller",
-        "animationSpeed": 1,
+        "animationSpeed": 0,
         "easeInSpeed": 1,
         "easeOutSpeed": 1
       },
@@ -263,6 +263,23 @@
         "weight": 10,
         "easeInSpeed": 3,
         "easeOutSpeed": 3
+      },
+      {
+        "code": "FuelCoal",
+        "animation": "FuelCoal",
+        "animationSpeed": 0
+      },
+      {
+        "code": "FuelTemp",
+        "animation": "FuelTemp",
+        "animationSpeed": 0
+      },
+      {
+        "code": "UsingCoal",
+        "animation": "UsingCoal",
+        "animationSpeed": 1,
+        "easeInSpeed": 1,
+        "easeOutSpeed": 1
       }
     ],
     "texturesByType": {

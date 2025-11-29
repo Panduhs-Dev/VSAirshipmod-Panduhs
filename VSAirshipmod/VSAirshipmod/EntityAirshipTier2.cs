@@ -9,6 +9,9 @@ using Vintagestory.GameContent;
 using System.Linq;
 using Vintagestory.API.Util;
 
+
+
+
 namespace VSAirshipmod
 {
     //public class EntityAirship : Entity, IRenderer, ISeatInstSupplier, IMountableListener
@@ -49,6 +52,10 @@ namespace VSAirshipmod
         }
         public bool HasCoal => !string.IsNullOrEmpty(CoalItemCode) && CoalStackSize > 0;
 
+        private const int browncoalfueltimeinseconds = 90; //plumb these to configs
+        private const int blackcoalfueltimeinseconds = 60; //plumb these to configs
+        private const int anthracitefueltimeinseconds = 30; //plumb these to configs
+        private const int charcoalfueltimeinseconds = 10; //plumb these to configs
 
         private bool pendingCruiseToggle = false; //Signals SeatsToMotion to handle the toggle
         private long lastCruiseToggleTime = 0;    //for cooldown
@@ -124,8 +131,15 @@ namespace VSAirshipmod
 
         private void set_animations(EntityRideableSeat seat)
         {
-            animLeft = seat.controls.Left;
-            animRight = seat.controls.Right;
+            bool isReversing =  seat.controls.Backward;
+            if(isReversing == false){
+                animLeft = seat.controls.Left;
+                animRight = seat.controls.Right;
+            }else{
+                animLeft = seat.controls.Right;
+                animRight = seat.controls.Left;
+            }
+
 
             animBackward = seat.controls.Backward;
             animForward = !animBackward && (seat.controls.Forward || cruise_control || animLeft || animRight);
@@ -153,6 +167,21 @@ namespace VSAirshipmod
             if (animLeft) StartAnimation("TurnLeft");
             if (animRight) StartAnimation("TurnRight");
             if (animPropeller) StartAnimation("Propeller");
+
+            //Inversion logic for making it turn backwards, using reflection here too like the loom
+            bool isReversing = animBackward;
+            float propellerSpeed = isReversing ? -1f : 1f;
+
+            if (AnimManager.ActiveAnimationsByAnimCode.TryGetValue("Propeller", out var anim))
+            {
+                var field = anim.GetType().GetField("AnimationSpeed",System.Reflection.BindingFlags.Instance |System.Reflection.BindingFlags.Public |System.Reflection.BindingFlags.NonPublic);
+
+                if (field != null)
+                {
+                    field.SetValue(anim, propellerSpeed);
+                }
+            }
+
 
             //Cruise control toggle animation
             if (cruise_control_was_set)
@@ -202,6 +231,51 @@ namespace VSAirshipmod
             esr.xangle = mountAngle.X + curRotMountAngleZ;
             esr.yangle = mountAngle.Y;
             esr.zangle = mountAngle.Z + forwardpitch; // Weird. Pitch ought to be xangle.
+
+
+
+
+
+            if (Api.Side == EnumAppSide.Client)//Darth's approach, but animation starting is insured in tick alongside
+            {
+                if (this.AnimManager.Animator != null)
+                {
+                    {
+
+                        //Coal fuel "meter" animation barrel raising up and down
+                        RunningAnimation anim = this.AnimManager.GetAnimationState("fuelcoal");
+                        if (anim != null)
+                        {
+                            //Api.Logger.Notification("" + anim.CurrentFrame);
+                            anim.CurrentFrame = (float)Math.Clamp((1 - ((CoalStackSize) / 64f)) * 64f, 0, 64); // * 57.295776f / 10f;
+                            anim.BlendedWeight = 1f;
+                            anim.EasingFactor = 0.1f;
+                            //Api.Logger.Notification("[AirshipTier2] Animation frame is: {0}", anim.CurrentFrame);
+                        }
+
+                        //Temporal
+                        RunningAnimation animTemporal = this.AnimManager.GetAnimationState("fueltemp");
+                        if (animTemporal != null)
+                        {
+                            float fuelSeconds = Math.Max(0f, TemporalFuelUsage / 1000f);
+                            float totalSeconds = MinutesPerGear * 60f;
+                            float fraction = fuelSeconds / totalSeconds;
+                            fraction = Math.Clamp(fraction, 0f, 1f);
+                            int maxFrame = 14;
+                            animTemporal.CurrentFrame = fraction * maxFrame;
+
+                            animTemporal.BlendedWeight = 1f;
+                            animTemporal.EasingFactor = 0.1f;
+                            //Api.Logger.Notification($"Temporal fuel fraction: {fraction}, frame: {animTemporal.CurrentFrame}");
+                        }
+
+
+
+
+                    }
+                }
+            }
+
         }
 
         public override void Initialize(EntityProperties properties, ICoreAPI api, long chunk)
@@ -211,7 +285,7 @@ namespace VSAirshipmod
             //Listener for TemporalGearCount changes marks the shape modified like sail boat unfurling
             WatchedAttributes.RegisterModifiedListener("TemporalGearCount", MarkShapeModified);
 
-            WatchedAttributes.RegisterModifiedListener("CoalStackSize", MarkShapeModified);
+            //WatchedAttributes.RegisterModifiedListener("CoalStackSize", MarkShapeModified);
 
             if (capi != null)capi.Event.RegisterRenderer(this, EnumRenderStage.Before);
 
@@ -244,7 +318,7 @@ namespace VSAirshipmod
                 if (TemporalGearCount >= i) entityShape.RemoveElementByName($"RUSTHIDE{i}");
             }
             //Coal Barrel Hiding
-            const int maxCoalVisuals = 14;//Amount of coals in the shape, make sure to change this if the shape is updated!
+            /*const int maxCoalVisuals = 14;//Amount of coals in the shape, make sure to change this if the shape is updated!
             int coalToShow = 0;
             if (CoalStackSize >= 60)//Little lee way so it does not INSTANTLY lose one
             {
@@ -252,7 +326,7 @@ namespace VSAirshipmod
             }
             else if (CoalStackSize > 0)
             {
-                //Roughly scales  scales 1–59 coal into 1–14 visual steps
+                //Roughly scales  scales 1–59 coal into the visual steps
                 coalToShow = (int)Math.Ceiling((CoalStackSize / 60f) * maxCoalVisuals);
 
                 //Force at least 1 to appears if any coal exists
@@ -268,7 +342,8 @@ namespace VSAirshipmod
                 {
                     entityShape.RemoveElementByName($"coal{i}");
                 }
-            }
+            }*/
+
 
 
             base.OnTesselation(ref entityShape, shapePathForLogging);
@@ -284,7 +359,6 @@ namespace VSAirshipmod
                     Die();
                 }
 
-                //capi.Logger.Notification("[AirshipTier2] IsFlying is: {0}",IsFlying);
                 updateBoatAngleAndMotion(dt);
 
             }
@@ -292,6 +366,16 @@ namespace VSAirshipmod
             //Idle animation for gears
             bool shouldSpin = TemporalGearCount > 0;
 
+            if (shouldSpin && !AnimManager.IsAnimationActive("FuelCoal"))
+            {
+                StartAnimation("FuelCoal");
+                //Api.Logger.Notification("[AirshipTier2] FuelCoal Animation Started");
+            }
+            if (shouldSpin && !AnimManager.IsAnimationActive("FuelTemp"))
+            {
+                StartAnimation("FuelTemp");
+                //Api.Logger.Notification("[AirshipTier2] FuelTemp Animation Started");
+            }
             if (shouldSpin && !AnimManager.IsAnimationActive("GearsSpin"))
             {
                 StartAnimation("GearsSpin");
@@ -342,9 +426,11 @@ namespace VSAirshipmod
             AngularVelocity += (motion.Z * (SpeedMultiplier / AngularVelocityDivider) - AngularVelocity) * dt;
             HorizontalVelocity = motion.Y * dt;//+= (motion.Y * SpeedMultiplier - HorizontalVelocity) * dt;
 
+            //Coal fuel usage logic
             if (IsFlying)
             {
-                if (CoalStackSize > 0)
+                //if (CoalStackSize > 0)
+                if (CoalStackSize >= 2)
                 {
                     CoalFuelUsage -= (long)(dt * 1000f);
 
@@ -353,11 +439,14 @@ namespace VSAirshipmod
                         CoalFuelJustSpent = true;
                         CoalFuelSpentTimestamp = World.ElapsedMilliseconds;
 
-                        CoalStackSize--;
+                        //CoalStackSize--;
+                        CoalStackSize-=2;
                         CoalFuelUsage = (long)(CoalBurnDuration * 1000f);   //Reset timer for next coal piece
 
                         WatchedAttributes.MarkPathDirty("CoalStackSize");
                         WatchedAttributes.MarkPathDirty("CoalFuelUsage");
+
+                        StartAnimation("UsingCoal");
 
                         if (Api.Side == EnumAppSide.Server)
                         {
@@ -405,7 +494,11 @@ namespace VSAirshipmod
                 {
                     pos.Motion.Y = -0.013* horizontalmodifier;
                 }
-                if ((CoalStackSize <= 0 && motion.Y <= 0f) && (!OnGround || !Swimming))
+                /*if ((CoalStackSize <= 0 && motion.Y <= 0f) && (!OnGround || !Swimming))
+                {
+                    pos.Motion.Y -= 0.003 * dt;
+                }*/
+                if ((CoalStackSize < 2 && motion.Y <= 0f) && (!OnGround || !Swimming))
                 {
                     pos.Motion.Y -= 0.003 * dt;
                 }
@@ -481,7 +574,7 @@ namespace VSAirshipmod
                 if (animPropeller && !OnGround) horizontalMotionActive = true;
 
                 //Vertical
-                if (CoalStackSize > 0){//Cant resist downwards force when out of fuel
+                if (CoalStackSize >= 2){//Cant resist downwards force when out of fuel
                     if (seat.controls.Jump) verticalMotion += dt * 1f;
                 }
                 if (seat.controls.Sprint) verticalMotion -= dt * 1f;
@@ -567,7 +660,7 @@ namespace VSAirshipmod
             return new Vec3d(linearMotion, verticalMotion, angularMotion);
         }
 
-        private float GetFuelBurnDuration(ItemStack stack)//Helper pulled from another mod of mine directly, used for coal fuel.
+        /*private float GetFuelBurnDuration(ItemStack stack)//Helper pulled from another mod of mine directly, used for coal fuel.
         {
             if (stack == null) return 0;
 
@@ -575,13 +668,14 @@ namespace VSAirshipmod
             if (duration > 0) return duration;
 
             return stack.Collectible.CombustibleProps?.BurnDuration ?? 0;
-        }
+        }*/
         private static readonly HashSet<string> AllowedCoalTypes = new HashSet<string>
         {
             "ore-lignite",
             //"coke",
             "ore-bituminouscoal",
-            //"charcoal"
+            "charcoal",
+            "ore-anthracite"
         };
 
 
@@ -657,10 +751,44 @@ namespace VSAirshipmod
                 {
                     string path = held.Collectible.Code.Path;
 
+                    //Api.Logger.Notification("[AirshipTier2] Adding COal Started.");
                     //Must be valid item
                     if (AllowedCoalTypes.Contains(path) && CoalStackSize < 64)
                     {
-                        float burn = GetFuelBurnDuration(held);
+                        //float burn = GetFuelBurnDuration(held);
+                        float burn = 0;
+
+
+
+                        if(path == "ore-lignite"){
+                            burn = browncoalfueltimeinseconds;
+                        }
+                        if(path == "ore-bituminouscoal"){
+                            burn = blackcoalfueltimeinseconds;
+                        }
+                        if(path == "charcoal"){
+                            burn = charcoalfueltimeinseconds;
+                        }
+                        if(path == "ore-anthracite"){
+                            burn = anthracitefueltimeinseconds;
+                        }
+
+/*
+                        if(path == "game:ore-lignite"){
+                            burn = browncoalfueltimeinseconds;
+                        }
+                        if(path == "game:ore-bituminouscoal"){
+                            burn = blackcoalfueltimeinseconds;
+                        }
+                        if(path == "game:charcoal"){
+                            burn = anthracitefueltimeinseconds;
+                        }
+                        if(path == "game:anthracite"){
+                            burn = charcoalfueltimeinseconds;
+                        }*/
+
+                        //Api.Logger.Notification("[AirshipTier2] Burn is {0}.",burn);
+
                         if (burn > 0)
                         {
                             //First coal ever stored need to set type for later
@@ -925,7 +1053,8 @@ namespace VSAirshipmod
             }
 
             //Coal Fuel Display, shows the time of the whole stack unlike gears
-            if(CoalStackSize != 0)
+            //if(CoalStackSize != 0)
+            /*if(CoalStackSize !>= 2)
             {
                 long currentCoalSeconds = Math.Max(0, CoalFuelUsage / 1000);
                 int remainingPieces = CoalStackSize - 1;
@@ -947,7 +1076,46 @@ namespace VSAirshipmod
                 text += "\n" + Lang.Get("vsairshipmod:int-coalfuelusage", coalTime);
             }else{
                 text += "\n" + Lang.Get("vsairshipmod:coalfueldepletedvertical");
+            }*/
+
+            if (CoalStackSize >= 2)
+            {
+                // CoalFuelUsage is ms, convert to seconds
+                long currentPairSeconds = Math.Max(0, CoalFuelUsage / 1000);
+
+
+                //One active pair is already burning remove 2 coal from stack to get remaining full pairs.
+                int remainingCoalAfterActivePair = CoalStackSize - 2;
+
+                // Each full pair = 2 coal consumed at once
+                int additionalFullPairs = Math.Max(0, remainingCoalAfterActivePair / 2);
+
+                //Total burn time
+                long totalcoalSeconds =
+                    currentPairSeconds +                     //Time left on current burning pair
+                    (long)(additionalFullPairs * CoalBurnDuration);  // full pairs ahead of it
+
+                string coalTime;
+
+                if (totalcoalSeconds >= 60)
+                {
+                    long minutes = totalcoalSeconds / 60;
+                    long seconds = totalcoalSeconds % 60;
+                    coalTime = $"{minutes}m {seconds}s";
+                }
+                else coalTime = $"{totalcoalSeconds}s";
+
+                //Append metadata ---
+                text += "\n" + Lang.Get("vsairshipmod:int-coalstacksize", CoalStackSize);
+                text += "\n" + Lang.Get("vsairshipmod:int-coalfuelusage", coalTime);
             }
+            else
+            {
+                //Less than 2 coal so cannot burn at all under new rules
+                text += "\n" + Lang.Get("vsairshipmod:int-coalstacksize", CoalStackSize);
+                text += "\n" + Lang.Get("vsairshipmod:coalfueldepletedvertical");
+            }
+
 
             return text;
         }
