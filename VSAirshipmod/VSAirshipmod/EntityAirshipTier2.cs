@@ -49,6 +49,12 @@ namespace VSAirshipmod
         }
         public bool HasCoal => !string.IsNullOrEmpty(CoalItemCode) && CoalStackSize > 0;
 
+        private const int browncoalfueltimeinseconds = 90; //plumb these to configs
+        private const int blackcoalfueltimeinseconds = 60; //plumb these to configs
+        private const int anthracitefueltimeinseconds = 30; //plumb these to configs
+        private const int charcoalfueltimeinseconds = 10; //plumb these to configs
+
+        const int MaxCoalStack = 64;
 
         private bool pendingCruiseToggle = false; //Signals SeatsToMotion to handle the toggle
         private long lastCruiseToggleTime = 0;    //for cooldown
@@ -124,8 +130,18 @@ namespace VSAirshipmod
 
         private void set_animations(EntityRideableSeat seat)
         {
-            animLeft = seat.controls.Left;
-            animRight = seat.controls.Right;
+            bool isReversing = seat.controls.Backward;
+            if (isReversing == false)
+            {
+                animLeft = seat.controls.Left;
+                animRight = seat.controls.Right;
+            }
+            else
+            {
+                animLeft = seat.controls.Right;
+                animRight = seat.controls.Left;
+            }
+
 
             animBackward = seat.controls.Backward;
             animForward = !animBackward && (seat.controls.Forward || cruise_control || animLeft || animRight);
@@ -154,6 +170,21 @@ namespace VSAirshipmod
             if (animRight) StartAnimation("TurnRight");
             if (animPropeller) StartAnimation("Propeller");
 
+            //Inversion logic for making it turn backwards, using reflection here too like the loom
+            bool isReversing = animBackward;
+            float propellerSpeed = isReversing ? -1f : 1f;
+
+            if (AnimManager.ActiveAnimationsByAnimCode.TryGetValue("Propeller", out var anim))
+            {
+                var field = anim.GetType().GetField("AnimationSpeed", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic);
+
+                if (field != null)
+                {
+                    field.SetValue(anim, propellerSpeed);
+                }
+            }
+
+
             //Cruise control toggle animation
             if (cruise_control_was_set)
             {
@@ -164,7 +195,7 @@ namespace VSAirshipmod
             //Down animation
             if (animDown) StartAnimation("GoDown");
             else StopAnimation("GoDown");
-            
+
 
             // Engine sound
             apply_engine_sound();
@@ -202,6 +233,51 @@ namespace VSAirshipmod
             esr.xangle = mountAngle.X + curRotMountAngleZ;
             esr.yangle = mountAngle.Y;
             esr.zangle = mountAngle.Z + forwardpitch; // Weird. Pitch ought to be xangle.
+
+
+
+
+
+            if (Api.Side == EnumAppSide.Client)//Darth's approach, but animation starting is insured in tick alongside
+            {
+                if (this.AnimManager.Animator != null)
+                {
+                    {
+
+                        //Coal fuel "meter" animation barrel raising up and down
+                        RunningAnimation anim = this.AnimManager.GetAnimationState("fuelcoal");
+                        if (anim != null)
+                        {
+                            //Api.Logger.Notification("" + anim.CurrentFrame);
+                            anim.CurrentFrame = (float)Math.Clamp((1 - ((CoalStackSize) / 64f)) * 64f, 0, 64); // * 57.295776f / 10f;
+                            anim.BlendedWeight = 1f;
+                            anim.EasingFactor = 0.1f;
+                            //Api.Logger.Notification("[AirshipTier2] Animation frame is: {0}", anim.CurrentFrame);
+                        }
+
+                        //Temporal
+                        RunningAnimation animTemporal = this.AnimManager.GetAnimationState("fueltemp");
+                        if (animTemporal != null)
+                        {
+                            float fuelSeconds = Math.Max(0f, TemporalFuelUsage / 1000f);
+                            float totalSeconds = MinutesPerGear * 60f;
+                            float fraction = fuelSeconds / totalSeconds;
+                            fraction = Math.Clamp(fraction, 0f, 1f);
+                            int maxFrame = 14;
+                            animTemporal.CurrentFrame = fraction * maxFrame;
+
+                            animTemporal.BlendedWeight = 1f;
+                            animTemporal.EasingFactor = 0.1f;
+                            //Api.Logger.Notification($"Temporal fuel fraction: {fraction}, frame: {animTemporal.CurrentFrame}");
+                        }
+
+
+
+
+                    }
+                }
+            }
+
         }
 
         public override void Initialize(EntityProperties properties, ICoreAPI api, long chunk)
@@ -211,24 +287,25 @@ namespace VSAirshipmod
             //Listener for TemporalGearCount changes marks the shape modified like sail boat unfurling
             WatchedAttributes.RegisterModifiedListener("TemporalGearCount", MarkShapeModified);
 
-            WatchedAttributes.RegisterModifiedListener("CoalStackSize", MarkShapeModified);
+            //WatchedAttributes.RegisterModifiedListener("CoalStackSize", MarkShapeModified);
 
-            if (capi != null)capi.Event.RegisterRenderer(this, EnumRenderStage.Before);
+            if (capi != null) capi.Event.RegisterRenderer(this, EnumRenderStage.Before);
 
         }
 
-/*        public override void OnTesselation(ref Shape entityShape, string shapePathForLogging)
-        {
-            if (entityShape == null) return;
+        /*        public override void OnTesselation(ref Shape entityShape, string shapePathForLogging)
+                {
+                    if (entityShape == null) return;
 
-            entityShape = entityShape.Clone();
+                    entityShape = entityShape.Clone();
 
-            if (TemporalGearCount < 3) entityShape.RemoveElementByName("TEMPHIDE3");
-            if (TemporalGearCount < 2) entityShape.RemoveElementByName("TEMPHIDE2");
-            if (TemporalGearCount < 1) entityShape.RemoveElementByName("TEMPHIDE1");
+                    if (TemporalGearCount < 3) entityShape.RemoveElementByName("TEMPHIDE3");
+                    if (TemporalGearCount < 2) entityShape.RemoveElementByName("TEMPHIDE2");
+                    if (TemporalGearCount < 1) entityShape.RemoveElementByName("TEMPHIDE1");
 
-            base.OnTesselation(ref entityShape, shapePathForLogging);
-        }*/
+                    base.OnTesselation(ref entityShape, shapePathForLogging);
+                }*/
+
         public override void OnTesselation(ref Shape entityShape, string shapePathForLogging)
         {
             if (entityShape == null) return;
@@ -243,8 +320,8 @@ namespace VSAirshipmod
                 //Hide rusty if this temporal gear exists
                 if (TemporalGearCount >= i) entityShape.RemoveElementByName($"RUSTHIDE{i}");
             }
-            //Coal Barrel Hiding
-            const int maxCoalVisuals = 14;//Amount of coals in the shape, make sure to change this if the shape is updated!
+            //Coal Barrel Hiding - no longer needed since its handled by coal fuel animation
+            /*const int maxCoalVisuals = 14;//Amount of coals in the shape, make sure to change this if the shape is updated!
             int coalToShow = 0;
             if (CoalStackSize >= 60)//Little lee way so it does not INSTANTLY lose one
             {
@@ -252,7 +329,7 @@ namespace VSAirshipmod
             }
             else if (CoalStackSize > 0)
             {
-                //Roughly scales  scales 1–59 coal into 1–14 visual steps
+                //Roughly scales  scales 1–59 coal into the visual steps
                 coalToShow = (int)Math.Ceiling((CoalStackSize / 60f) * maxCoalVisuals);
 
                 //Force at least 1 to appears if any coal exists
@@ -268,7 +345,8 @@ namespace VSAirshipmod
                 {
                     entityShape.RemoveElementByName($"coal{i}");
                 }
-            }
+            }*/
+
 
 
             base.OnTesselation(ref entityShape, shapePathForLogging);
@@ -284,7 +362,6 @@ namespace VSAirshipmod
                     Die();
                 }
 
-                //capi.Logger.Notification("[AirshipTier2] IsFlying is: {0}",IsFlying);
                 updateBoatAngleAndMotion(dt);
 
             }
@@ -292,13 +369,28 @@ namespace VSAirshipmod
             //Idle animation for gears
             bool shouldSpin = TemporalGearCount > 0;
 
+            if (!AnimManager.IsAnimationActive("FuelCoal"))
+            {
+                StartAnimation("FuelCoal");
+                //Api.Logger.Notification("[AirshipTier2] FuelCoal Animation Started");
+            }
+            if (!AnimManager.IsAnimationActive("FuelTemp"))
+            {
+                StartAnimation("FuelTemp");
+                //Api.Logger.Notification("[AirshipTier2] FuelTemp Animation Started");
+            }
+            //Api.Logger.Notification("[AirshipTier2] logic running");
+
+
             if (shouldSpin && !AnimManager.IsAnimationActive("GearsSpin"))
             {
                 StartAnimation("GearsSpin");
+                //Api.Logger.Notification("[AirshipTier2] GearsSpin Animation Started");
             }
             else if (!shouldSpin && AnimManager.IsAnimationActive("GearsSpin"))
             {
                 StopAnimation("GearsSpin");
+                //Api.Logger.Notification("[AirshipTier2] GearsSpin Animation Stopped");
             }
 
             if (CoalStackSize == 0 && !AnimManager.IsAnimationActive("CoalStorageClosed"))
@@ -342,9 +434,11 @@ namespace VSAirshipmod
             AngularVelocity += (motion.Z * (SpeedMultiplier / AngularVelocityDivider) - AngularVelocity) * dt;
             HorizontalVelocity = motion.Y * dt;//+= (motion.Y * SpeedMultiplier - HorizontalVelocity) * dt;
 
+            //Coal fuel usage logic
             if (IsFlying)
             {
-                if (CoalStackSize > 0)
+                //if (CoalStackSize > 0)
+                if (CoalStackSize >= 2)
                 {
                     CoalFuelUsage -= (long)(dt * 1000f);
 
@@ -353,11 +447,14 @@ namespace VSAirshipmod
                         CoalFuelJustSpent = true;
                         CoalFuelSpentTimestamp = World.ElapsedMilliseconds;
 
-                        CoalStackSize--;
+                        //CoalStackSize--;
+                        CoalStackSize -= 2;
                         CoalFuelUsage = (long)(CoalBurnDuration * 1000f);   //Reset timer for next coal piece
 
                         WatchedAttributes.MarkPathDirty("CoalStackSize");
                         WatchedAttributes.MarkPathDirty("CoalFuelUsage");
+
+                        StartAnimation("UsingCoal");
 
                         if (Api.Side == EnumAppSide.Server)
                         {
@@ -380,6 +477,9 @@ namespace VSAirshipmod
                 }*/
             }
 
+
+            applyGravity = IsEmptyOfPlayers() ? true : false;
+
             if (!IsFlying && HorizontalVelocity == 0) return;
 
 
@@ -392,23 +492,22 @@ namespace VSAirshipmod
                 pos.Motion.Z = targetmotion.Z;
             }
 
-            if (true)
+            if (HorizontalVelocity > 0.0)
             {
-                if (HorizontalVelocity > 0.0)
-                {
-                    pos.Motion.Y = 0.013* horizontalmodifier;
-                }
+                pos.Motion.Y = 0.013 * horizontalmodifier;
+            }
 
-                applyGravity = IsEmptyOfPlayers() ? true : false;
-
-                if (HorizontalVelocity < 0.0 || (IsEmptyOfPlayers() && (!OnGround || !Swimming)))
-                {
-                    pos.Motion.Y = -0.013* horizontalmodifier;
-                }
-                if ((CoalStackSize <= 0 && motion.Y <= 0f) && (!OnGround || !Swimming))
-                {
-                    pos.Motion.Y -= 0.003 * dt;
-                }
+            if (HorizontalVelocity < 0.0 && (IsFlying))
+            {
+                pos.Motion.Y = -0.013 * horizontalmodifier;
+            }
+            /*if ((CoalStackSize <= 0 && motion.Y <= 0f) && (!OnGround || !Swimming))
+            {
+                pos.Motion.Y -= 0.003 * dt;
+            }*/
+            if ((CoalStackSize < 2 && motion.Y <= 0f) && (!OnGround || !Swimming))
+            {
+                pos.Motion.Y -= 0.003 * dt;
             }
 
 
@@ -481,7 +580,8 @@ namespace VSAirshipmod
                 if (animPropeller && !OnGround) horizontalMotionActive = true;
 
                 //Vertical
-                if (CoalStackSize > 0){//Cant resist downwards force when out of fuel
+                if (CoalStackSize >= 2)
+                {//Cant resist downwards force when out of fuel
                     if (seat.controls.Jump) verticalMotion += dt * 1f;
                 }
                 if (seat.controls.Sprint) verticalMotion -= dt * 1f;
@@ -546,7 +646,8 @@ namespace VSAirshipmod
             //Force things off if no controllable passengers remain
             if (!anyControllablePassenger)
             {
-                if(cruise_control){
+                if (cruise_control)
+                {
                     cruise_control = false;
                     cruiseControlWasSet = true;
                 }
@@ -567,7 +668,7 @@ namespace VSAirshipmod
             return new Vec3d(linearMotion, verticalMotion, angularMotion);
         }
 
-        private float GetFuelBurnDuration(ItemStack stack)//Helper pulled from another mod of mine directly, used for coal fuel.
+        /*private float GetFuelBurnDuration(ItemStack stack)//Helper pulled from another mod of mine directly, used for coal fuel.
         {
             if (stack == null) return 0;
 
@@ -575,13 +676,14 @@ namespace VSAirshipmod
             if (duration > 0) return duration;
 
             return stack.Collectible.CombustibleProps?.BurnDuration ?? 0;
-        }
+        }*/
         private static readonly HashSet<string> AllowedCoalTypes = new HashSet<string>
         {
             "ore-lignite",
             //"coke",
             "ore-bituminouscoal",
-            //"charcoal"
+            "charcoal",
+            "ore-anthracite"
         };
 
 
@@ -618,7 +720,8 @@ namespace VSAirshipmod
                             slot.TakeOut(1);
                             slot.MarkDirty();
                             //Directly adding fuel time here as well to make replacing the first gear less awkward otherwise it'd instantly drain after
-                            if(TemporalGearCount == 0){
+                            if (TemporalGearCount == 0)
+                            {
                                 TemporalFuelUsage = MinutesPerGear * 60 * 1000;
                             }
                             TemporalGearCount = Math.Min(3, TemporalGearCount + 1);
@@ -639,7 +742,7 @@ namespace VSAirshipmod
                     //Warning for max gears
                     if (isTemporalGear && TemporalGearCount >= 3)
                     {
-                        (byEntity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, "tier2fullofgears",Lang.Get("vsairshipmod:engineatmax3gears"));
+                        (byEntity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, "tier2fullofgears", Lang.Get("vsairshipmod:engineatmax3gears"));
                         return;
                     }
                 }
@@ -657,58 +760,97 @@ namespace VSAirshipmod
                 {
                     string path = held.Collectible.Code.Path;
 
+                    //Api.Logger.Notification("[AirshipTier2] Adding COal Started.");
                     //Must be valid item
                     if (AllowedCoalTypes.Contains(path) && CoalStackSize < 64)
                     {
-                        float burn = GetFuelBurnDuration(held);
-                        if (burn > 0)
+                        //float burn = GetFuelBurnDuration(held);
+                        float burn = 0;
+
+
+
+                        if (path == "ore-lignite")
                         {
-                            //First coal ever stored need to set type for later
+                            burn = browncoalfueltimeinseconds;
+                        }
+                        if (path == "ore-bituminouscoal")
+                        {
+                            burn = blackcoalfueltimeinseconds;
+                        }
+                        if (path == "charcoal")
+                        {
+                            burn = charcoalfueltimeinseconds;
+                        }
+                        if (path == "ore-anthracite")
+                        {
+                            burn = anthracitefueltimeinseconds;
+                        }
+
+                        /*
+                                                if(path == "game:ore-lignite"){
+                                                    burn = browncoalfueltimeinseconds;
+                                                }
+                                                if(path == "game:ore-bituminouscoal"){
+                                                    burn = blackcoalfueltimeinseconds;
+                                                }
+                                                if(path == "game:charcoal"){
+                                                    burn = anthracitefueltimeinseconds;
+                                                }
+                                                if(path == "game:anthracite"){
+                                                    burn = charcoalfueltimeinseconds;
+                                                }*/
+
+                        //Api.Logger.Notification("[AirshipTier2] Burn is {0}.",burn);
+
+                        //Coal addition, handled together now for initial and additional coal
+                        if (Api.Side == EnumAppSide.Server)
+                        {
+                            int current = CoalStackSize;
+                            int heldCount = held.StackSize;
+
+                            //Reject different coal types when one is already stored
+                            if (HasCoal && CoalItemCode != path)
+                            {
+                                return;
+                            }
+
+                            //If we don't have any coal yet
+                            if (!HasCoal) current = 0;
+
+                            //First coal load set the coal values
                             if (!HasCoal)
                             {
-                                if (Api.Side == EnumAppSide.Server)
-                                {
-                                    CoalItemCode = path;
-                                    CoalBurnDuration = burn;
-                                    CoalStackSize = held.StackSize;
-                                    CoalFuelUsage = (long)(burn * 1000f);
-
-                                    HeldSlot.TakeOut(held.StackSize);
-                                    HeldSlot.MarkDirty();
-
-                                    WatchedAttributes.MarkPathDirty("CoalItemCode");
-                                    WatchedAttributes.MarkPathDirty("CoalBurnDuration");
-                                    WatchedAttributes.MarkPathDirty("CoalStackSize");
-                                    WatchedAttributes.MarkPathDirty("CoalBurnDuration");
-
-                                    //WatchedAttributes.MarkAllDirty();
-                                    //World.PlaySoundAt(new AssetLocation("game:sounds/block/charcoal3"), this);
-                                    World.PlaySoundAt(new AssetLocation($"game:sounds/block/charcoal{World.Rand.Next(1, 4)}"), this);
-                                }
-                                return;
+                                CoalItemCode = path;
+                                CoalBurnDuration = burn;
+                                //HasCoal = true;
                             }
 
-                            //Adding more of same type
-                            if (CoalItemCode == path)
+                            //Actually calculate how many can be added take without exceeding MaxCoalStack
+                            int spaceLeft = MaxCoalStack - current;
+                            if (spaceLeft <= 0)
                             {
-                                if (Api.Side == EnumAppSide.Server)
-                                {
-                                    CoalStackSize += held.StackSize;
-
-                                    HeldSlot.TakeOut(held.StackSize);
-                                    HeldSlot.MarkDirty();
-
-                                    WatchedAttributes.MarkPathDirty("CoalItemCode");
-                                    WatchedAttributes.MarkPathDirty("CoalBurnDuration");
-                                    WatchedAttributes.MarkPathDirty("CoalStackSize");
-                                    World.PlaySoundAt(new AssetLocation($"game:sounds/block/charcoal{World.Rand.Next(1, 4)}"), this);
-                                }
+                                // Storage already full so abort
                                 return;
                             }
 
-                            //Different coal type reject
+                            int amountToTake = Math.Min(spaceLeft, heldCount);
+
+                            CoalStackSize = current + amountToTake;
+                            CoalFuelUsage = (long)(CoalBurnDuration * 1000f); // keep fuel usage consistent
+
+                            //Remove exactly amountToTake
+                            HeldSlot.TakeOut(amountToTake);
+                            HeldSlot.MarkDirty();
+
+                            WatchedAttributes.MarkPathDirty("CoalItemCode");
+                            WatchedAttributes.MarkPathDirty("CoalBurnDuration");
+                            WatchedAttributes.MarkPathDirty("CoalStackSize");
+
+                            World.PlaySoundAt(new AssetLocation($"game:sounds/block/charcoal{World.Rand.Next(1, 4)}"), this);
+
                             return;
                         }
+
                     }
                 }
 
@@ -717,38 +859,39 @@ namespace VSAirshipmod
                 if (mode == EnumInteractMode.Interact && (held == null || held.StackSize == 0))
                 {
                     //if(!IsFlying){
-                        if (HasCoal && Api.Side == EnumAppSide.Server)
-                        {
-                            var coalItem = World.GetItem(new AssetLocation("game:" + CoalItemCode));
-                            if(CoalBurnDuration * 1000f != CoalFuelUsage){//Subtract one coal if it was burnt any amount so ya cant just reset with the same piece
-                                CoalStackSize--;
-                                World.PlaySoundAt(new AssetLocation("game:sounds/held/torch-equip"), this);
-                            }
-                            if (coalItem != null && CoalStackSize != 0)
-                            {
-                                var outStack = new ItemStack(coalItem, CoalStackSize);
-
-                                if (!player.TryGiveItemStack(outStack))
-                                {
-                                    World.SpawnItemEntity(outStack, byEntity.ServerPos.XYZ);
-                                }
-                            }
-
-                            //Clear all coal data
-                            CoalItemCode = null;
-                            CoalStackSize = 0;
-                            CoalBurnDuration = 0;
-                            CoalFuelUsage = 0;
-                            CoalFuelJustSpent = false;
-
-                            WatchedAttributes.MarkPathDirty("CoalFuelUsage");
-                            WatchedAttributes.MarkPathDirty("CoalItemCode");
-                            WatchedAttributes.MarkPathDirty("CoalBurnDuration");
-                            WatchedAttributes.MarkPathDirty("CoalStackSize");
-                            //WatchedAttributes.MarkAllDirty();
-                            World.PlaySoundAt(new AssetLocation($"game:sounds/block/charcoal{World.Rand.Next(1, 4)}"), this);
+                    if (HasCoal && Api.Side == EnumAppSide.Server)
+                    {
+                        var coalItem = World.GetItem(new AssetLocation("game:" + CoalItemCode));
+                        if (CoalBurnDuration * 1000f != CoalFuelUsage)
+                        {//Subtract one coal if it was burnt any amount so ya cant just reset with the same piece
+                            CoalStackSize--;
+                            World.PlaySoundAt(new AssetLocation("game:sounds/held/torch-equip"), this);
                         }
-                        return;
+                        if (coalItem != null && CoalStackSize != 0)
+                        {
+                            var outStack = new ItemStack(coalItem, CoalStackSize);
+
+                            if (!player.TryGiveItemStack(outStack))
+                            {
+                                World.SpawnItemEntity(outStack, byEntity.ServerPos.XYZ);
+                            }
+                        }
+
+                        //Clear all coal data
+                        CoalItemCode = null;
+                        CoalStackSize = 0;
+                        CoalBurnDuration = 0;
+                        CoalFuelUsage = 0;
+                        CoalFuelJustSpent = false;
+
+                        WatchedAttributes.MarkPathDirty("CoalFuelUsage");
+                        WatchedAttributes.MarkPathDirty("CoalItemCode");
+                        WatchedAttributes.MarkPathDirty("CoalBurnDuration");
+                        WatchedAttributes.MarkPathDirty("CoalStackSize");
+                        //WatchedAttributes.MarkAllDirty();
+                        World.PlaySoundAt(new AssetLocation($"game:sounds/block/charcoal{World.Rand.Next(1, 4)}"), this);
+                    }
+                    return;
                     //}else{
                     //    //Otherwise ya can just spam add and remove the same coal constantly resetting the burn timer lol
                     //    (byEntity.World.Api as ICoreClientAPI)?.TriggerIngameError(this, "cantremovefuelinflight",Lang.Get("vsairshipmod:cannotremovefuelinflight"));
@@ -831,68 +974,68 @@ namespace VSAirshipmod
 
         public override WorldInteraction[] GetInteractionHelp(IClientWorldAccessor world, EntitySelection es, IClientPlayer player)
         {
-                var interactions = base.GetInteractionHelp(world, es, player);
-                var selBoxes = this.GetBehavior<EntityBehaviorSelectionBoxes>();
+            var interactions = base.GetInteractionHelp(world, es, player);
+            var selBoxes = this.GetBehavior<EntityBehaviorSelectionBoxes>();
 
-                //Gears interaction
-                if (selBoxes?.IsAPCode(es, "GearCubeAP") ?? false)
+            //Gears interaction
+            if (selBoxes?.IsAPCode(es, "GearCubeAP") ?? false)
+            {
+                interactions = ArrayExtensions.Append(interactions, new WorldInteraction
                 {
-                    interactions = ArrayExtensions.Append(interactions, new WorldInteraction
+                    ActionLangCode = "vsairshipmod:insert-temporal-gear", // lang key you define in lang files
+                    MouseButton = EnumMouseButton.Right,
+                    Itemstacks = new ItemStack[] // indicates the player needs this item to perform the action
                     {
-                        ActionLangCode = "vsairshipmod:insert-temporal-gear", // lang key you define in lang files
-                        MouseButton = EnumMouseButton.Right,
-                        Itemstacks = new ItemStack[] // indicates the player needs this item to perform the action
-                        {
                             new ItemStack(World.GetItem(new AssetLocation("game:gear-temporal")), 1)
-                        }
-                    });
-                }
+                    }
+                });
+            }
 
-                // Cruise interaction
-                if (selBoxes?.IsAPCode(es, "ThrottleLockAP") ?? false)
+            // Cruise interaction
+            if (selBoxes?.IsAPCode(es, "ThrottleLockAP") ?? false)
+            {
+                interactions = ArrayExtensions.Append(interactions, new WorldInteraction
                 {
-                        interactions = ArrayExtensions.Append(interactions, new WorldInteraction
-                        {
-                                ActionLangCode = "vsairshipmod:toggle-cruise",
-                                MouseButton = EnumMouseButton.Right
-                        });
-                }
+                    ActionLangCode = "vsairshipmod:toggle-cruise",
+                    MouseButton = EnumMouseButton.Right
+                });
+            }
 
 
-                //Coal interactions
-                if (selBoxes?.IsAPCode(es, "CoalBarrelAP") ?? false)
+            //Coal interactions
+            if (selBoxes?.IsAPCode(es, "CoalBarrelAP") ?? false)
+            {
+                //Remove coal with empty hand
+                interactions = ArrayExtensions.Append(interactions, new WorldInteraction
                 {
-                    //Remove coal with empty hand
-                    interactions = ArrayExtensions.Append(interactions, new WorldInteraction
-                    {
-                        ActionLangCode = "vsairshipmod:remove-coal",
-                        MouseButton = EnumMouseButton.Right,
-                        RequireFreeHand = true
-                    });
+                    ActionLangCode = "vsairshipmod:remove-coal",
+                    MouseButton = EnumMouseButton.Right,
+                    RequireFreeHand = true
+                });
 
-                    //Add coals
-                    string[] allowedCoals = new string[]
-                    {
+                //Add coals
+                string[] allowedCoals = new string[]
+                {
                         "coke",
                         "ore-bituminouscoal",
                         "ore-lignite",
                         "charcoal"
-                    };
+                };
 
-                    // Create ItemStack array for all allowed coals
-                    ItemStack[] coalStacks = allowedCoals
-                        .Select(path => new ItemStack(World.GetItem(new AssetLocation("game:" + path)), 1))
-                        .ToArray();
+                // Create ItemStack array for all allowed coals
+                ItemStack[] coalStacks = allowedCoals
+                    .Select(path => new ItemStack(World.GetItem(new AssetLocation("game:" + path)), 1))
+                    .ToArray();
 
-                    interactions = ArrayExtensions.Append(interactions, new WorldInteraction
-                    {
-                        ActionLangCode = "vsairshipmod:add-coal",
-                        MouseButton = EnumMouseButton.Right,
-                        Itemstacks = coalStacks//Very satisfying way to set these :D
-                    });
-                }
+                interactions = ArrayExtensions.Append(interactions, new WorldInteraction
+                {
+                    ActionLangCode = "vsairshipmod:add-coal",
+                    MouseButton = EnumMouseButton.Right,
+                    Itemstacks = coalStacks//Very satisfying way to set these :D
+                });
+            }
 
-                return interactions;
+            return interactions;
         }
 
         public override string GetInfoText()
@@ -918,14 +1061,18 @@ namespace VSAirshipmod
                 timeString = $"{totalSeconds}s";//Final countdown of the last minute
             }
 
-            if(TemporalGearCount != 0){
+            if (TemporalGearCount != 0)
+            {
                 text += "\n" + Lang.Get("vsairshipmod:int-temporalfuelusage", timeString);
-            }else{
+            }
+            else
+            {
                 text += "\n" + Lang.Get("vsairshipmod:temporalfueldepletedhorizontal");
             }
 
             //Coal Fuel Display, shows the time of the whole stack unlike gears
-            if(CoalStackSize != 0)
+            //if(CoalStackSize != 0)
+            /*if(CoalStackSize !>= 2)
             {
                 long currentCoalSeconds = Math.Max(0, CoalFuelUsage / 1000);
                 int remainingPieces = CoalStackSize - 1;
@@ -947,7 +1094,46 @@ namespace VSAirshipmod
                 text += "\n" + Lang.Get("vsairshipmod:int-coalfuelusage", coalTime);
             }else{
                 text += "\n" + Lang.Get("vsairshipmod:coalfueldepletedvertical");
+            }*/
+
+            if (CoalStackSize >= 2)
+            {
+                // CoalFuelUsage is ms, convert to seconds
+                long currentPairSeconds = Math.Max(0, CoalFuelUsage / 1000);
+
+
+                //One active pair is already burning remove 2 coal from stack to get remaining full pairs.
+                int remainingCoalAfterActivePair = CoalStackSize - 2;
+
+                // Each full pair = 2 coal consumed at once
+                int additionalFullPairs = Math.Max(0, remainingCoalAfterActivePair / 2);
+
+                //Total burn time
+                long totalcoalSeconds =
+                    currentPairSeconds +                     //Time left on current burning pair
+                    (long)(additionalFullPairs * CoalBurnDuration);  // full pairs ahead of it
+
+                string coalTime;
+
+                if (totalcoalSeconds >= 60)
+                {
+                    long minutes = totalcoalSeconds / 60;
+                    long seconds = totalcoalSeconds % 60;
+                    coalTime = $"{minutes}m {seconds}s";
+                }
+                else coalTime = $"{totalcoalSeconds}s";
+
+                //Append metadata ---
+                text += "\n" + Lang.Get("vsairshipmod:int-coalstacksize", CoalStackSize);
+                text += "\n" + Lang.Get("vsairshipmod:int-coalfuelusage", coalTime);
             }
+            else
+            {
+                //Less than 2 coal so cannot burn at all under new rules
+                text += "\n" + Lang.Get("vsairshipmod:int-coalstacksize", CoalStackSize);
+                text += "\n" + Lang.Get("vsairshipmod:coalfueldepletedvertical");
+            }
+
 
             return text;
         }

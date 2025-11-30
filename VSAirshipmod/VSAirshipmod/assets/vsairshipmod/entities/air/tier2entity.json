@@ -33,7 +33,7 @@
     "shouldSwivelFromMotion": false,
     "speedMultiplier": 1.2,
     "turnMultiplier": 6,
-    "swimmingOffsetYByType": { "*": 8 },
+    "swimmingOffsetYByType": { "*": 1.5 },
     "rightClickPickup": false,
     "mountAnimations": {
       "idle": "sitboatidle",
@@ -277,6 +277,7 @@
         "glass": { "base": "game:block/glass/quartz" },
         "poor": { "base": "game:block/leather/poor" },
         "rustyglow": { "base": "game:block/machine/statictranslocator/rustyglow" },
+        "blackbronze": {"base": "game:block/metal/ingot/blackbronze"},
         "material-deco": { "base": "game:block/metal/lantern/copper-deco" },
         "tinbronze": { "base": "game:block/metal/lantern/tinbronze" },
         "gold": { "base": "game:block/metal/plate/gold" },
@@ -285,18 +286,19 @@
         "blackbronze2": { "base": "game:block/metal/sheet/blackbronze2" },
         "copper1": { "base": "game:block/metal/sheet/copper1" },
         "cupronickel1": { "base": "game:block/metal/sheet/cupronickel1" },
-        "copper-soldered": { "base": "game:block/metal/sheet/soldered-copper" },
-        "rusty-iron": { "base": "game:block/metal/tarnished/rusty-iron" },
-        "wattle": { "base": "game:block/wattle" },
-        "charred": { "base": "game:block/wood/charred" },
-        "aged": { "base": "game:block/wood/debarked/aged" },
-        "oak": { "base": "game:block/wood/debarked/{material}" },
-        "plainoak": { "base": "game:block/wood/debarked/{material}" },
-        "linen": { "base": "game:item/bag/linensack/linen" },
-        "top": { "base": "game:item/bag/linensack/top" },
-        "furside": { "base": "game:item/resource/hide/raw-huge" },
-        "rope": { "base": "game:item/resource/rope" }
-      }
+        "platinum1": {"base": "game:block/metal/sheet/platinum1"},
+          "copper-soldered": { "base": "game:block/metal/sheet/soldered-copper" },
+          "rusty-iron": { "base": "game:block/metal/tarnished/rusty-iron" },
+          "wattle": { "base": "game:block/wattle" },
+          "charred": { "base": "game:block/wood/charred" },
+          "aged": { "base": "game:block/wood/debarked/aged" },
+          "oak": { "base": "game:block/wood/debarked/{material}" },
+          "plainoak": { "base": "game:block/wood/debarked/{material}" },
+          "linen": { "base": "game:item/bag/linensack/linen" },
+          "top": { "base": "game:item/bag/linensack/top" },
+          "furside": { "base": "game:item/resource/hide/raw-huge" },
+          "rope": { "base": "game:item/resource/rope" }
+        }
     },
     "behaviors": [
       {

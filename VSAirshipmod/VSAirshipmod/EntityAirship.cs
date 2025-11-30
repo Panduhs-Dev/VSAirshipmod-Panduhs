@@ -8,6 +8,7 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using Vintagestory.GameContent;
+using Vintagestory.API.Util;
 
 namespace VSAirshipmod
 {
@@ -241,7 +242,19 @@ namespace VSAirshipmod
 
         //If you read this, hello traveler. The code below is responsible for the crasing of the game.... i'm joking. its just a variable that stores the Horizontal Velocity :)
         public double HorizontalVelocity = 0.0;
-        public bool IsFlying => !OnGround;
+        //public bool IsFlying => !OnGround;
+
+        public virtual bool IsFlying
+        {
+            get
+            {
+                var ba = World?.BlockAccessor;
+                if (ba == null) return false;
+
+                var below = ba.GetBlockBelow(Pos.AsBlockPos);
+                return below?.Code?.ToString() == "game:air";
+            }
+        }
 
         public string CreatedByPlayername => WatchedAttributes.GetString("createdByPlayername");
         public string CreatedByPlayerUID => WatchedAttributes.GetString("createdByPlayerUID");
@@ -265,7 +278,7 @@ namespace VSAirshipmod
             get { return 100f; }
         }
 
-        
+
 
         public virtual float SpeedMultiplier { get; set; } = 1f;
         public virtual float TurnMultiplier { get; set; } = 1f;

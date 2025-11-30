@@ -82,6 +82,9 @@ namespace VSAirshipmod
         ///6 secound timer on fuel usage.
         ///</summary>
         double FuelTimer = 0;
+
+        public override bool IsFlying => !OnGround;
+
         //string weatherVaneAnimCode;
 
         public EntityAirshipTier1() { }
@@ -273,40 +276,42 @@ namespace VSAirshipmod
         public override void OnAsyncParticleTick(float dt, IAsyncParticleManager manager)
         {
             base.OnAsyncParticleTick(dt, manager);
-
-            /*double disturbance = Math.Abs(ForwardSpeed) + Math.Abs(AngularVelocity);
-            if (disturbance > 0.01)
+            if (Swimming)
             {
-                float minx = -3f;
-                float addx = 6f;
-                float minz = -0.75f;
-                float addz = 1.5f;
-
-                EntityPos herepos = Pos;
-                var rnd = Api.World.Rand;
-                SplashParticleProps.AddVelocity.Set((float)herepos.Motion.X * 20, (float)herepos.Motion.Y, (float)herepos.Motion.Z * 20);
-                SplashParticleProps.AddPos.Set(0.1f, 0, 0.1f);
-                SplashParticleProps.QuantityMul = 0.5f * (float)disturbance;
-
-                double y = herepos.Y - 0.15;
-
-                for (int i = 0; i < 10; i++)
+                double disturbance = Math.Abs(ForwardSpeed) + Math.Abs(AngularVelocity);
+                if (disturbance > 0.01)
                 {
-                    float dx = minx + (float)rnd.NextDouble() * addx;
-                    float dz = minz + (float)rnd.NextDouble() * addz;
+                    float minx = -3f;
+                    float addx = 6f;
+                    float minz = -0.75f;
+                    float addz = 1.5f;
 
-                    double yaw = Pos.Yaw + GameMath.PIHALF + Math.Atan2(dx, dz);
-                    double dist = Math.Sqrt(dx * dx + dz * dz);
+                    EntityPos herepos = Pos;
+                    var rnd = Api.World.Rand;
+                    SplashParticleProps.AddVelocity.Set((float)herepos.Motion.X * 20, (float)herepos.Motion.Y, (float)herepos.Motion.Z * 20);
+                    SplashParticleProps.AddPos.Set(0.1f, 0, 0.1f);
+                    SplashParticleProps.QuantityMul = 0.5f * (float)disturbance;
 
-                    SplashParticleProps.BasePos.Set(
-                        herepos.X + Math.Sin(yaw) * dist,
-                        y,
-                        herepos.Z + Math.Cos(yaw) * dist
-                    );
+                    double y = herepos.Y - 0.15;
 
-                    manager.Spawn(SplashParticleProps);
+                    for (int i = 0; i < 10; i++)
+                    {
+                        float dx = minx + (float)rnd.NextDouble() * addx;
+                        float dz = minz + (float)rnd.NextDouble() * addz;
+
+                        double yaw = Pos.Yaw + GameMath.PIHALF + Math.Atan2(dx, dz);
+                        double dist = Math.Sqrt(dx * dx + dz * dz);
+
+                        SplashParticleProps.BasePos.Set(
+                            herepos.X + Math.Sin(yaw) * dist,
+                            y,
+                            herepos.Z + Math.Cos(yaw) * dist
+                        );
+
+                        manager.Spawn(SplashParticleProps);
+                    }
                 }
-            }*/
+            }
         }
 
 
