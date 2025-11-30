@@ -313,8 +313,8 @@
         "code": "UsingCoal",
         "animation": "UsingCoal",
         "animationSpeed": 1,
-        "easeInSpeed": 1,
-        "easeOutSpeed": 1
+        "easeInSpeed": 100,
+        "easeOutSpeed": 100
       }
     ],
     "texturesByType": {

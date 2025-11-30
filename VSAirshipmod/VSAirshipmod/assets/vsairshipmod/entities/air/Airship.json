@@ -1,4 +1,5 @@
 ﻿{
+	"enabled": "false",
 	"code": "airship",
 	"class": "EntityAirship", //"EntityBoat", //
 	"variantgroups": [
@@ -134,8 +135,8 @@
 				]
 			},
 			"groundDragFactor": 1,
-			"airDragFallingFactor": 1.0,//1
-			"gravityFactor": 0.01//1
+			"airDragFallingFactor": 1.0, //1
+			"gravityFactor": 0.01 //1
 		},
 
 		"creaturecarrier": {

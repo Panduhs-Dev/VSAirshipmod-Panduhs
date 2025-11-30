@@ -1,4 +1,5 @@
 {
+  "enabled": "false",
   "code": "airship",
   "class": "ItemBoat",
   "__comment": "Provide here the entity",
@@ -6,8 +7,8 @@
     "*": {
       "base": "entity/airshipmodel2",
       "ignoreElements": [ "hideWater", "FLATBALLOON" ]
-    },
-    
+    }
+
   },
   "variantgroups": [
     {

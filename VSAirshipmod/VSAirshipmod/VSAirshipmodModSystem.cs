@@ -7,8 +7,6 @@ using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using Vintagestory.GameContent;
-using VSAirshipmod.NSBlock;
-using VSAirshipmod.NSBlockEntity;
 
 namespace VSAirshipmod
 {
@@ -24,14 +22,6 @@ namespace VSAirshipmod
             api.RegisterEntity("EntityAirshipTier2", typeof(EntityAirshipTier2));
             api.RegisterMountable("airship", EntityAirshipSeat.GetMountable);
             api.RegisterItemClass("ItemAirship", typeof(ItemAirship));
-
-            api.RegisterBlockClass("BlockSpinner", typeof(BlockSpinner));
-            api.RegisterBlockClass("BlockSewingMachine", typeof(BlockSewingMachine));
-            api.RegisterBlockClass("BlockAutoloom", typeof(BlockAutoloom));
-
-            api.RegisterBlockEntityClass("SewingMachine", typeof(BlockEntitySewingMachine)); 
-            api.RegisterBlockEntityClass("Spinner", typeof(BlockEntitySpinner));
-            api.RegisterBlockEntityClass("Autoloom", typeof(BlockEntityAutoloom));
 
             api.RegisterItemClass("ItemVSAirshipmodRoller", typeof(ItemVSAirshipmodRoller));
             api.RegisterEntity("EntityVSAirshipmodConstruction", typeof(EntityVSAirshipmodConstruction));
