@@ -318,7 +318,7 @@
         "code": "UsingCoal",
         "animation": "UsingCoal",
         "animationSpeed": 1,
-        "easeInSpeed": 100,
+        "easeInSpeed": 2000,
         "easeOutSpeed": 100
       }
     ],
