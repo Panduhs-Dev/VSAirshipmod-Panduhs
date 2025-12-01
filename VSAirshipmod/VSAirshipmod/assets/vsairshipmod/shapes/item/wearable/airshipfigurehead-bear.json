@@ -148,6 +148,7 @@
 	"elements": [
 		{
 			"name": "FigureheadORIGIN",
+			"stepParentName": "FigureHeadDefault",
 			"from": [ 2.45, -3.0, -2.0 ],
 			"to": [ 2.45, -3.0, -2.0 ],
 			"faces": {

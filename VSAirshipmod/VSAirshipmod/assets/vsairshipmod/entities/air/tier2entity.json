@@ -215,10 +215,22 @@
           "code": "LanternStorage-{type}",
           "forCategoryCodes": [ "lantern" ],
           "attachmentPointCode": "LanternStorageAP"
+        },
+        {
+          "code": "Figurehead1-{type}",
+          "forCategoryCodes": [ "airshipfigurehead" ],
+          "attachmentPointCode": "FigureHead1AP",
+          "stepParentTo": { "FigureHeadDefault": { "elementName": "FigureHead1" } }
+        },
+        {
+          "code": "Figurehead2-{type}",
+          "forCategoryCodes": [ "airshipfigurehead" ],
+          "attachmentPointCode": "FigureHead2AP",
+          "stepParentTo": { "FigureHeadDefault": { "elementName": "FigureHead2" } }
         }
       ]
     },
-    "selectionboxes": { "selectionBoxes": [ "LeftSeatAP", "RightSeatAP", "LeftStorageAP", "RightStorageAP", "BedrollStorageAP", "ThrottleLockAP", "CoalBarrelAP", "GearCubeAP", "ShieldStorage1AP", "ShieldStorage2AP", "ShieldStorage3AP", "ShieldStorage4AP", "CookingPotAP", "LanternStorageAP" ] }
+    "selectionboxes": { "selectionBoxes": [ "LeftSeatAP", "RightSeatAP", "LeftStorageAP", "RightStorageAP", "BedrollStorageAP", "ThrottleLockAP", "CoalBarrelAP", "GearCubeAP", "ShieldStorage1AP", "ShieldStorage2AP", "ShieldStorage3AP", "ShieldStorage4AP", "CookingPotAP", "LanternStorageAP", "FigureHead1AP", "FigureHead2AP" ] }
   },
   "client": {
     "size": 1,
@@ -370,7 +382,8 @@
         "linen": { "base": "game:item/bag/linensack/linen" },
         "top": { "base": "game:item/bag/linensack/top" },
         "furside": { "base": "game:item/resource/hide/raw-huge" },
-        "rope": { "base": "game:item/resource/rope" }
+        "rope": { "base": "game:item/resource/rope" },
+        "figureMat": { "base": "game:block/wood/debarked/{material}" }
       }
     },
     "behaviors": [
