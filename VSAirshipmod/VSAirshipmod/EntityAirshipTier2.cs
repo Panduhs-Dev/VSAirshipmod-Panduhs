@@ -77,6 +77,7 @@ namespace VSAirshipmod
         private bool animRight = false;
         private bool animPropeller = false;
         private bool animDown = false;
+        private bool animUp = false;
 
         private bool animLeftHalf = false;//Rivvion's Orders, might wanna do animation blending in future?
         private bool animRightHalf = false;
@@ -183,6 +184,9 @@ namespace VSAirshipmod
 
             //down animation.
             animDown = seat.controls.Sprint;
+
+            //up animation.
+            animUp = seat.controls.Jump;
         }
 
 
@@ -196,6 +200,7 @@ namespace VSAirshipmod
             if (!animPropeller) StopAnimation("Propeller");
             if (!animLeftHalf) StopAnimation("TurnLeftHalf");
             if (!animRightHalf) StopAnimation("TurnRightHalf");
+            if (!animDown) StopAnimation("GoUp");
 
             //Start animations if active
             if (animForward) StartAnimation("Forward");
@@ -205,6 +210,7 @@ namespace VSAirshipmod
             if (animPropeller) StartAnimation("Propeller");
             if (animLeftHalf) StartAnimation("TurnLeftHalf");
             if (animRightHalf) StartAnimation("TurnRightHalf");
+            if (animDown) StartAnimation("GoUp");
 
             //Inversion logic for making it turn backwards, using reflection here too like the loom
             bool isReversing = animBackward;
@@ -231,6 +237,10 @@ namespace VSAirshipmod
             //Down animation
             if (animDown) StartAnimation("GoDown");
             else StopAnimation("GoDown");
+
+            //Up animation
+            if (animUp) StartAnimation("GoUp");
+            else StopAnimation("GoUp");
 
 
             // Engine sound
