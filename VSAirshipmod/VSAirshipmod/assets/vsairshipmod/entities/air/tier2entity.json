@@ -227,10 +227,59 @@
           "forCategoryCodes": [ "airshipfigurehead" ],
           "attachmentPointCode": "FigureHead2AP",
           "stepParentTo": { "FigureHeadDefault": { "elementName": "FigureHead2" } }
+        },
+        {
+          "code": "AirshipDeed",
+          "forCategoryCodes": [ "airshipdeed" ],
+          "attachmentPointCode": "DeedBeamAP",
+          "stepParentTo": { "": { "elementName": "DeedBeam" } }
+        },
+        {
+          "code": "ToolStorage1-{type}",
+          "forCategoryCodes": [ "shovel", "axe", "pickaxe", "prospectingpick" ],
+          "attachmentPointCode": "ToolStorage1AP",
+          "stepParentTo": { "LowerArmL": { "elementName": "ToolStorage1SP" } }
+        },
+        {
+          "code": "ToolStorage2-{type}",
+          "forCategoryCodes": [ "shovel", "axe", "pickaxe", "prospectingpick" ],
+          "attachmentPointCode": "ToolStorage2AP",
+          "stepParentTo": { "LowerArmL": { "elementName": "ToolStorage2SP" } }
+        },
+        {
+          "code": "Left Plaque",
+          "forCategoryCodes": [ "plaque" ],
+          "attachmentPointCode": "LPlaqueAP",
+          "stepParentTo": {
+            "": { "elementName": "PlaqueLeftFront" }
+          }
         }
       ]
     },
-    "selectionboxes": { "selectionBoxes": [ "LeftSeatAP", "RightSeatAP", "LeftStorageAP", "RightStorageAP", "BedrollStorageAP", "ThrottleLockAP", "CoalBarrelAP", "GearCubeAP", "ShieldStorage1AP", "ShieldStorage2AP", "ShieldStorage3AP", "ShieldStorage4AP", "CookingPotAP", "LanternStorageAP", "FigureHead1AP", "FigureHead2AP" ] }
+    "selectionboxes": {
+      "selectionBoxes": [
+        "LeftSeatAP",
+        "RightSeatAP",
+        "LeftStorageAP",
+        "RightStorageAP",
+        "BedrollStorageAP",
+        "ThrottleLockAP",
+        "CoalBarrelAP",
+        "GearCubeAP",
+        "ShieldStorage1AP",
+        "ShieldStorage2AP",
+        "ShieldStorage3AP",
+        "ShieldStorage4AP",
+        "CookingPotAP",
+        "LanternStorageAP",
+        "FigureHead1AP",
+        "FigureHead2AP",
+        "DeedBeamAP",
+        "ToolStorage1AP",
+        "ToolStorage2AP",
+        "LPlaqueAP"
+      ]
+    }
   },
   "client": {
     "size": 1,
@@ -245,73 +294,73 @@
       {
         "code": "ThrottleLock",
         "animation": "ThrottleLock",
-        "animationSpeed": 1,
-        "easeInSpeed": 1,
-        "easeOutSpeed": 1,
+        "animationSpeed": 2,
+        "easeInSpeed": 30,
+        "easeOutSpeed": 2,
         "weight": 10
       },
       {
         "code": "Backward",
         "animation": "Backward",
-        "animationSpeed": 1,
-        "easeInSpeed": 1,
-        "easeOutSpeed": 1
+        "animationSpeed": 3,
+        "easeInSpeed": 50,
+        "easeOutSpeed": 2
       },
       {
         "code": "Forward",
         "animation": "Forward",
-        "animationSpeed": 1,
-        "easeInSpeed": 1,
-        "easeOutSpeed": 1
+        "animationSpeed": 3,
+        "easeInSpeed": 50,
+        "easeOutSpeed": 2
       },
       {
         "code": "TurnLeft",
         "animation": "turnLeft",
-        "animationSpeed": 1,
-        "easeInSpeed": 1,
-        "easeOutSpeed": 1
+        "animationSpeed": 1.5,
+        "easeInSpeed": 20,
+        "easeOutSpeed": 2
       },
       {
         "code": "TurnRight",
         "animation": "turnRight",
-        "animationSpeed": 1,
-        "easeInSpeed": 1,
-        "easeOutSpeed": 1
+        "animationSpeed": 1.5,
+        "easeInSpeed": 20,
+        "easeOutSpeed": 2
       },
       {
         "code": "TurnLeftHalf",
         "animation": "turnLefthalf",
-        "animationSpeed": 1,
-        "easeInSpeed": 1,
-        "easeOutSpeed": 1
+        "animationSpeed": 1.5,
+        "easeInSpeed": 20,
+        "easeOutSpeed": 2
       },
       {
         "code": "TurnRightHalf",
         "animation": "turnrighthalf",
-        "animationSpeed": 1,
-        "easeInSpeed": 1,
-        "easeOutSpeed": 1
+        "animationSpeed": 1.5,
+        "easeInSpeed": 20,
+        "easeOutSpeed": 2
       },
       {
         "code": "Propeller",
         "animation": "Propeller",
         "animationSpeed": 0,
-        "easeInSpeed": 1,
+        "easeInSpeed": 50,
         "easeOutSpeed": 1
       },
       {
         "code": "GoUp",
         "animation": "GoUp",
-        "animationSpeed": 1,
-        "easeInSpeed": 1,
-        "easeOutSpeed": 1
+        "animationSpeed": 2,
+        "easeInSpeed": 10,
+        "easeOutSpeed": 2
       },
       {
         "code": "GoDown",
         "animation": "GoDown",
-        "animationSpeed": 1,
-        "easeInSpeed": 1,
-        "easeOutSpeed": 1
+        "animationSpeed": 2,
+        "easeInSpeed": 10,
+        "easeOutSpeed": 3
       },
       {
         "code": "GearsSpin",
@@ -383,7 +432,8 @@
         "top": { "base": "game:item/bag/linensack/top" },
         "furside": { "base": "game:item/resource/hide/raw-huge" },
         "rope": { "base": "game:item/resource/rope" },
-        "figureMat": { "base": "game:block/wood/debarked/{material}" }
+        "figureMat": { "base": "game:block/wood/debarked/{material}" },
+        "transparent": { "base": "game:block/transparent" }
       }
     },
     "behaviors": [
