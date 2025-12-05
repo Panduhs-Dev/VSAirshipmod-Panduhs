@@ -1,0 +1,37 @@
+﻿[
+  {
+    "ingredientPattern": "LK",
+    "ingredients": {
+      "K": {
+        "type": "item",
+        "code": "game:knife-*",
+        "isTool": true
+      },
+      "L": {
+        "type": "item",
+        "code": "game:fat"
+      }
+    },
+    "width": 2,
+    "height": 1,
+    "output": {
+      "type": "item",
+      "code": "airshipfat"
+    }
+  },
+  {
+    "ingredientPattern": "L",
+    "ingredients": {
+      "L": {
+        "type": "item",
+        "code": "airshipfat"
+      }
+    },
+    "width": 1,
+    "height": 1,
+    "output": {
+      "type": "item",
+      "code": "game:fat"
+    }
+  }
+]

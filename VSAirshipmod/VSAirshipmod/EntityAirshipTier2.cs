@@ -19,12 +19,12 @@ namespace VSAirshipmod
     {
 
 
-        public virtual int TemporalGearCount
+        public override int TemporalGearCount
         {
             get => WatchedAttributes.GetInt("TemporalGearCount", 0);
             set => WatchedAttributes.SetInt("TemporalGearCount", value);
         }
-        public long TemporalFuelUsage
+        public override long TemporalFuelUsage
         {
             get => WatchedAttributes.GetLong("TemporalFuelUsage", 0);
             set => WatchedAttributes.SetLong("TemporalFuelUsage", value);

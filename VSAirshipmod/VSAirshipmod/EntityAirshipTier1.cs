@@ -16,25 +16,14 @@ namespace VSAirshipmod
     public class EntityAirshipTier1 : EntityAirship
     {
 
-        /// <summary>
-        /// Amount of Fuel the Airship has.
-        /// </summary>
-        public virtual float Fuel
-        {
-            get
-            {
-                return WatchedAttributes.GetFloat("Fuel");
-            }
-            set
-            {
-                WatchedAttributes.SetFloat("Fuel", value);
-            }
-        }
+        
 
         /// <summary>
         /// Amount of time we have been Inflating the balloon.
-        /// Latches at 3f.
         /// </summary>
+        /// <remarks>
+        /// Latches at 3f.
+        /// </remarks>
         public virtual float Inflate
         {
             get
@@ -49,13 +38,18 @@ namespace VSAirshipmod
 
         /// <summary>
         /// If we are ready to take off.
-        /// is true if Inflate is 3f or above.
         /// </summary>
+        /// <value>
+        /// <c>True</c> if <see cref = "Inflate"/> is 3f or above.
+        /// </value>
         public virtual bool Ready => WatchedAttributes.GetFloat("Inflate") >= 3f;
 
         /// <summary>
         /// If we are running the burner.
         /// </summary>
+        /// <value>
+        /// Burner valve state
+        /// </value>
         public virtual bool Idler
         {
             get
@@ -68,22 +62,61 @@ namespace VSAirshipmod
             }
         }
         ///<summary>
-        ///used to check when we need to retessalate the model.
+        ///Used to check when we need to retessalate the model.
         ///</summary>
         bool reTryTesselation = false;
         float curRotMountAngleZ = 0f;
         public Vec3f mountAngle = new Vec3f();
         ///<summary>
-        ///when to hide the main balloon and show the flat one.
+        ///When to hide the main balloon and show the flat one.
         ///</summary>
         bool Deflated = true;
         double horizontalmodifier = 3;
-        ///<summary>
-        ///6 secound timer on fuel usage.
-        ///</summary>
+        ///<value>
+        ///Seconds untill next <see cref="Fuel"/> is burned.
+        ///</value>
         double FuelTimer = 0;
 
+        /// <value>
+        /// Amount of Fuel the Airship has.
+        /// </value>
+        public virtual float Fuel
+        {
+            get
+            {
+                return WatchedAttributes.GetFloat("Fuel");
+            }
+            set
+            {
+                WatchedAttributes.SetFloat("Fuel", value);
+            }
+        }
+
+        /// <summary>
+        /// Seconds added to <see cref="FuelTimer"/> when <seealso cref="Fuel"/> is burned.
+        /// </summary>
+        private static int SecondsPerRot = 6;
+        /// <summary>
+        /// Amount of Rot that can be stored in <see cref="Fuel"/>.
+        /// </summary>
+        private static int MaxStackofRot = 64;
+        /// <summary>
+        /// dicount given to rot when just hovering and keeping the balloon inflated
+        /// </summary>
+        private static float RotDiscoundWhenHovering = 4;
+        /// <summary>
+        /// Amount of time in minutes given per temporal gear.
+        /// </summary>
+        private static int MinutesPerGear = 6;
+
+        /// <summary>
+        /// Causes the airship to play its flying animation
+        /// </summary>
+        /// <value>
+        /// Not <see cref="Entity.OnGround"/>
+        /// </value>
         public override bool IsFlying => !OnGround;
+
 
         //string weatherVaneAnimCode;
 
@@ -94,6 +127,10 @@ namespace VSAirshipmod
             base.Initialize(properties, api, InChunkIndex3d);
             if (Fuel == 0)
                 Fuel = this.Attributes.GetFloat("Fuel");
+            if (TemporalGearCount == -1)
+                TemporalGearCount = properties.Attributes["TemporalGearCount"].AsInt(1);
+            if (TemporalFuelUsage == -1)
+                TemporalFuelUsage = properties.Attributes["TemporalFuelUsage"].AsInt(0);
 
             //this.weatherVaneAnimCode = properties.Attributes["weatherVaneAnimCode"].AsString(null);
 
@@ -150,8 +187,16 @@ namespace VSAirshipmod
                 curRotMountAngleZ += ((float)AngularVelocity * 5 * Math.Sign(ForwardSpeed) - curRotMountAngleZ) * dt * 5;
                 forwardpitch = (float)ForwardSpeed * 1.3f;
             }
+            else
+            {
+                mountAngle.X = 0;
+                mountAngle.Y = 0;
+                mountAngle.Z = 0;
+                curRotMountAngleZ = 0;
+                forwardpitch = 0;
+            }
 
-            var esr = Properties.Client.Renderer as EntityShapeRenderer;
+                var esr = Properties.Client.Renderer as EntityShapeRenderer;
             if (esr == null) return;
 
             esr.xangle = mountAngle.X + curRotMountAngleZ;
@@ -253,13 +298,24 @@ namespace VSAirshipmod
                 RunningAnimation anim = this.AnimManager.GetAnimationState("fuelrot");
                 if (anim != null)
                 {
-                    anim.CurrentFrame = (float)Math.Clamp((1 - (Fuel / 64f)) * 29f, 0f, 29f);
+                    anim.CurrentFrame = (float)Math.Clamp((1 - (Fuel / (float)MaxStackofRot)) * 29f, 0f, 29f);
                     anim.BlendedWeight = 1f;
                     anim.EasingFactor = 0.1f;
                 }
 
-            }
+                if (!AnimManager.IsAnimationActive("fueltemp"))
+                {
+                    this.AnimManager.StartAnimation("fueltemp");
+                }
 
+                anim = this.AnimManager.GetAnimationState("fueltemp");
+                if (anim != null)
+                {
+                    anim.CurrentFrame = (float)Math.Clamp((1f - (TemporalFuelUsage / (MinutesPerGear * 60 ) / 1000f)) * 29f, 0f, 29f);
+                    anim.BlendedWeight = 1f;
+                    anim.EasingFactor = 0.1f;
+                }
+            }
         }
 
 
@@ -335,13 +391,13 @@ namespace VSAirshipmod
             }
             else if (motion.Y > 0 || Idler)
             {
-                if (FuelTimer > 0 || Fuel > 0)
+                if ((FuelTimer > 0 || Fuel > 0)&& (TemporalFuelUsage > 0 || TemporalGearCount > 0))
                 {
                     if (Gametick) {
                         Inflate = Math.Min(Inflate + dt, 3);
                         if (FuelTimer <= 0)
                         {
-                            FuelTimer = 6;
+                            FuelTimer = SecondsPerRot;
                             if (Api is ICoreServerAPI sapi)
                             {
                                 Fuel -= 1;
@@ -349,7 +405,19 @@ namespace VSAirshipmod
                         }
                         else
                         {
-                            FuelTimer -= motion.Y > 0 ? dt : dt / 4f;
+                            FuelTimer -= motion.Y > 0 ? dt : dt / RotDiscoundWhenHovering;
+                        }
+                        if (TemporalFuelUsage <= 0)
+                        {
+                            TemporalFuelUsage = MinutesPerGear * 60 * 1000;
+                            if (Api is ICoreServerAPI sapi)
+                            {
+                                TemporalGearCount -= 1;
+                            }
+                        }
+                        else
+                        {
+                            TemporalFuelUsage -= motion.Y > 0 ? (long)(dt * 1000) : 0;
                         }
                     }
 
@@ -549,10 +617,22 @@ namespace VSAirshipmod
             {
                 if (tryPickup(byEntity, mode)) return;
             }
-            if (itemslot.Itemstack?.Collectible.Code == "rot" && Fuel < 64)
+            if (itemslot.Itemstack?.Collectible.Code == "rot" && Fuel < MaxStackofRot)
             {
-                Fuel += itemslot.TakeOut((int)(64 - Math.Ceiling(Fuel))).StackSize;
+                Fuel += itemslot.TakeOut((int)(MaxStackofRot - Math.Ceiling(Fuel))).StackSize;
                 Api.Logger.Notification("Total: " + Fuel);
+                return;
+            }
+            if (itemslot.Itemstack?.Collectible.Code == "vsairshipmod:airshipfat" && Fuel < MaxStackofRot-7)
+            {
+                Fuel += itemslot.TakeOut((int)((MaxStackofRot - Math.Ceiling(Fuel))/8)).StackSize*8;
+                Api.Logger.Notification("Total: " + Fuel);
+                return;
+            }
+            if (itemslot.Itemstack?.Collectible.Code == "gear-temporal" && (TemporalGearCount + TemporalFuelUsage > 0? 1:0 ) < TemporalGearMaxCount)
+            {
+                TemporalGearCount += itemslot.TakeOut((int)((TemporalGearMaxCount - TemporalGearCount) - TemporalFuelUsage > 0 ? 1 : 0)).StackSize;
+                Api.Logger.Notification("Total: " + TemporalGearCount);
                 return;
             }
 
@@ -579,6 +659,10 @@ namespace VSAirshipmod
                 ItemStack stack = new ItemStack(World.GetItem(Code));
                 stack.Attributes.SetFloat("Fuel", Fuel);
                 Api.Logger.Notification("Fuel Picked Up: " + stack.Attributes.GetFloat("Fuel"));
+                stack.Attributes.SetLong("TemporalFuelUsage", TemporalFuelUsage);
+                Api.Logger.Notification("Usage logged: " + stack.Attributes.GetLong("TemporalFuelUsage"));
+                stack.Attributes.SetInt("TemporalGearCount", TemporalGearCount);
+                Api.Logger.Notification("Gears Picked Up: " + stack.Attributes.GetInt("TemporalGearCount"));
                 if (!byEntity.TryGiveItemStack(stack))
                 {
                     World.SpawnItemEntity(stack, ServerPos.XYZ);
@@ -646,6 +730,30 @@ namespace VSAirshipmod
             base.GetInfoText();
             string text = base.GetInfoText();
             text += "\n" + Lang.Get("vsairshipmod:float-fuel", Fuel);
+
+
+            long totalSeconds = Math.Max(0, TemporalFuelUsage / 1000);
+            string timeString;
+            if (totalSeconds >= 60)
+            {
+                long minutes = totalSeconds / 60;
+                long seconds = totalSeconds % 60;
+                timeString = $"{minutes}m {seconds}s";//Appen either M for minutes or S for seconds
+            }
+            else
+            {
+                timeString = $"{totalSeconds}s";//Final countdown of the last minute
+            }
+
+            if (TemporalGearCount != 0 || TemporalFuelUsage > 0)
+            {
+                text += "\n" + Lang.Get("vsairshipmod:int-temporalfuelusage", timeString);
+            }
+            else
+            {
+                text += "\n" + Lang.Get("vsairshipmod:temporalfueldepletedhorizontal");
+            }
+
             if (Idler)
                 text += "\n" + Lang.Get("vsairshipmod:idle");
             return text;

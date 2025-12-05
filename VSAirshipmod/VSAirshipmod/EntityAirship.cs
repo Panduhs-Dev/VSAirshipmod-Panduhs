@@ -278,6 +278,27 @@ namespace VSAirshipmod
             get { return 100f; }
         }
 
+        /// <summary>
+        /// The max number of gears the airship can take
+        /// </summary>
+        public virtual int TemporalGearMaxCount
+        {
+            get => WatchedAttributes.GetInt("TemporalGearMaxCount", 1);
+            set => WatchedAttributes.SetInt("TemporalGearMaxCount", value);
+        }
+        /// <summary>
+        /// The amount of gears currently on the airship
+        /// </summary>
+        public virtual int TemporalGearCount
+        {
+            get => WatchedAttributes.GetInt("TemporalGearCount", -1);
+            set => WatchedAttributes.SetInt("TemporalGearCount", Math.Max(value,0));
+        }
+        public virtual long TemporalFuelUsage
+        {
+            get => WatchedAttributes.GetLong("TemporalFuelUsage", -1);
+            set => WatchedAttributes.SetLong("TemporalFuelUsage", Math.Max(value, 0));
+        }
 
 
         public virtual float SpeedMultiplier { get; set; } = 1f;
@@ -377,6 +398,7 @@ namespace VSAirshipmod
             swimmingOffsetY = properties.Attributes["swimmingOffsetY"].AsDouble();
             SpeedMultiplier = properties.Attributes["speedMultiplier"].AsFloat(1f);
             TurnMultiplier = properties.Attributes["turnMultiplier"].AsFloat(1f);
+            TemporalGearMaxCount = properties.Attributes["TemporalGearMaxCount"].AsInt(1);
             /*if (Fuel == 0)
                 Fuel = this.Attributes.GetFloat("Fuel");*/
 

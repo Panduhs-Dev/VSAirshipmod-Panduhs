@@ -46,6 +46,7 @@
       "forwards": "",
       "backwards": ""
     },
+    "TemporalGearMaxCount": 3,
     "TemporalGearCount": 0
   },
   "hitboxSize": {

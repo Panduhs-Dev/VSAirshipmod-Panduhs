@@ -40,8 +40,9 @@
       "forwards": "",
       "backwards": ""
     },
-    "Fuel": 0.0
-
+    "Fuel": 0.0,
+    "TemporalGearCount": 1,
+    "TemporalGearUsage": 0
   },
   "hitboxSize": {
     "x": 2,
@@ -193,6 +194,12 @@
         "animationSpeed": 0,
         "weight": 1
         //"blendMode": "AddAverage"
+      },
+      {
+        "code": "fueltemp",
+        "animation": "fueltemp",
+        "animationSpeed": 0,
+        "weight": 1
       },
       {
         "code": "deflated",
