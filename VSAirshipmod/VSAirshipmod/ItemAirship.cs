@@ -33,6 +33,8 @@ namespace VSAirshipmod
                 return;
             }
             float Fuel = slot.Itemstack.Attributes.GetFloat("Fuel");
+            long Usage = slot.Itemstack.Attributes.GetLong("TemporalFuelUsage");
+            int Gears = slot.Itemstack.Attributes.GetInt("TemporalGearCount");
 
             if (!(byEntity is EntityPlayer) || player.WorldData.CurrentGameMode != EnumGameMode.Creative)
             {
@@ -68,7 +70,9 @@ namespace VSAirshipmod
 
                 
 
-                entity.Attributes.SetFloat("Fuel", Fuel);
+                entity.WatchedAttributes.SetFloat("Fuel", Fuel);
+                entity.WatchedAttributes.SetLong("TemporalFuelUsage", Usage);
+                entity.WatchedAttributes.SetInt("TemporalGearCount", Gears);
 
                 byEntity.World.SpawnEntity(entity);
                 handHandling = EnumHandHandling.PreventDefaultAction;

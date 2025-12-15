@@ -8,6 +8,7 @@
   "incontainer-item-coatingliquid": "Balloon coating liquid",
   "vsairshipmod:item-treatedcloth*": "Treated balloon cloth",
   "vsairshipmod:itemdesc-treatedcloth*": "Treated cloth for airship construction.",
+  "vsairshipmod:item-airshipfat": "Chopped Fat",
 
   //attachable items
   "vsairshipmod:item-airshipdeed": "Ownership deed",
