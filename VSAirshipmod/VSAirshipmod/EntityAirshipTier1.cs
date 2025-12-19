@@ -463,30 +463,30 @@ namespace VSAirshipmod
                 temp.X = targetmotion.X;
                 temp.Z = targetmotion.Z;
                 pos.Motion.X = temp.X;
-                pos.Motion.X = temp.Y;
+                pos.Motion.Z = temp.Z;
             }
 
             if (HorizontalVelocity > 0.0)
             {
-                pos.Motion.Y = 0.013 * horizontalmodifier;
+                temp.Y = 0.013 * horizontalmodifier;
+                pos.Motion.Y = temp.Y;
             }
 
+            applyGravity = IsEmptyOfPlayers();
 
-            if (!Idler && !Swimming)
+            if (!Idler && !Swimming && !applyGravity)
             {
-                pos.Motion += WindDirection * 0.013f;
-                pos.Motion.X = Math.Clamp(pos.Motion.X, -Math.Abs(WindDirection.X), Math.Abs(WindDirection.X)) + temp.X;
+                pos.Motion += WindDirection;
+                //pos.Motion.X = Math.Clamp(pos.Motion.X, -Math.Abs(WindDirection.X), Math.Abs(WindDirection.X)) + temp.X;
                 //pos.Motion.Y = Math.Clamp(pos.Motion.Y, -WindDirection.Length(), WindDirection.Length()) + temp.Y;
-                pos.Motion.Z = Math.Clamp(pos.Motion.Z, -Math.Abs(WindDirection.Z), Math.Abs(WindDirection.Z)) + temp.Z;
-            }
-            else if(ForwardSpeed != 0.0)
-            {
-                pos.Motion.X = temp.X;
-                //pos.Motion.Y = temp.Y;
-                pos.Motion.Z = temp.Z;
+                //pos.Motion.Z = Math.Clamp(pos.Motion.Z, -Math.Abs(WindDirection.Z), Math.Abs(WindDirection.Z)) + temp.Z;
+                Vec3d tempMotion = pos.Motion;
+                tempMotion.X = pos.Motion.HorLength() <= WindDirection.HorLength() ? pos.Motion.X + temp.X : pos.Motion.X *(WindDirection.HorLength() / pos.Motion.HorLength()) + temp.X;
+                tempMotion.Z = pos.Motion.HorLength() <= WindDirection.HorLength() ? pos.Motion.Z + temp.Z : pos.Motion.Z * (WindDirection.HorLength() / pos.Motion.HorLength()) + temp.Z;
+                pos.Motion = tempMotion;
+
             }
 
-                applyGravity = IsEmptyOfPlayers();
 
             if (!OnGround && !Swimming && !applyGravity) {
                 if (HorizontalVelocity < 0.0)
