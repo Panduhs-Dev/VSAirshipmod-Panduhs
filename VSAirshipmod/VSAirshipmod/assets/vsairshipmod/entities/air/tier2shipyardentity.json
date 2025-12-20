@@ -471,7 +471,10 @@
 				addElements: [
 					"ORIGIN/T2/ORIGIN59-coals",
 					"ORIGIN/T2/ORIGIN60-fullballoon"
-				],
+				]
+			},
+			//stage 51
+			{ requireStacks: [],
 				actionLangCode: "Launch"
 			}
 		]
