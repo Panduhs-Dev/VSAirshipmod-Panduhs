@@ -211,8 +211,8 @@
         "triggeredBy": { "defaultAnim": true }
       },
       {
-        "code": "idle",
-        "animation": "idle",
+        "code": "GearsSpin",
+        "animation": "GearsSpin",
         "animationSpeed": 1,
         "weight": 10,
         "easeInSpeed": 1,

@@ -107,7 +107,7 @@ namespace VSAirshipmod
         /// <summary>
         /// Amount of time in minutes given per temporal gear.
         /// </summary>
-        private static int MinutesPerGear = 6;
+        private static int MinutesPerGear = 15;//Plumb to config!
 
         /// <summary>
         /// Causes the airship to play its flying animation
@@ -127,16 +127,20 @@ namespace VSAirshipmod
             base.Initialize(properties, api, InChunkIndex3d);
             if (Fuel == 0)
                 Fuel = this.Attributes.GetFloat("Fuel");
-            if (TemporalGearCount == -1)
-                TemporalGearCount = properties.Attributes["TemporalGearCount"].AsInt(1);
+            //if (TemporalGearCount == -1)
+            //    TemporalGearCount = properties.Attributes["TemporalGearCount"].AsInt(1);
             if (TemporalFuelUsage == -1)
                 TemporalFuelUsage = properties.Attributes["TemporalFuelUsage"].AsInt(0);
+
+            //Listener for TemporalGearCount changes marks the shape modified like sail boat unfurling
+            //WatchedAttributes.RegisterModifiedListener("TemporalFuelUsage", MarkShapeModified);
 
             //this.weatherVaneAnimCode = properties.Attributes["weatherVaneAnimCode"].AsString(null);
 
             //api.Logger.Notification("Fuel Handled: " + Fuel);
 
         }
+
 
         public override void OnTesselation(ref Shape entityShape, string shapePathForLogging)
         {
@@ -154,6 +158,11 @@ namespace VSAirshipmod
                     else
                     {
                         entityShape.RemoveElementByName("FLATBALLOON");
+                    }
+                    if(TemporalFuelUsage == 0){
+                        entityShape.RemoveElementByName("TEMPHIDE");
+                    }else{
+                        entityShape.RemoveElementByName("RUSTHIDE");
                     }
                 }
             }
@@ -245,6 +254,33 @@ namespace VSAirshipmod
                     AnimManager.StopAnimation("godown");
                     AnimManager.StopAnimation("pump");
                 }
+
+                //Descending Particle Logic, rotated and offset to be around the release hatch
+                bool ShouldPlayParticles = (!AnimManager.IsAnimationActive("deflation") && !AnimManager.IsAnimationActive("deflated") && !AnimManager.IsAnimationActive("inflation"));
+                if (Api.Side == EnumAppSide.Client && (AnimManager.IsAnimationActive("godown") && ShouldPlayParticles))
+                {
+                    //disabled extra calculations because frankly its centered enough for the tier 1!
+                    //double yawRad = Pos.Yaw;
+                    //yawRad = -yawRad;        //JUST HAD TO invert rotation to match entity visuals
+
+                    //And not forget to normalize
+                    //yawRad %= 2 * Math.PI;
+                    //if (yawRad < 0) yawRad += 2 * Math.PI;
+
+                    Vec3d offset = new Vec3d(0, 11.75, 0);//This is the offset to set it to the hatch
+
+                    //double cos = Math.Cos(yawRad);
+                    //double sin = Math.Sin(yawRad);
+
+                    Vec3d emitPos = Pos.XYZ.AddCopy(new Vec3d(
+                        offset.X /** cos*/ - offset.Z /** sin*/,
+                        offset.Y,
+                        offset.X /** sin*/ + offset.Z /** cos*/
+                    ));
+
+                    DescendingEffects(emitPos);
+                }
+
 
                 //---------------------------------------Inflation State Machine---------------------------------------//
 
@@ -340,6 +376,20 @@ namespace VSAirshipmod
             {
                 updateBoatAngleAndMotion(dt,true);
             }
+
+            bool shouldSpin = TemporalFuelUsage > 0;
+            if (shouldSpin && !AnimManager.IsAnimationActive("GearsSpin"))
+            {
+                StartAnimation("GearsSpin");
+                //Api.Logger.Notification("[AirshipTier1] GearsSpin Animation Started");
+            }
+            else if (!shouldSpin && AnimManager.IsAnimationActive("GearsSpin"))
+            {
+                StopAnimation("GearsSpin");
+                MarkShapeModified();//THIS WORKS TO CATCH THE GEAR AND MAKE IT RUSTY WITHOUT OTHER TRACKING, WILL ONLY HAPPEN ONCE SINCE ANIM STATE HOLDS - Pal
+                //Api.Logger.Notification("[AirshipTier1] GearsSpin Animation Stopped");
+            }
+
         }
 
 
@@ -405,7 +455,8 @@ namespace VSAirshipmod
             }
             else if (motion.Y > 0 || Idler)
             {
-                if ((FuelTimer > 0 || Fuel > 0)&& (TemporalFuelUsage > 0 || TemporalGearCount > 0))
+                //if ((FuelTimer > 0 || Fuel > 0)&& (TemporalFuelUsage > 0 || TemporalGearCount > 0))
+                if ((FuelTimer > 0 || Fuel > 0)&& TemporalFuelUsage > 0 )
                 {
                     if (Gametick) {
                         Inflate = Math.Min(Inflate + dt, 3);
@@ -421,15 +472,17 @@ namespace VSAirshipmod
                         {
                             FuelTimer -= motion.Y > 0 ? dt : dt / RotDiscoundWhenHovering;
                         }
-                        if (TemporalFuelUsage <= 0)
+                        /*if (TemporalFuelUsage <= 0)
                         {
                             TemporalFuelUsage = MinutesPerGear * 60 * 1000;
-                            if (Api is ICoreServerAPI sapi)
-                            {
-                                TemporalGearCount -= 1;
-                            }
+                                if (Api is ICoreServerAPI sapi)
+                                {
+                                    TemporalGearCount -= 1;
+                                }
+
                         }
-                        else
+                        else*/
+                        if (TemporalFuelUsage >= 0)
                         {
                             TemporalFuelUsage -= motion.Y > 0 ? (long)(dt * 1000) : 0;
                         }
@@ -593,6 +646,7 @@ namespace VSAirshipmod
                 //controls altitude (horizontal motion). its before tries to move, becouse tries to move ignores up and down motion and it was not working 
                 if (controls.Jump || controls.Sprint)
                 {
+
                     float dir = controls.Jump ? 1 : -1;
 
                     horizontalMotion += dir * dt * 1f;
@@ -676,10 +730,24 @@ namespace VSAirshipmod
                 Api.Logger.Notification("Total: " + Fuel);
                 return;
             }*/
-            if (itemslot.Itemstack?.Collectible.Code == "gear-temporal" && (TemporalGearCount + TemporalFuelUsage > 0? 1:0 ) < TemporalGearMaxCount)
+            //if (itemslot.Itemstack?.Collectible.Code == "gear-temporal" && (TemporalGearCount + TemporalFuelUsage > 0? 1:0 ) < TemporalGearMaxCount)
+            if (itemslot.Itemstack?.Collectible.Code == "gear-temporal" && TemporalFuelUsage <= 0)
             {
-                TemporalGearCount += itemslot.TakeOut((int)((TemporalGearMaxCount - TemporalGearCount) - TemporalFuelUsage > 0 ? 1 : 0)).StackSize;
-                Api.Logger.Notification("Total: " + TemporalGearCount);
+                //TemporalGearCount += itemslot.TakeOut((int)((TemporalGearMaxCount - TemporalGearCount) - TemporalFuelUsage > 0 ? 1 : 0)).StackSize;
+                //Api.Logger.Notification("Total: " + TemporalGearCount);
+                itemslot.TakeOut(1);
+                TemporalFuelUsage = MinutesPerGear * 60 * 1000;//Adding the fuel immediately here like in T2, not sure why this wasnt done off the bat :/ - Pal
+                MarkShapeModified();//to update gear visual from rusty
+                if (Api.Side == EnumAppSide.Server)
+                {
+                    World.PlaySoundAt(new AssetLocation("game:sounds/effect/latch"), this);
+                }
+                var RustyGear = World.GetItem(new AssetLocation("game:gear-rusty"));
+                if (RustyGear != null)
+                {
+                    var stack = new ItemStack(RustyGear, 1);
+                    World.SpawnItemEntity(stack, byEntity.ServerPos.XYZ);
+                }
                 return;
             }
 
@@ -708,8 +776,8 @@ namespace VSAirshipmod
                 Api.Logger.Notification("Fuel Picked Up: " + stack.Attributes.GetFloat("Fuel"));
                 stack.Attributes.SetLong("TemporalFuelUsage", TemporalFuelUsage);
                 Api.Logger.Notification("Usage logged: " + stack.Attributes.GetLong("TemporalFuelUsage"));
-                stack.Attributes.SetInt("TemporalGearCount", TemporalGearCount);
-                Api.Logger.Notification("Gears Picked Up: " + stack.Attributes.GetInt("TemporalGearCount"));
+                //stack.Attributes.SetInt("TemporalGearCount", TemporalGearCount);
+                //Api.Logger.Notification("Gears Picked Up: " + stack.Attributes.GetInt("TemporalGearCount"));
                 if (!byEntity.TryGiveItemStack(stack))
                 {
                     World.SpawnItemEntity(stack, ServerPos.XYZ);
@@ -792,7 +860,8 @@ namespace VSAirshipmod
                 timeString = $"{totalSeconds}s";//Final countdown of the last minute
             }
 
-            if (TemporalGearCount != 0 || TemporalFuelUsage > 0)
+            //if (TemporalGearCount != 0 || TemporalFuelUsage > 0)
+            if (TemporalFuelUsage > 0)
             {
                 text += "\n" + Lang.Get("vsairshipmod:int-temporalfuelusage", timeString);
             }
