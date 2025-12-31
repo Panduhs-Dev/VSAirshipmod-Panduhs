@@ -29,7 +29,7 @@
   "vsairshipmod:block-figurehead-skull": "Airship figurehead (skull)",
   "vsairshipmod:block-figurehead-thunderlord": "Airship figurehead (thunderlord)",
   "vsairshipmod:block-figurehead-wolf": "Airship figurehead (wolf)",
-  "vsairshipmod:blockdesc-figurehead-wolf": "A smaller copy that fits on airships",
+  "vsairshipmod:blockdesc-figurehead-*": "A smaller and lighter replica that fits on airships",
 
   //tier1 items
   "vsairshipmod:item-vsairshipmodroller-tier1": "Tier 1 airship-yard kit",
