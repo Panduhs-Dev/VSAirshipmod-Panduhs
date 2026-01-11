@@ -1,62 +1,52 @@
 [
-	{
-		ingredientPattern:"ABC,_E_,GHI",
+		{
+		ingredientPattern:"_A_,BCB,_E_",
 		ingredients: {
-			"A": { type: "item",  code: "game:book-*", "name": "book", skipVariants: ["normal"]},
-			"B": { type: "item",  code: "game:inkandquill", "quantity": 1},
-			"C": { type: "item",  code: "game:book-*", "name": "book", skipVariants: ["normal"]},
-			"E": { type: "item",  code: "game:paper-parchment", quantity: 12},
-			"G": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]},
-			"H": { type: "item", code: "strangecloth", "quantity": 5},
-			"I": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]}
+			"A": { type: "item",  code: "game:inkandquill", "quantity": 1},
+			"C": { type: "item",  code: "game:paper-parchment", quantity: 5},
+			"B": { type: "item",  code: "game:book-*", "name": "book", skipVariants: ["normal"]},
+			"E": { type: "item", code: "strangecloth", "quantity": 3}
 		},
 		width: 3,
 		height: 3,
-		output: { type: "item", code: "researchpaperitem", quantity: 3}
+		output: { type: "item", code: "researchpaperitem", quantity: 1}
 	},
 	{
-		ingredientPattern:"ABC,_E_,GHI",
+		ingredientPattern:"_A_,BCD,_E_",
 		ingredients: {
-			"A": { type: "item",  code: "game:book-*", "name": "book", skipVariants: ["normal"]},
-			"B": { type: "item",  code: "game:inkandquill", "quantity": 1},
-			"C": { type: "item",  code: "game:lore-book-*" },
-			"E": { type: "item",  code: "game:paper-parchment", quantity: 12},
-			"G": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]},
-			"H": { type: "item", code: "strangecloth", "quantity": 5},
-			"I": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]}
+			"A": { type: "item",  code: "game:inkandquill", "quantity": 1},
+			"B": { type: "item",  code: "game:book-*", "name": "book", skipVariants: ["normal"]},
+			"C": { type: "item",  code: "game:paper-parchment", quantity: 5},
+			"D": { type: "item",  code: "game:lore-book-*" },
+			"E": { type: "item", code: "strangecloth", "quantity": 3}
 		},
 		width: 3,
 		height: 3,
-		output: { type: "item", code: "researchpaperitem", quantity: 3}
+		output: { type: "item", code: "researchpaperitem", quantity: 1}
 	},
 	{
-		ingredientPattern:"ABC,_E_,GHI",
+		ingredientPattern:"_A_,BCD,_E_",
 		ingredients: {
-			"A": { type: "item",  code: "game:lore-book-*" },
-			"B": { type: "item",  code: "game:inkandquill", "quantity": 1},
-			"C": { type: "item",  code: "game:book-*", "name": "book", skipVariants: ["normal"]},
-			"E": { type: "item",  code: "game:paper-parchment", quantity: 12},
-			"G": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]},
-			"H": { type: "item", code: "strangecloth", "quantity": 5},
-			"I": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]}
+			"A": { type: "item",  code: "game:inkandquill", "quantity": 1},
+			"B": { type: "item",  code: "game:lore-book-*" },
+			"C": { type: "item",  code: "game:paper-parchment", quantity: 5},
+			"D": { type: "item",  code: "game:book-*", "name": "book", skipVariants: ["normal"]},
+			"E": { type: "item", code: "strangecloth", "quantity": 3}
 		},
 		width: 3,
 		height: 3,
-		output: { type: "item", code: "researchpaperitem", quantity: 3}
+		output: { type: "item", code: "researchpaperitem", quantity: 1}
 	},
 	{
-		ingredientPattern:"ABC,_E_,GHI",
+		ingredientPattern:"_A_,BCB,_E_",
 		ingredients: {
-			"A": { type: "item",  code: "game:lore-book-*" },
-			"B": { type: "item",  code: "game:inkandquill", "quantity": 1},
-			"C": { type: "item",  code: "game:lore-book-*" },
-			"E": { type: "item",  code: "game:paper-parchment", quantity: 12},
-			"G": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]},
-			"H": { type: "item", code: "strangecloth", "quantity": 5},
-			"I": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]}
+			"A": { type: "item",  code: "game:inkandquill", "quantity": 1},
+			"C": { type: "item",  code: "game:paper-parchment", quantity: 5},
+			"B": { type: "item",  code: "game:lore-book-*" },
+			"E": { type: "item", code: "strangecloth", "quantity": 3}
 		},
 		width: 3,
 		height: 3,
-		output: { type: "item", code: "researchpaperitem", quantity: 3}
+		output: { type: "item", code: "researchpaperitem", quantity: 1}
 	}
 ]

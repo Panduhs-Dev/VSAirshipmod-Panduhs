@@ -1,0 +1,18 @@
+[
+	{
+		ingredientPattern:"ABC,DED,FGH",
+		ingredients: {
+			"A": { type: "item", code: "game:inkandquill", "quantity": 1},
+			"B": { type: "item", code: "researchpaperitem", "quantity": 30},
+			"C": { type: "item", code: "game:shears-steel"},
+			"D": { type: "item", code: "game:leather-normal-plain", quantity: 3},
+			"E": { type: "item", code: "game:paper-parchment", quantity: 30},
+			"F": { type: "item", code: "game:sawblade-steel"},
+			"G": { type: "item", code: "game:metalnailsandstrips-steel", quantity: 2},
+			"H": { type: "item", code: "game:wrench-steel"}
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "aerostatica", quantity: 1}
+	}
+]

@@ -13,19 +13,16 @@
 	maxstacksize: 1,
 	materialDensity: 500,
 	guiTransform: {
-		translation: { x: 3, y: 0, z: -25 },
-		rotation: { x: 155, y: 12, z: -3 },
-		origin: { x: 0.47, y: -0.1, z: 0.8 },
-		scale: 2.0
-	},
-	fpHandTransform: {
-		rotation: { x: 54, y: 99, z: -33 },
-		scale: 3
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: 119, y: -173, z: 5 },
+		origin: { x: 0.47, y: 0.7, z: 0.8 },
+		scaleXyz: { x: -0.96, y: 0.96, z: 0.96 }
 	},
 	tpHandTransform: {
-		translation: { x: -1.15, y: -0.6, z: -0.3 },
-		rotation: { x: 70, y: 11, z: -65 },
-		scale: 0.8
+		translation: { x: -0, y: 0, z: -0 },
+		rotation: { x: 106, y: -3, z: -77 },
+		origin: { x: 0.1, y: -0.1, z: 0.4 },
+		scale: 0.7
 	},
 	groundTransform: {
 		translation: { x: 0, y: 0.41, z: 0 },

@@ -1,6 +1,6 @@
 {
 	code: "researchpaperitem",
-	heldTpIdleAnimation: "holdbothhands",
+	heldTpIdleAnimation: "holdbothhandslarge",
 	storageFlags: 5,
 	behaviors: [{ 
 		name: "GroundStorable",
@@ -26,22 +26,16 @@
 	maxstacksize: 30,
 	materialDensity: 900,
 	guiTransform: {
-		translation: { x: 2, y: 0, z: 0 },
-		rotation: { x: 149, y: -36, z: 0 },
-		origin: { x: 0.5, y: 0.1, z: 0.5 },
-		scale: 3.5
-	},
-	fpHandTransform: {
-		translation: { x: 0, y: 0.1, z: 0 },
-		rotation: { x: 90, y: 0, z: 30 },
-		origin: { x: 0.5, y: 0.1, z: 0.5 },
-		scale: 2.15
+		translation: { x: 0, y: 0, z: 0 },
+		rotation: { x: -65, y: -3, z: 180 },
+		origin: { x: 0.47, y: 0.1, z: 0.5 },
+		scaleXyz: { x: -1.58, y: 1.58, z: 1.58 }
 	},
 	tpHandTransform: {
-		translation: { x: -0.77, y: -0.15, z: -0.64 },
-		rotation: { x: 0, y: -71, z: 18 },
-		origin: { x: 0.5, y: 0.1, z: 0.5 },
-		scale: 0.75
+		translation: { x: -0.3, y: -0.1, z: -0.2 },
+		rotation: { x: 92, y: -57, z: -71 },
+		origin: { x: -0.05, y: -0.2, z: 0.45 },
+		scale: 0.43
 	},
 	groundTransform: {
 		translation: { x: 0, y: 0, z: 0 },
