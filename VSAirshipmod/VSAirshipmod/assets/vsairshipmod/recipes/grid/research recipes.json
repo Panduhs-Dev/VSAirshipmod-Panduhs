@@ -1,0 +1,34 @@
+[
+	{
+		"code": "researchpaperrecipe",
+		ingredientPattern:"ABC,DEF,GHI",
+		ingredients: {
+			"A": { type: "item", code: "game:"},
+			"B": { type: "item", code: "game:inkandquill", "quantity": 1}, //GOOD
+			"C": { type: "block", code:"game:"},
+			"D": { type: "item", code: "game:"},
+			"E": { type: "item", code: "game:paper-parchment", quantity: 12}, //GOOD
+			"F": { type: "item", code: "game:"},
+			"G": { type: "item", code: "game:"},
+			"H": { type: "item", code: "game:"},
+			"I": { type: "item", code: "game:"}
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "researchpaper", quantity: 6}
+	}
+]
+/*
+			"A": { type: "item", code: "game:book-aged-*"},
+			"A": { type: "item", code: "game:book-rotten-*"},
+			"A": { type: "item", code: "game:lore- book-aged-*"},
+			"A": { type: "item", code: "game:lore-book-rotten-*"},
+
+			"I": { type: "block", code: game:"clutter-{ "type": "pile-cloth*"},
+			"I": { type: "block", code: game:"clutter-{ "type": "mechanics-ruined*"}" }
+
+			"I": { type: "block", code: game:"clutter-",
+			"I": { type: "block", code: game:"clutter-{ "type": "mechanics-*"}", allowedVariants: ["ruined1, ruined2, ruined3, ruined4, ruined5"] },
+			"I": { type: "block", code: game:"clutter-{ "type": "mechanics-*"}",name: "ruined3" skipVariants: ["evaporating"] },
+
+/*

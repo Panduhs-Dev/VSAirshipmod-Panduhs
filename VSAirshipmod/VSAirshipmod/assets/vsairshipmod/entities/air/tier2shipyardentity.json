@@ -19,6 +19,7 @@
 			},
 			//stage 1
 			{ requireStacks: [ 
+				//{ type: "item", code: "schematic-tier2", quantity: 1 }
 				{ type: "block", name: "shipbuilding-ingredient-logs", code: "log-placed-*", quantity: 32, storeWildCard: "wood" }
 			  ],
 				addElements: [
@@ -246,7 +247,7 @@
 				] },
 			//stage 23
 			{ requireStacks: [ 
-				{ type: "item", code: "hoop-tinbronze", quantity: 1 }, //PUT CLOCKWORK MOTOR SHAFT HERE
+				{ type: "item", code: "vsairshipmod:airshipmotorshaft", quantity: 1 }, //PUT CLOCKWORK MOTOR SHAFT HERE
 				{ type: "item", code: "metalnailsandstrips-tinbronze", quantity: 2 }
 			  ],
 				addElements: [
@@ -254,7 +255,7 @@
 				] },
 			//stage 24
 			{ requireStacks: [ 
-				{ type: "item", code: "hoop-tinbronze", quantity: 1 } //PUT CLOCKWORK MOTOR BRACE HERE
+				{ type: "item", code: "vsairshipmod:airshipmotorbrace", quantity: 1 } //PUT CLOCKWORK MOTOR BRACE HERE
 			  ],
 				addElements: [
 					"ORIGIN/T2/ORIGIN31-engineframe"

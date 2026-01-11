@@ -21,12 +21,12 @@ namespace VSAirshipmod
 
         public override int TemporalGearCount
         {
-            get => WatchedAttributes.GetInt("TemporalGearCount", 0);
+            get => WatchedAttributes.GetInt("TemporalGearCount", 3);
             set => WatchedAttributes.SetInt("TemporalGearCount", value);
         }
         public override long TemporalFuelUsage
         {
-            get => WatchedAttributes.GetLong("TemporalFuelUsage", 0);
+            get => WatchedAttributes.GetLong("TemporalFuelUsage", MinutesPerGear * 60 * 1000);
             set => WatchedAttributes.SetLong("TemporalFuelUsage", value);
         }
         public virtual string CoalItemCode//Just gonna do it similarly to the temporal system :P

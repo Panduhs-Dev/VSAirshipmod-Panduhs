@@ -1,0 +1,56 @@
+[
+	{
+		"code": "airshipmotorshaftrecipe",
+		ingredientPattern:"ABC,_D_,EFG",
+		ingredients: {
+			"A": { type: "item", code: "game:saw-*", isTool: true, toolDurabilityCost: 30 },
+			"B": { type: "item", code: "game:metalnailsandstrips-tinbronze",  quantity:2},
+			"C": { type: "item", code: "game:hammer-*", isTool: true, toolDurabilityCost: 30 },
+			"D": { type: "item", code: "game:boss-tinbronze", quantity: 1 },
+			"E": { type: "item", code: "game:wrench-*", isTool: true, toolDurabilityCost: 30 },
+			"F": { type: "item", code: "game:rod-tinbronze", quantity: 1 },
+			"G": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 30 }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "airshipmotorshaft"}
+	},
+	{
+		"code": "airshipmotorbracetrecipe",
+		ingredientPattern:"ABC,_D_,EFG",
+		ingredients: {
+			"A": { type: "item", code: "game:saw-*", isTool: true, toolDurabilityCost: 30 },
+			"B": { type: "item", code: "game:metalnailsandstrips-tinbronze",  quantity:2},
+			"C": { type: "item", code: "game:hammer-*", isTool: true, toolDurabilityCost: 30 },
+			"D": { type: "item", code: "game:hoop-tinbronze", quantity: 1 },
+			"E": { type: "item", code: "game:wrench-*", isTool: true, toolDurabilityCost: 30 },
+			"F": { type: "item", code: "game:rod-tinbronze", quantity: 1 },
+			"G": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 30 }
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "airshipmotorbrace"}
+	},
+	{
+		ingredientPattern: "C	I",
+		recipeGroup: 3,
+		ingredients: {
+			"C": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 50},
+			"I": { type: "item", code: "airshipmotorshaft" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "game:metalbit-tinbronze", quantity: 50 }
+	},
+	{
+		ingredientPattern: "C	I",
+		recipeGroup: 3,
+		ingredients: {
+			"C": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 50},
+			"I": { type: "item", code: "airshipmotorbrace" }
+		},
+		width: 1,
+		height: 2,
+		output: { type: "item", code: "game:metalbit-tinbronze", quantity: 50 }
+	},
+]

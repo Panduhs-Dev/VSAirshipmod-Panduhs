@@ -1,9 +1,16 @@
 {
   "game:tabname-airship": "Airship mod!",
 
+  //General airship items
+  "vsairshipmod:item-airshipmotorshaft": "Clockwork-Motor shaft part",
+  "vsairshipmod:itemdesc-airshipmotorshaft": "The first of two airship motor components.",
+  "vsairshipmod:item-airshipmotorbrace": "Clockwork-Motor brace part",
+  "vsairshipmod:itemdesc-airshipmotorbrace": "The second of two airship motor components.",
+
+
   //Balloon cloth pipeline
   "vsairshipmod:item-coatingmix": "Balloon coating mixture",
-  "vsairshipmod:itemdesc-coatingmix": "Thick and sticky, mixing this to water will create balloon coating liquid.",
+  "vsairshipmod:itemdesc-coatingmix": "Thick and sticky, mixing this with water will create balloon coating liquid.",
   "vsairshipmod:item-coatingliquid": "Balloon coating liquid",
   "incontainer-item-coatingliquid": "Balloon coating liquid",
   "vsairshipmod:item-treatedcloth*": "Treated balloon cloth",

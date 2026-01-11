@@ -17,7 +17,7 @@
         "items": [ "*" ],
         "airship": [ "*" ]
     },
-	maxstacksize: 10,
+	maxstacksize: 500,
 	materialDensity: 500,
 	guiTransform: {
 		translation: { x: 3, y: 0, z: -25 },

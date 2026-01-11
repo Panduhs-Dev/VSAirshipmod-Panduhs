@@ -1,0 +1,19 @@
+[
+	{
+		"code": "aerostaticarecipe",
+		ingredientPattern:"ABC,DED,FGH",
+		ingredients: {
+			"A": { type: "item", code: "game:inkandquill", "quantity": 1},
+			"B": { type: "item", code: "item/researchpaper", "quantity": 30},
+			"C": { type: "item", code: "game:shears-blackbronze"},
+			"D": { type: "item", code: "game:leather-normal-plain", quantity: 3},
+			"E": { type: "item", code: "game:paper-parchment", quantity: 30},
+			"F": { type: "item", code: "game:sawblade-blackbronze"},
+			"G": { type: "item", code: "game:metalnailsandstrips-blackbronze", quantity: 2},
+			"H": { type: "item", code: "game:wrench-blackbronze"}
+		},
+		width: 3,
+		height: 3,
+		output: { type: "item", code: "aerostatica", quantity: 1}
+	}
+]

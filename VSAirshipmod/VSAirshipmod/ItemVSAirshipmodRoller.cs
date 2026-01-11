@@ -77,31 +77,31 @@ namespace VSAirshipmod
 				new SkillItem
 				{
 					Code = new AssetLocation("east"),
-					Name = Lang.Get("facing-east", Array.Empty<object>())
+					Name = Lang.Get("facing-west", Array.Empty<object>()) //rivv here, switching these around 180degrees. idk what i'm doing but this worked.
 				},
 				new SkillItem
 				{
 					Code = new AssetLocation("north"),
-					Name = Lang.Get("facing-north", Array.Empty<object>())
+					Name = Lang.Get("facing-south", Array.Empty<object>())
 				},
 				new SkillItem
 				{
 					Code = new AssetLocation("west"),
-					Name = Lang.Get("facing-west", Array.Empty<object>())
+					Name = Lang.Get("facing-east", Array.Empty<object>())
 				},
 				new SkillItem
 				{
 					Code = new AssetLocation("south"),
-					Name = Lang.Get("facing-south", Array.Empty<object>())
+					Name = Lang.Get("facing-north", Array.Empty<object>())
 				}
 			};
 			ICoreClientAPI capi = api as ICoreClientAPI;
 			if (capi != null)
 			{
-				this.skillItems[0].WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("textures/icons/pointeast.svg"), 48, 48, 5, new int?(-1)));
-				this.skillItems[1].WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("textures/icons/pointnorth.svg"), 48, 48, 5, new int?(-1)));
-				this.skillItems[2].WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("textures/icons/pointwest.svg"), 48, 48, 5, new int?(-1)));
-				this.skillItems[3].WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("textures/icons/pointsouth.svg"), 48, 48, 5, new int?(-1)));
+				this.skillItems[0].WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("textures/icons/pointwest.svg"), 48, 48, 5, new int?(-1)));
+				this.skillItems[1].WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("textures/icons/pointsouth.svg"), 48, 48, 5, new int?(-1)));
+				this.skillItems[2].WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("textures/icons/pointeast.svg"), 48, 48, 5, new int?(-1)));
+				this.skillItems[3].WithIcon(capi, capi.Gui.LoadSvgWithPadding(new AssetLocation("textures/icons/pointnorth.svg"), 48, 48, 5, new int?(-1)));
 			}
 		}
 

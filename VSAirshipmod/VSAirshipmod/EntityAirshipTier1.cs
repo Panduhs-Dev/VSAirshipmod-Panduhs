@@ -130,7 +130,7 @@ namespace VSAirshipmod
             //if (TemporalGearCount == -1)
             //    TemporalGearCount = properties.Attributes["TemporalGearCount"].AsInt(1);
             if (TemporalFuelUsage == -1)
-                TemporalFuelUsage = properties.Attributes["TemporalFuelUsage"].AsInt(0);
+                TemporalFuelUsage = properties.Attributes["TemporalFuelUsage"].AsInt(MinutesPerGear * 60 * 1000);
 
             //Listener for TemporalGearCount changes marks the shape modified like sail boat unfurling
             //WatchedAttributes.RegisterModifiedListener("TemporalFuelUsage", MarkShapeModified);
