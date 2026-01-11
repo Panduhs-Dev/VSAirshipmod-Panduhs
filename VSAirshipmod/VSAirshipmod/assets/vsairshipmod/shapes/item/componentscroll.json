@@ -9,7 +9,7 @@
 		"comptex-tier1": [16,16]
 	},
 	"textures": {
-		"comptex-tier1": "E:/GAME_MODDING/VS AIRSHIP MOD/VSAirshipmod/VSAirshipmod/VSAirshipmod/assets/vsairshipmod/textures/item/comptex-tier1",
+		"comptex-tier1": "item/tier1-componentscroll",
 		"utility-map": "item/utility/map"
 	},
 	"elements": [

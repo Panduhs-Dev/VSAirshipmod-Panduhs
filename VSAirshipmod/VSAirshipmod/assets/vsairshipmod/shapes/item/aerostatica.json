@@ -14,18 +14,18 @@
 		"aerostaticapageleft": [16,16],
 		"aerostaticapageright": [16,16]
 	},
-	"textures": {
-		"aerostaticapageleft": "E:/GAME_MODDING/VS AIRSHIP MOD/VSAirshipmod/VSAirshipmod/VSAirshipmod/assets/vsairshipmod/textures/item/aerostaticapageleft",
-		"aerostaticapageright": "E:/GAME_MODDING/VS AIRSHIP MOD/VSAirshipmod/VSAirshipmod/VSAirshipmod/assets/vsairshipmod/textures/item/aerostaticapageright",
-		"book-back": "E:/GAME_MODDING/VS AIRSHIP MOD/VSAirshipmod/VSAirshipmod/VSAirshipmod/assets/vsairshipmod/textures/item/book-back",
-		"book-front": "E:/GAME_MODDING/VS AIRSHIP MOD/VSAirshipmod/VSAirshipmod/VSAirshipmod/assets/vsairshipmod/textures/item/book-front",
-		"lead1": "block/metal/sheet/lead1",
-		"molybdochalkos5": "block/metal/sheet/molybdochalkos5",
-		"cartography-tools": "item/lore/cartography-tools",
-		"normal-brickred": "item/lore/normal-brickred",
-		"pages": "item/lore/pages",
-		"pages-aged": "item/lore/pages-aged"
-	},
+"textures": {
+        "aerostaticapageleft": "item/aerostaticaleft",
+        "aerostaticapageright": "item/aerostaticaparight",
+        "book-back": "item/aerostaticaback",
+        "book-front": "item/aerostaticafront",
+        "lead1": "game:block/metal/sheet/lead1",
+        "molybdochalkos5": "game:block/metal/sheet/molybdochalkos5",
+        "cartography-tools": "game:item/lore/cartography-tools",
+        "normal-brickred": "game:item/lore/normal-brickred",
+        "pages": "game:item/lore/pages",
+        "pages-aged": "game:item/lore/pages-aged"
+    },
 	"elements": [
 		{
 			"name": "origin",

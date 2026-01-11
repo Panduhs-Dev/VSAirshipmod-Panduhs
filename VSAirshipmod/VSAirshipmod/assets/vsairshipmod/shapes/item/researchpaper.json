@@ -9,8 +9,6 @@
 		"researchpaper": [16,16]
 	},
 	"textures": {
-		"map-blank": "game:item/lore/map-blank",
-		"pages": "item/researchpaper"
 	},
 	"elements": [
 		{

@@ -1,31 +1,31 @@
 [
 	{
-		"code": "schematic1recipe-tier1",
+		"code": "schematic1recipe-tier1-adminitem",
 		ingredientPattern:"ABC,DEF,GHI",
 		ingredients: {
-			"A": { type: "block", code: "game:barrel", "quantity": 1},
-			"B": { type: "item", code: "game:rot", "quantity": 5 },
+			"A": { type: "block", code: "game:barrel", "quantity": 1 },
+			"B": { type: "item", code: "componentscroll-tier1" },
 			"C": { type: "block", code: "game:condenser-west", quantity: 1 },
-			"D": { type: "item", code: "game:candle", "quantity": 1},
-			"E": { type: "item", code: "game:gear-temporal"},
-			"F": { type: "block", code: "game:metal-parts", "quantity": 1},
-			"G": { type: "item", code: "game:inkandquill"},
+			"D": { type: "item", code: "game:candle", "quantity": 1 },
+			"E": { type: "item", code: "game:gear-temporal" },
+			"F": { type: "block", code: "game:metal-parts", "quantity": 1 },
+			"G": { type: "item", code: "game:inkandquill" },
 			"H": { type: "item", code: "aerostatica", returnedStack: { type: "item", code: "aerostatica"} },
-			"I": { type: "item", code: "game:paper-parchment", quantity: 2}
+			"I": { type: "item", code: "game:paper-parchment", quantity: 2 }
 		},
 		width: 3,
 		height: 3,
 		output: { type: "item", code: "schematic-tier1", quantity: 1}
 	},
 	{
-		"code": "schematic1recipe-tier2",
+		"code": "schematic1recipe-tier2-adminitem",
 		ingredientPattern:"ABC,DEF,GHI",
 		ingredients: {
 			"A": { type: "item", code: "game:gear-rusty", quantity: 5 },
-			"B": { type: "item", code: "game:charcoal", "quantity": 30 },
+			"B": { type: "item", code: "componentscroll-tier2"},
 			"C": { type: "block", code: "game:verticalboiler-west", quantity: 1 },
-			"D": { type: "item", code: "game:candle", "quantity": 1 },
-			"E": { type: "item", code: "game:gear-temporal"},
+			"D": { type: "item", code: "game:candle", "quantity":  1},
+			"E": { type: "item", code: "game:gear-temporal" },
 			"F": { type: "block", code: "game:metal-parts", "quantity": 1 },
 			"G": { type: "item", code: "game:inkandquill" },
 			"H": { type: "item", code: "aerostatica", returnedStack: { type: "item", code: "aerostatica"} },

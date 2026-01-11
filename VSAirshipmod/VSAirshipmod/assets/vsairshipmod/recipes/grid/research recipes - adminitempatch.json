@@ -7,12 +7,12 @@
 			"C": { type: "item",  code: "game:book-*", "name": "book", skipVariants: ["normal"]},
 			"E": { type: "item",  code: "game:paper-parchment", quantity: 12},
 			"G": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]},
-			"H": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]},
+			"H": { type: "item", code: "strangecloth", "quantity": 5},
 			"I": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]}
 		},
 		width: 3,
 		height: 3,
-		output: { type: "item", code: "researchpaperitem", quantity: 5}
+		output: { type: "item", code: "researchpaperitem", quantity: 3}
 	},
 	{
 		ingredientPattern:"ABC,_E_,GHI",
@@ -22,12 +22,12 @@
 			"C": { type: "item",  code: "game:lore-book-*" },
 			"E": { type: "item",  code: "game:paper-parchment", quantity: 12},
 			"G": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]},
-			"H": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]},
+			"H": { type: "item", code: "strangecloth", "quantity": 5},
 			"I": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]}
 		},
 		width: 3,
 		height: 3,
-		output: { type: "item", code: "researchpaperitem", quantity: 5}
+		output: { type: "item", code: "researchpaperitem", quantity: 3}
 	},
 	{
 		ingredientPattern:"ABC,_E_,GHI",
@@ -37,12 +37,12 @@
 			"C": { type: "item",  code: "game:book-*", "name": "book", skipVariants: ["normal"]},
 			"E": { type: "item",  code: "game:paper-parchment", quantity: 12},
 			"G": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]},
-			"H": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]},
+			"H": { type: "item", code: "strangecloth", "quantity": 5},
 			"I": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]}
 		},
 		width: 3,
 		height: 3,
-		output: { type: "item", code: "researchpaperitem", quantity: 5}
+		output: { type: "item", code: "researchpaperitem", quantity: 3}
 	},
 	{
 		ingredientPattern:"ABC,_E_,GHI",
@@ -52,11 +52,11 @@
 			"C": { type: "item",  code: "game:lore-book-*" },
 			"E": { type: "item",  code: "game:paper-parchment", quantity: 12},
 			"G": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]},
-			"H": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]},
+			"H": { type: "item", code: "strangecloth", "quantity": 5},
 			"I": { type: "block", code: "game:clutter-*", "name": "mechanics-ruined*", skipVariants: ["evaporated"]}
 		},
 		width: 3,
 		height: 3,
-		output: { type: "item", code: "researchpaperitem", quantity: 5}
+		output: { type: "item", code: "researchpaperitem", quantity: 3}
 	}
 ]
