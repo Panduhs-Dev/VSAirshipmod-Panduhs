@@ -1,0 +1,759 @@
+ [
+  {
+    "op": "addmerge",
+    "path": "/client/animations/-",
+    "value": {
+      "code": "T2PilotForward",
+      "animation": "t2pilotfordard",
+      "clientSide": true,
+      "blendMode": "Average",
+      "easeInSpeed": 2,
+      "elementWeight": {
+        "LowerTorso": 80,
+        "UpperTorso": 80,
+        "UpperArmR": 80,
+        "UpperArmL": 80,
+        "LowerArmR": 5,
+        "LowerArmL": 5
+      },
+      "elementBlendMode": {
+        "LowerTorso": "Average",
+        "UpperTorso": "Average",
+        "UpperArmR": "Average",
+        "UpperArmL": "Average",
+        "LowerArmR": "Average",
+        "LowerArmL": "Average"
+      }
+    },
+    "file": "game:entities/humanoid/player.json",
+    "side": "Server"
+  },
+  {
+    "op": "addmerge",
+    "path": "/animations/-",
+    "value": {
+      "code": "T2PilotForward",
+      "animation": "t2pilotforward",
+			"quantityframes": 15,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Hold",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"LowerTorso": { "offsetX": 6.2, "offsetY": -12.6, "offsetZ": 0.0 },
+						"UpperTorso": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 12.0 },
+						"UpperArmR": { "offsetX": 1.3, "offsetY": 0.3, "offsetZ": 0.0, "rotationX": 9.0, "rotationY": -28.0, "rotationZ": -62.0 },
+						"LowerArmR": { "rotationX": -13.0, "rotationY": -7.0, "rotationZ": -22.0 }
+					}
+				},
+				{
+					"frame": 14,
+					"elements": {
+						"UpperArmR": { "offsetX": 1.3, "offsetY": 0.0, "offsetZ": 0.3, "rotationX": 9.0, "rotationY": -23.0, "rotationZ": -70.0 },
+						"LowerArmR": { "rotationX": 0.0, "rotationY": -4.0, "rotationZ": -12.0 }
+					}
+				}
+			]
+    },
+    "file": "game:shapes/entity/humanoid/seraph-faceless.json"
+  },
+  {
+    "op": "addmerge",
+    "path": "/client/animations/-",
+    "value": {
+      "code": "T2PilotBackward",
+      "animation": "t2pilotbackward",
+      "clientSide": true,
+      "blendMode": "Average",
+      "easeInSpeed": 2,
+      "elementWeight": {
+        "LowerTorso": 80,
+        "UpperTorso": 80,
+        "UpperArmR": 80,
+        "UpperArmL": 80,
+        "LowerArmR": 5,
+        "LowerArmL": 5
+      },
+      "elementBlendMode": {
+        "LowerTorso": "Average",
+        "UpperTorso": "Average",
+        "UpperArmR": "Average",
+        "UpperArmL": "Average",
+        "LowerArmR": "Average",
+        "LowerArmL": "Average"
+      }
+    },
+    "file": "game:entities/humanoid/player.json",
+    "side": "Server"
+  },
+  {
+    "op": "addmerge",
+    "path": "/animations/-",
+    "value": {
+      "code": "T2PilotBackward",
+      "animation": "t2pilotbackward",
+			"quantityframes": 15,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Hold",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"LowerTorso": { "offsetX": 6.2, "offsetY": -12.6, "offsetZ": 0.0 },
+						"UpperTorso": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 12.0 },
+						"UpperArmR": { "offsetX": 1.3, "offsetY": 0.3, "offsetZ": 0.0, "rotationX": 9.0, "rotationY": -28.0, "rotationZ": -62.0 },
+						"LowerArmR": { "rotationX": -13.0, "rotationY": -7.0, "rotationZ": -22.0 }
+					}
+				},
+				{
+					"frame": 14,
+					"elements": {
+						"UpperArmR": { "offsetX": 0.5, "offsetY": -0.2, "offsetZ": 0.0, "rotationX": 9.0, "rotationY": -29.0, "rotationZ": -43.0 },
+						"LowerArmR": { "rotationX": -13.0, "rotationY": 0.0, "rotationZ": -46.0 }
+					}
+				}
+			]
+    },
+    "file": "game:shapes/entity/humanoid/seraph-faceless.json"
+  },
+  {
+    "op": "addmerge",
+    "path": "/client/animations/-",
+    "value": {
+      "code": "T2PilotRight",
+      "animation": "t2pilotright",
+      "clientSide": true,
+      "blendMode": "Average",
+      "easeInSpeed": 2,
+      "elementWeight": {
+        "LowerTorso": 80,
+        "UpperTorso": 80,
+        "UpperArmR": 80,
+        "UpperArmL": 80,
+        "LowerArmR": 5,
+        "LowerArmL": 5
+      },
+      "elementBlendMode": {
+        "LowerTorso": "Average",
+        "UpperTorso": "Average",
+        "UpperArmR": "Average",
+        "UpperArmL": "Average",
+        "LowerArmR": "Average",
+        "LowerArmL": "Average"
+      }
+    },
+    "file": "game:entities/humanoid/player.json",
+    "side": "Server"
+  },
+  {
+    "op": "addmerge",
+    "path": "/animations/-",
+    "value": {
+      "code": "T2PilotRight",
+      "animation": "t2pilotright",
+			"quantityframes": 15,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Hold",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"LowerTorso": { "offsetX": 6.2, "offsetY": -12.6, "offsetZ": 0.0 },
+						"UpperTorso": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 12.0 },
+						"UpperArmL": { "offsetX": 0.0, "offsetY": 0.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 33.0, "rotationZ": -95.0 },
+						"LowerArmL": { "rotationX": 0.0, "rotationY": 15.0, "rotationZ": -85.0 }
+					}
+				},
+				{
+					"frame": 2,
+					"elements": {
+						"LowerArmL": { "rotationX": -0.7143, "rotationY": 16.1429, "rotationZ": -80.8571 },
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 35.7143, "rotationZ": -94.7143 }
+					}
+				},
+				{
+					"frame": 4,
+					"elements": {
+						"LowerArmL": { "rotationX": -1.4286, "rotationY": 15.9524, "rotationZ": -75.2143 },
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 39.2619, "rotationZ": -94.7619 }
+					}
+				},
+				{
+					"frame": 6,
+					"elements": {
+						"LowerArmL": { "rotationX": -2.1429, "rotationY": 17.5619, "rotationZ": -69.1714 },
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 40.4095, "rotationZ": -96.2095 }
+					}
+				},
+				{
+					"frame": 7,
+					"elements": {
+						"LowerArmL": { "rotationX": -2.5, "rotationY": 17.4917, "rotationZ": -65.4 },
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 40.9833, "rotationZ": -97.0583 }
+					}
+				},
+				{
+					"frame": 10,
+					"elements": {
+						"LowerArmL": { "rotationX": -3.5714, "rotationY": 16.6143, "rotationZ": -53.7524 },
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 42.7048, "rotationZ": -99.9381 }
+					}
+				},
+				{
+					"frame": 12,
+					"elements": {
+						"LowerArmL": { "rotationX": -4.2857, "rotationY": 14.8071, "rotationZ": -44.3762 }
+					}
+				},
+				{
+					"frame": 14,
+					"elements": {
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 45.0, "rotationZ": -107.0 },
+						"LowerArmL": { "rotationX": -5.0, "rotationY": 9.0, "rotationZ": -35.0 }
+					}
+				}
+			]
+    },
+    "file": "game:shapes/entity/humanoid/seraph-faceless.json"
+  },
+  {
+    "op": "addmerge",
+    "path": "/client/animations/-",
+    "value": {
+      "code": "T2PilotLeft",
+      "animation": "t2pilotleft",
+      "clientSide": true,
+      "blendMode": "Average",
+      "easeInSpeed": 2,
+      "elementWeight": {
+        "LowerTorso": 80,
+        "UpperTorso": 80,
+        "UpperArmR": 80,
+        "UpperArmL": 80,
+        "LowerArmR": 5,
+        "LowerArmL": 5
+      },
+      "elementBlendMode": {
+        "LowerTorso": "Average",
+        "UpperTorso": "Average",
+        "UpperArmR": "Average",
+        "UpperArmL": "Average",
+        "LowerArmR": "Average",
+        "LowerArmL": "Average"
+      }
+    },
+    "file": "game:entities/humanoid/player.json",
+    "side": "Server"
+  },
+  {
+    "op": "addmerge",
+    "path": "/animations/-",
+    "value": {
+      "code": "T2PilotLeft",
+      "animation": "t2pilotleft",
+			"quantityframes": 15,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Hold",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"LowerTorso": { "offsetX": 6.2, "offsetY": -12.6, "offsetZ": 0.0 },
+						"UpperTorso": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 12.0 },
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 33.0, "rotationZ": -95.0 },
+						"LowerArmL": { "rotationX": 0.0, "rotationY": 15.0, "rotationZ": -85.0 }
+					}
+				},
+				{
+					"frame": 2,
+					"elements": {
+						"LowerArmL": { "rotationX": 0.0, "rotationY": 13.2857, "rotationZ": -86.1429 }
+					}
+				},
+				{
+					"frame": 4,
+					"elements": {
+						"LowerArmL": { "rotationX": 0.0, "rotationY": 10.7381, "rotationZ": -86.7857 }
+					}
+				},
+				{
+					"frame": 6,
+					"elements": {
+						"LowerArmL": { "rotationX": 0.0, "rotationY": 8.5905, "rotationZ": -85.8286 }
+					}
+				},
+				{
+					"frame": 8,
+					"elements": {
+						"LowerArmL": { "rotationX": 0.0, "rotationY": 7.9429, "rotationZ": -84.3714 }
+					}
+				},
+				{
+					"frame": 10,
+					"elements": {
+						"LowerArmL": { "rotationX": 0.0, "rotationY": 7.6286, "rotationZ": -81.2476 }
+					}
+				},
+				{
+					"frame": 12,
+					"elements": {
+						"LowerArmL": { "rotationX": 0.0, "rotationY": 7.8143, "rotationZ": -77.6238 }
+					}
+				},
+				{
+					"frame": 14,
+					"elements": {
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 10.0, "rotationZ": -102.0 },
+						"LowerArmL": { "rotationX": 0.0, "rotationY": 10.0, "rotationZ": -72.0 }
+					}
+				}
+			]
+    },
+    "file": "game:shapes/entity/humanoid/seraph-faceless.json"
+  },
+  {
+    "op": "addmerge",
+    "path": "/client/animations/-",
+    "value": {
+      "code": "T2PilotDown",
+      "animation": "t2pilotdown",
+      "clientSide": true,
+      "blendMode": "Average",
+      "easeInSpeed": 2,
+      "elementWeight": {
+        "LowerTorso": 80,
+        "UpperTorso": 80,
+        "UpperArmR": 80,
+        "UpperArmL": 80,
+        "LowerArmR": 5,
+        "LowerArmL": 5
+      },
+      "elementBlendMode": {
+        "LowerTorso": "Average",
+        "UpperTorso": "Average",
+        "UpperArmR": "Average",
+        "UpperArmL": "Average",
+        "LowerArmR": "Average",
+        "LowerArmL": "Average"
+      }
+    },
+    "file": "game:entities/humanoid/player.json",
+    "side": "Server"
+  },
+  {
+    "op": "addmerge",
+    "path": "/animations/-",
+    "value": {
+      "code": "T2PilotDown",
+      "animation": "t2pilotdown",
+			"quantityframes": 15,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Hold",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"LowerTorso": { "offsetX": 6.2, "offsetY": -12.6, "offsetZ": 0.0 },
+						"UpperTorso": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 12.0 },
+						"UpperArmR": { "offsetX": -0.5, "offsetY": -0.5, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -140.0 },
+						"LowerArmR": { "offsetX": 0.0, "offsetY": -0.5, "offsetZ": 0.0, "rotationX": 6.0, "rotationY": 0.0, "rotationZ": 5.0 }
+					}
+				},
+				{
+					"frame": 14,
+					"elements": {
+						"UpperArmR": { "offsetX": 0.0, "offsetY": 0.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -127.0 },
+						"LowerArmR": { "offsetX": 0.0, "offsetY": -0.5, "offsetZ": 0.0, "rotationX": 6.0, "rotationY": 0.0, "rotationZ": -9.0 }
+					}
+				}
+			]
+    },
+    "file": "game:shapes/entity/humanoid/seraph-faceless.json"
+  },
+  {
+    "op": "addmerge",
+    "path": "/client/animations/-",
+    "value": {
+      "code": "T2PilotRightHalf",
+      "animation": "t2pilotrighthalf",
+      "clientSide": true,
+      "blendMode": "Average",
+      "easeInSpeed": 2,
+      "elementWeight": {
+        "LowerTorso": 80,
+        "UpperTorso": 80,
+        "UpperArmR": 80,
+        "UpperArmL": 80,
+        "LowerArmR": 5,
+        "LowerArmL": 5
+      },
+      "elementBlendMode": {
+        "LowerTorso": "Average",
+        "UpperTorso": "Average",
+        "UpperArmR": "Average",
+        "UpperArmL": "Average",
+        "LowerArmR": "Average",
+        "LowerArmL": "Average"
+      }
+    },
+    "file": "game:entities/humanoid/player.json",
+    "side": "Server"
+  },
+  {
+    "op": "addmerge",
+    "path": "/animations/-",
+    "value": {
+      "code": "T2PilotRightHalf",
+      "animation": "t2pilotrighthalf",
+			"quantityframes": 15,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Hold",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"LowerTorso": { "offsetX": 6.2, "offsetY": -12.6, "offsetZ": 0.0 },
+						"UpperTorso": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 12.0 },
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 33.0, "rotationZ": -95.0 },
+						"LowerArmL": { "rotationX": 0.0, "rotationY": 15.0, "rotationZ": -85.0 }
+					}
+				},
+				{
+					"frame": 4,
+					"elements": {
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 35.71, "rotationZ": -94.71 },
+						"LowerArmL": { "rotationX": -0.71, "rotationY": 16.14, "rotationZ": -80.86 }
+					}
+				},
+				{
+					"frame": 8,
+					"elements": {
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 39.26, "rotationZ": -94.76 },
+						"LowerArmL": { "rotationX": -1.43, "rotationY": 15.95, "rotationZ": -75.21 }
+					}
+				},
+				{
+					"frame": 12,
+					"elements": {
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 40.4067, "rotationZ": -96.21 },
+						"LowerArmL": { "rotationX": -2.1433, "rotationY": 17.56, "rotationZ": -69.17 }
+					}
+				},
+				{
+					"frame": 14,
+					"elements": {
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 40.98, "rotationZ": -97.06 },
+						"LowerArmL": { "rotationX": -2.5, "rotationY": 17.49, "rotationZ": -65.4 }
+					}
+				}
+			]
+    },
+    "file": "game:shapes/entity/humanoid/seraph-faceless.json"
+  },
+  {
+    "op": "addmerge",
+    "path": "/client/animations/-",
+    "value": {
+      "code": "T2PilotLeftHalf",
+      "animation": "t2pilotlefthalf",
+      "clientSide": true,
+      "blendMode": "Average",
+      "easeInSpeed": 2,
+      "elementWeight": {
+        "LowerTorso": 80,
+        "UpperTorso": 80,
+        "UpperArmR": 80,
+        "UpperArmL": 80,
+        "LowerArmR": 5,
+        "LowerArmL": 5
+      },
+      "elementBlendMode": {
+        "LowerTorso": "Average",
+        "UpperTorso": "Average",
+        "UpperArmR": "Average",
+        "UpperArmL": "Average",
+        "LowerArmR": "Average",
+        "LowerArmL": "Average"
+      }
+    },
+    "file": "game:entities/humanoid/player.json",
+    "side": "Server"
+  },
+  {
+    "op": "addmerge",
+    "path": "/animations/-",
+    "value": {
+      "code": "T2PilotLeftHalf",
+      "animation": "t2pilotlefthalf",
+			"quantityframes": 15,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Hold",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"LowerTorso": { "offsetX": 6.2, "offsetY": -12.6, "offsetZ": 0.0 },
+						"UpperTorso": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 12.0 },
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 33.0, "rotationZ": -95.0 },
+						"LowerArmL": { "rotationX": 0.0, "rotationY": 15.0, "rotationZ": -85.0 }
+					}
+				},
+				{
+					"frame": 4,
+					"elements": {
+						"LowerArmL": { "rotationX": 0.0, "rotationY": 13.29, "rotationZ": -86.14 }
+					}
+				},
+				{
+					"frame": 8,
+					"elements": {
+						"LowerArmL": { "rotationX": 0.0, "rotationY": 10.74, "rotationZ": -86.79 }
+					}
+				},
+				{
+					"frame": 14,
+					"elements": {
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 21.5, "rotationZ": -98.5 },
+						"LowerArmL": { "rotationX": 0.0, "rotationY": 8.27, "rotationZ": -85.1 }
+					}
+				}
+			]
+    },
+    "file": "game:shapes/entity/humanoid/seraph-faceless.json"
+  },
+  {
+    "op": "addmerge",
+    "path": "/client/animations/-",
+    "value": {
+      "code": "T2PilotUp",
+      "animation": "t2pilotup",
+      "clientSide": true,
+      "blendMode": "Average",
+      "easeInSpeed": 2,
+      "elementWeight": {
+        "LowerTorso": 80,
+        "UpperTorso": 80,
+        "UpperArmR": 80,
+        "UpperArmL": 80,
+        "LowerArmR": 5,
+        "LowerArmL": 5
+      },
+      "elementBlendMode": {
+        "LowerTorso": "Average",
+        "UpperTorso": "Average",
+        "UpperArmR": "Average",
+        "UpperArmL": "Average",
+        "LowerArmR": "Average",
+        "LowerArmL": "Average"
+      }
+    },
+    "file": "game:entities/humanoid/player.json",
+    "side": "Server"
+  },
+  {
+    "op": "addmerge",
+    "path": "/animations/-",
+    "value": {
+      "code": "T2PilotUp",
+      "animation": "t2pilotup",
+			"quantityframes": 15,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Hold",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"LowerTorso": { "offsetX": 6.2, "offsetY": -12.6, "offsetZ": 0.0 },
+						"UpperTorso": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 12.0 },
+						"UpperArmR": { "offsetX": 0.5, "offsetY": 0.3, "offsetZ": 0.0, "rotationX": 9.0, "rotationY": -39.0, "rotationZ": -65.0 },
+						"LowerArmR": { "offsetX": 0.0, "offsetY": -0.5, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 3.0 }
+					}
+				},
+				{
+					"frame": 1,
+					"elements": {
+						"UpperArmR": { "rotationX": 9.4286, "rotationY": -38.6429, "rotationZ": -58.5 },
+						"LowerArmR": { "rotationX": 0.0, "rotationY": -3.0714, "rotationZ": -8.0 }
+					}
+				},
+				{
+					"frame": 3,
+					"elements": {
+						"LowerArmR": { "rotationX": 0.0, "rotationY": -9.2143, "rotationZ": -22.0 },
+						"UpperArmR": { "rotationX": 10.2857, "rotationY": -37.6914, "rotationZ": -50.2821 }
+					}
+				},
+				{
+					"frame": 5,
+					"elements": {
+						"LowerArmR": { "rotationX": 0.0, "rotationY": -15.3571, "rotationZ": -30.1189 },
+						"UpperArmR": { "rotationX": 11.1429, "rotationY": -35.3748, "rotationZ": -45.5944 }
+					}
+				},
+				{
+					"frame": 12,
+					"elements": {
+						"LowerArmR": { "rotationX": 1.1429, "rotationY": -37.0, "rotationZ": -47.9153 }
+					}
+				},
+				{
+					"frame": 13,
+					"elements": {
+						"LowerArmR": { "rotationX": 0.5714, "rotationY": -40.25, "rotationZ": -50.4577 }
+					}
+				},
+				{
+					"frame": 14,
+					"elements": {
+						"UpperArmR": { "rotationX": 15.0, "rotationY": -20.0, "rotationZ": -30.0 },
+						"LowerArmR": { "offsetX": 0.0, "offsetY": 0.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": -43.0, "rotationZ": -53.0 }
+					}
+				}
+			]
+    },
+    "file": "game:shapes/entity/humanoid/seraph-faceless.json"
+  },
+  {
+    "op": "addmerge",
+    "path": "/client/animations/-",
+    "value": {
+      "code": "T2PilotIdle",
+      "animation": "t2pilotidle",
+      "clientSide": true,
+      "blendMode": "Average",
+      "easeInSpeed": 2,
+      "elementWeight": {
+        "LowerTorso": 80,
+        "UpperTorso": 80,
+        "UpperArmR": 80,
+        "UpperArmL": 80,
+        "LowerArmR": 5,
+        "LowerArmL": 5
+      },
+      "elementBlendMode": {
+        "LowerTorso": "Average",
+        "UpperTorso": "Average",
+        "UpperArmR": "Average",
+        "UpperArmL": "Average",
+        "LowerArmR": "Average",
+        "LowerArmL": "Average"
+      }
+    },
+    "file": "game:entities/humanoid/player.json",
+    "side": "Server"
+  },
+  {
+    "op": "addmerge",
+    "path": "/animations/-",
+    "value": {
+      "code": "T2PilotIdle",
+      "animation": "t2pilotidle",
+			"quantityframes": 60,
+			"onActivityStopped": "Rewind",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"LowerTorso": { "offsetX": 6.2, "offsetY": -12.6, "offsetZ": 0.0 },
+						"UpperTorso": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 12.0 },
+						"LowerArmR": { "rotationX": -13.0, "rotationY": -7.0, "rotationZ": -22.0 },
+						"LowerArmL": { "rotationX": 45.0, "rotationY": 0.0, "rotationZ": -20.0 },
+            "Head": { "offsetX": 0.0, "offsetY": 0.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -10.0 },
+						"UpperArmR": { "offsetX": 1.3, "offsetY": 0.3, "offsetZ": 0.0, "rotationX": 9.0, "rotationY": -28.0, "rotationZ": -62.0 },
+						"UpperArmL": { "offsetX": 1.0, "offsetY": 0.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 20.0, "rotationZ": -52.0 },
+						"UpperFootL": { "offsetX": 0.0, "offsetY": 1.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 8.0, "rotationZ": -80.0 },
+						"LowerFootL": { "offsetX": 0.0, "offsetY": 1.5, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 80.0 },
+						"UpperFootR": { "offsetX": 0.0, "offsetY": 1.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": -8.0, "rotationZ": -85.0 },
+						"LowerFootR": { "offsetX": 0.0, "offsetY": 1.5, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 78.0 }
+					}
+				},
+        {
+					"frame": 23,
+					"elements": {
+						"UpperArmL": { "rotationX": 0.0, "rotationY": 21.0, "rotationZ": -49.0 }
+					}
+				},
+				{
+					"frame": 30,
+					"elements": {
+						"UpperTorso": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 11.0 },
+						"Head": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -9.0 },
+						"LowerFootL": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 69.0 },
+						"LowerFootR": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 90.0 }
+					}
+				}
+			]
+    },
+    "file": "game:shapes/entity/humanoid/seraph-faceless.json"
+  },
+  {
+    "op": "addmerge",
+    "path": "/client/animations/-",
+    "value": {
+      "code": "T2FloorIdle",
+      "animation": "t2flooridle",
+      "clientSide": true,
+      "blendMode": "Average",
+      "easeInSpeed": 2,
+      "elementWeight": {
+        "LowerTorso": 80,
+        "UpperTorso": 80,
+        "UpperArmR": 80,
+        "UpperArmL": 80,
+        "LowerArmR": 5,
+        "LowerArmL": 5
+      },
+      "elementBlendMode": {
+        "LowerTorso": "Average",
+        "UpperTorso": "Average",
+        "UpperArmR": "Average",
+        "UpperArmL": "Average",
+        "LowerArmR": "Average",
+        "LowerArmL": "Average"
+      }
+    },
+    "file": "game:entities/humanoid/player.json",
+    "side": "Server"
+  },
+  {
+    "op": "addmerge",
+    "path": "/animations/-",
+    "value": {
+      "code": "T2FloorIdle",
+      "animation": "t2flooridle",
+			"quantityframes": 60,
+			"onActivityStopped": "EaseOut",
+			"onAnimationEnd": "Repeat",
+			"keyframes": [
+				{
+					"frame": 0,
+					"elements": {
+						"LowerTorso": { "offsetX": 5.0, "offsetY": -8.5, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -6.0 },
+						"UpperFootR": { "offsetX": 1.0, "offsetY": 0.5, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -67.5 },
+						"LowerFootR": { "offsetX": -1.5, "offsetY": 0.0, "offsetZ": 0.0, "rotationX": -5.0, "rotationY": 0.0, "rotationZ": 163.5 },
+						"UpperTorso": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 19.0 },
+						"UpperArmR": { "rotationX": 14.0, "rotationY": -6.0, "rotationZ": -40.0 },
+						"LowerArmR": { "rotationX": -3.0, "rotationY": 69.0, "rotationZ": -50.0 },
+						"UpperArmL": { "rotationX": -11.0, "rotationY": 25.0, "rotationZ": -30.0 },
+						"LowerArmL": { "rotationX": 11.0, "rotationY": -66.0, "rotationZ": -50.0 },
+						"Head": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -14.0 },
+						"UpperFootL": { "offsetX": 1.0, "offsetY": 0.5, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -67.5 },
+						"LowerFootL": { "offsetX": -1.5, "offsetY": 0.0, "offsetZ": 0.0, "rotationX": 5.0, "rotationY": 0.0, "rotationZ": 163.5 }
+					}
+				},
+				{
+					"frame": 25,
+					"elements": {
+						"UpperTorso": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 18.0 },
+						"Head": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -13.0 },
+						"UpperArmR": { "rotationX": 14.0, "rotationY": -6.0, "rotationZ": -39.0 },
+						"UpperArmL": { "rotationX": -11.0, "rotationY": 25.0, "rotationZ": -29.0 }
+					}
+				}
+			]
+    },
+    "file": "game:shapes/entity/humanoid/seraph-faceless.json"
+  }
+]

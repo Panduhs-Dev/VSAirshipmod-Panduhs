@@ -8,14 +8,14 @@
 		{ code: "material", states: ["oak"] }
 	],
 	hitboxSizeByType: {
-		"*": { x: 2, y: 0.2, z: 2 }
+		"*": { x: 0, y: 0, z: 0 }
 	},
 	attributes: {
 		airshiptype: "tier1",
 		relayRopeInteractions: true,
 		stages: [
 			{ addElements: [ "ORIGIN/ORIGIN0-launchpad" ] },
-			{ requireStacks: [ { type: "block", name: "shipbuildingingredient", code: "barrel", quantity: 1 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN1-barrel"] },
+			{ requireStacks: [ { type: "item", code: "vsairshipmod:schematic-tier1", quantity: 1}, { type: "block", name: "shipbuildingingredient", code: "barrel", quantity: 1 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN1-barrel", "ORIGIN/ORIGINAirship/ORIGIN0-lectern"] },
 			{ requireStacks: [ { type: "block", code: "metal-scraps", quantity: 16 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN2-scrapmetal"] },
 			{ requireStacks: [ { type: "item", code: "leather-normal-plain", quantity: 6 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN3-leather"], removeElements: ["ORIGIN/ORIGINAirship/ORIGIN2-scrapmetal"] },
 			{ requireStacks: [ { type: "block", code: "condenser-west", quantity: 1 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN4-condenser"] },
@@ -33,8 +33,8 @@
 			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 8 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN17-balloon3"] },
 			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 12 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN18-balloon4"] },
 			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 16 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN19-balloon5"] },
-			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 16 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN20-balloon6"] },
-			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 28 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN21-balloon7"] },
+			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 20 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN20-balloon6"] },
+			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 26 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN21-balloon7"] },
 			{ requireStacks: [ { type: "item", code: "vsairshipmod:treatedcloth", quantity: 7 } ], addElements: ["ORIGIN/ORIGINAirship/ORIGIN22-balloon8"] },
 			{ requireStacks: [ ], actionLangCode: "Launch" }
 		]
@@ -85,7 +85,14 @@
 			"linen": { "base": "game:item/bag/linensack/linen" },
 			"top": { "base": "game:item/bag/linensack/top" },
 			"rope": { "base": "game:item/resource/rope" },
-			"temporal": { "base": "game:item/resource/temporalgear" }
+			"temporal": { "base": "game:item/resource/temporalgear" },
+			"ceramic": { "base": "game:block/clay/ceramic" },
+			"copper": { "base": "game:block/metal/ingot/copper" },
+			"iron": { "base":  "game:block/metal/ingot/copper" },
+			"feather": { "base": "game:item/resource/feather" },
+			"map-blank": { "base": "game:item/utility/map-blank" },
+			"schematic": { "base": "item/tier1-schematic" },
+			"quartz": { "base": "game:block/glass/quartz" }
 		},
 		animations: [
 			{

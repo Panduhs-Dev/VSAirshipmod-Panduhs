@@ -1,10 +1,11 @@
 [
 	{
-		ingredientPattern:"_A_,BCB",
+		ingredientPattern:"_A_,BCD",
 		ingredients: {
 			"A": { type: "item",  code: "game:inkandquill", "quantity": 1},
+			"B": { type: "item",  code: "game:book-*", "name": "book1", allowedVariants: ["aged-orangebrown", "aged-orange", "aged-darkgreen", "aged-darkgray", "aged-cherryred", "aged-brickred", "aged-darkolive", "aged-darkbeige", "aged-olive", "aged-purpleorange", "aged-gray", "rotten-gray", "rotten-brown", "rotten-rust", "rotten-purple", "rotten-green"]},
 			"C": { type: "item",  code: "game:paper-parchment", quantity: 5},
-			"B": { type: "item",  code: "game:book-*", "name": "book", skipVariants: ["normal"]}
+			"D": { type: "item",  code: "game:book-*", "name": "book2", allowedVariants: ["aged-orangebrown", "aged-orange", "aged-darkgreen", "aged-darkgray", "aged-cherryred", "aged-brickred", "aged-darkolive", "aged-darkbeige", "aged-olive", "aged-purpleorange", "aged-gray", "rotten-gray", "rotten-brown", "rotten-rust", "rotten-purple", "rotten-green"]}
 		},
 		width: 3,
 		height: 2,
@@ -14,8 +15,8 @@
 		ingredientPattern:"_A_,BCD",
 		ingredients: {
 			"A": { type: "item",  code: "game:inkandquill", "quantity": 1},
+			"B": { type: "item",  code: "game:book-*", "name": "book", allowedVariants: ["aged-orangebrown", "aged-orange", "aged-darkgreen", "aged-darkgray", "aged-cherryred", "aged-brickred", "aged-darkolive", "aged-darkbeige", "aged-olive", "aged-purpleorange", "aged-gray", "rotten-gray", "rotten-brown", "rotten-rust", "rotten-purple", "rotten-green"]},
 			"C": { type: "item",  code: "game:paper-parchment", quantity: 5},
-			"B": { type: "item",  code: "game:book-*", "name": "book", skipVariants: ["normal"]},
 			"D": { type: "item",  code: "game:lore-book-*" }
 		},
 		width: 3,
@@ -26,9 +27,9 @@
 		ingredientPattern:"_A_,BCD",
 		ingredients: {
 			"A": { type: "item",  code: "game:inkandquill", "quantity": 1},
+			"B": { type: "item",  code: "game:lore-book-*" },
 			"C": { type: "item",  code: "game:paper-parchment", quantity: 5},
-			"D": { type: "item",  code: "game:book-*", "name": "book", skipVariants: ["normal"]},
-			"B": { type: "item",  code: "game:lore-book-*" }
+			"D": { type: "item",  code: "game:book-*", "name": "book", allowedVariants: ["aged-orangebrown", "aged-orange", "aged-darkgreen", "aged-darkgray", "aged-cherryred", "aged-brickred", "aged-darkolive", "aged-darkbeige", "aged-olive", "aged-purpleorange", "aged-gray", "rotten-gray", "rotten-brown", "rotten-rust", "rotten-purple", "rotten-green"]}
 		},
 		width: 3,
 		height: 2,
@@ -38,8 +39,9 @@
 		ingredientPattern:"_A_,BCB",
 		ingredients: {
 			"A": { type: "item",  code: "game:inkandquill", "quantity": 1},
+			"B": { type: "item",  code: "game:lore-book-*" },
 			"C": { type: "item",  code: "game:paper-parchment", quantity: 5},
-			"B": { type: "item",  code: "game:lore-book-*" }
+			"D": { type: "item",  code: "game:lore-book-*" }
 		},
 		width: 3,
 		height: 2,

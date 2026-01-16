@@ -8,7 +8,7 @@
 		{ "code": "material", "states": [ "aged" ], "loadFromProperties": "game:block/wood" }
 	],
 	hitboxSizeByType: {
-		"*": { x: 2, y: 0.2, z: 2 }
+		"*": { x: 0, y: 0, z: 0 }
 	},
 	attributes: {
 		airshiptype: "tier2",
@@ -19,10 +19,11 @@
 			},
 			//stage 1
 			{ requireStacks: [ 
-				//{ type: "item", code: "schematic-tier2", quantity: 1 }
+				{ type: "item", code: "vsairshipmod:schematic-tier2", quantity: 1 },
 				{ type: "block", name: "shipbuilding-ingredient-logs", code: "log-placed-*", quantity: 32, storeWildCard: "wood" }
 			  ],
 				addElements: [
+					"ORIGIN/T2/ORIGIN0-lectern",
 					"ORIGIN/C0-coraclebuild/ORIGINBoat/ORIGIN1Rim",
 					"ORIGIN/T2/ORIGIN1-treetrunks1",
 					"ORIGIN/T2/ORIGIN2-extrashort1",
@@ -536,7 +537,13 @@
 			"linen": { "base": "game:item/bag/linensack/linen" },
 			"top": { "base": "game:item/bag/linensack/top" },
 			"furside": { "base": "game:item/resource/hide/raw-huge" },
-			"rope": { "base": "game:item/resource/rope" }
+			"rope": { "base": "game:item/resource/rope" },
+			"copper": { "base": "game:block/metal/ingot/copper" },
+			"iron": { "base": "game:block/metal/ingot/tinbronze" },
+			"feather": { "base": "game:item/resource/feather" },
+			"map-blank": { "base": "game:item/utility/map-blank" },
+			"schematic": { "base": "item/tier2-schematic" },
+			"quartz": { "base": "game:block/glass/quartz" }
 		},
 		animations: [
 			{

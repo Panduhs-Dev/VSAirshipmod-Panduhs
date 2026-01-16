@@ -1,6 +1,9 @@
 {
 	code: "aerostatica",
 	heldTpIdleAnimation: "holdbothhandslarge",
+	attributes: {
+				noConsumeOnCrafting: true
+    },
 	behaviors: [
 		{ name: "GroundStorable", properties: { layout: 'SingleCenter',randomizeCenterRotation: false, collisionBox: { x1: 0.2, y1: 0, z1: 0.2, x2: 0.8, y2: 0.2, z2: 0.8 } } }
 	],

@@ -324,17 +324,28 @@ else if (this.CurrentStage >= this.stages.Length - 2 && !this.AnimManager.IsAnim
 				}
 			}
 			if (!skipMatCost && requireIngreds.Count > 0)
-			{
-				ConstructionIgredient ingred2 = requireIngreds[0];
-				string langCode = plr.LanguageCode;
-				plr.SendIngameError("missingstack", null, new object[]
-				{
-					ingred2.Quantity,
-					ingred2.IsWildCard ? Lang.GetL(langCode, ingred2.Name ?? "", Array.Empty<object>()) : ingred2.ResolvedItemstack.GetName()
-				});
-				return false;
-			}
-			foreach (KeyValuePair<string, string> val2 in storeWildCard)
+            {
+                ConstructionIgredient ingred2 = requireIngreds[0];
+                string langCode = plr.LanguageCode;
+                if (ingred2.Quantity == 0)
+                {
+                    plr.SendIngameError("missingstack", null, new object[]
+                {
+                    1, //adding a seperate missing item error for when a component is intentionally NOT consumed
+                    ingred2.IsWildCard ? Lang.GetL(langCode, ingred2.Name ?? "", Array.Empty<object>()) : ingred2.ResolvedItemstack.GetName()
+                });
+                }
+                else
+                {
+                    plr.SendIngameError("missingstack", null, new object[]
+                {
+                    ingred2.Quantity,
+                    ingred2.IsWildCard ? Lang.GetL(langCode, ingred2.Name ?? "", Array.Empty<object>()) : ingred2.ResolvedItemstack.GetName()
+                });
+                }
+                return false;
+            }
+            foreach (KeyValuePair<string, string> val2 in storeWildCard)
 			{
 				this.storedWildCards[val2.Key] = val2.Value;
 			}
