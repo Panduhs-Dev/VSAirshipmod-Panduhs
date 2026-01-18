@@ -51,7 +51,18 @@
       "idle": "sitboatidle",
       "ready": "",
       "forwards": "",
-      "backwards": ""
+      "backwards": "",
+
+      // rivv edited this in
+      "PilotForward": "T2PilotForward",
+      "PilotBackward": "t2pilotbackward",
+      "PilotTurnLeft": "t2pilotleft",
+      "PilotTurnRight": "t2pilotright",
+      "PilotGoUp": "t2pilotup",
+      "PilotGoDown": "t2pilotdown",
+      "PilotTurnLeftHalf": "t2pilotlefthalf",
+      "PilotTurnRightHalf": "t2pilotrighthalf"
+
     },
     "TemporalGearMaxCount": 3,
     "TemporalGearCount": 3
