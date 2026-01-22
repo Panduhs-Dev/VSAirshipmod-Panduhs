@@ -32,10 +32,10 @@
     "swimmingOffsetY": 0,
     "rightClickPickup": true,
     "mountAnimations": {
-      "idle": "SitBarrelIdle",
+      "idle": "T1PilotIdle",
       "ready": "",
-      "forwards": "",
-      "backwards": ""
+      "forwards": "T1PilotRowing", //TESTING
+      "backwards": "T1PilotDown" //TESTING
     },
     "Fuel": 0.0,
     "TemporalGearCount": 1,

@@ -345,6 +345,9 @@
 			{ requireStacks: [ 
 				{ type: "item", code: "vsairshipmod:treatedcloth", quantity: 12 }
 			  ],
+				removeElements: [
+				"ORIGIN/T2/ORIGIN41-hoseportground"
+				],
 				addElements: [
 					"ORIGIN/T2/ORIGIN44-balloon1"
 				] },

@@ -4,7 +4,7 @@
     "path": "/client/animations/-",
     "value": {
       "code": "T2PilotForward",
-      "animation": "t2pilotfordard",
+      "animation": "t2pilotforward",
       "clientSide": true,
       "blendMode": "Average",
       "easeInSpeed": 2,
