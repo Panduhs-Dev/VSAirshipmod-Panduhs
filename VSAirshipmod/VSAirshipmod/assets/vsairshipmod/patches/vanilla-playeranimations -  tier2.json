@@ -6,15 +6,15 @@
       "code": "T2PilotForward",
       "animation": "t2pilotforward",
       "clientSide": true,
-      "blendMode": "Average",
-      "easeInSpeed": 2,
+      "blendMode": "Add",
+      "easeInSpeed": 50,
       "elementWeight": {
-        "LowerTorso": 80,
+        "LowerTorso": 0,
         "UpperTorso": 80,
         "UpperArmR": 80,
-        "UpperArmL": 80,
+        "UpperArmL": 0,
         "LowerArmR": 5,
-        "LowerArmL": 5
+        "LowerArmL": 0
       },
       "elementBlendMode": {
         "LowerTorso": "Average",

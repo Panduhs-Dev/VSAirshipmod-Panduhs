@@ -190,6 +190,29 @@ namespace VSAirshipmod
         }
 
 
+        private void ApplySeatAnimation(EntityAirshipSeat seat)
+        {
+            //Stop all animations if no longer active
+            if (!animForward) seat.Passenger.AnimManager.StopAnimation(MountAnimations["PilotForward"]);
+            if (!animBackward) seat.Passenger.AnimManager.StopAnimation(MountAnimations["PilotBackward"]);            
+            if (!animLeft) seat.Passenger.AnimManager.StopAnimation(MountAnimations["PilotTurnLeft"]);            
+            if (!animRight) seat.Passenger.AnimManager.StopAnimation(MountAnimations["PilotTurnRight"]);            
+            if (!animLeftHalf) seat.Passenger.AnimManager.StopAnimation(MountAnimations["PilotTurnLeftHalf"]);            
+            if (!animRightHalf) seat.Passenger.AnimManager.StopAnimation(MountAnimations["PilotTurnRightHalf"]);            
+            if (!animUp) seat.Passenger.AnimManager.StopAnimation(MountAnimations["PilotGoUp"]);
+            if (!animDown) seat.Passenger.AnimManager.StopAnimation(MountAnimations["PilotGoDown"]);
+
+            //Start animations if active
+            if (animForward) seat.Passenger.AnimManager.StartAnimation(MountAnimations["PilotForward"]);            
+            if (animBackward) seat.Passenger.AnimManager.StartAnimation(MountAnimations["PilotBackward"]);            
+            if (animLeft) seat.Passenger.AnimManager.StartAnimation(MountAnimations["PilotTurnLeft"]);            
+            if (animRight) seat.Passenger.AnimManager.StartAnimation(MountAnimations["PilotTurnRight"]);            
+            if (animLeftHalf) seat.Passenger.AnimManager.StartAnimation(MountAnimations["PilotTurnLeftHalf"]);            
+            if (animRightHalf) seat.Passenger.AnimManager.StartAnimation(MountAnimations["PilotTurnRightHalf"]);            
+            if (animUp) seat.Passenger.AnimManager.StartAnimation(MountAnimations["PilotGoUp"]);            
+            if (animDown) seat.Passenger.AnimManager.StartAnimation(MountAnimations["PilotGoDown"]);
+        }
+
         private void apply_animations(bool cruise_control_was_set)
         {
             //Stop all animations if no longer active
@@ -732,6 +755,8 @@ namespace VSAirshipmod
                 }
 
                 set_animations(seat);
+
+                ApplySeatAnimation(seat);
 
                 //Easy way to tell if the engine is working + plus dont allow movement unless in air to prevent model twitching
                 if (animPropeller && !OnGround) horizontalMotionActive = true;
