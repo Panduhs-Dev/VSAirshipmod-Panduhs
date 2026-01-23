@@ -55,7 +55,7 @@
 					}
 				}
 			]
-    },
+		},
     "file": "game:shapes/entity/humanoid/seraph-faceless.json"
   },
   {
@@ -114,7 +114,7 @@
 					}
 				}
 			]
-    },
+		},
     "file": "game:shapes/entity/humanoid/seraph-faceless.json"
   },
   {
@@ -214,7 +214,7 @@
 					}
 				}
 			]
-    },
+		},
     "file": "game:shapes/entity/humanoid/seraph-faceless.json"
   },
   {
@@ -309,7 +309,7 @@
 					}
 				}
 			]
-    },
+		},
     "file": "game:shapes/entity/humanoid/seraph-faceless.json"
   },
   {
@@ -368,7 +368,7 @@
 					}
 				}
 			]
-    },
+		},
     "file": "game:shapes/entity/humanoid/seraph-faceless.json"
   },
   {
@@ -448,7 +448,7 @@
 					}
 				}
 			]
-    },
+		},
     "file": "game:shapes/entity/humanoid/seraph-faceless.json"
   },
   {
@@ -519,7 +519,7 @@
 					}
 				}
 			]
-    },
+		},
     "file": "game:shapes/entity/humanoid/seraph-faceless.json"
   },
   {
@@ -611,7 +611,7 @@
 					}
 				}
 			]
-    },
+		},
     "file": "game:shapes/entity/humanoid/seraph-faceless.json"
   },
   {
@@ -650,7 +650,7 @@
       "code": "T2PilotIdle",
       "animation": "t2pilotidle",
 			"quantityframes": 60,
-			"onActivityStopped": "Rewind",
+			"onActivityStopped": "EaseOut",
 			"onAnimationEnd": "Repeat",
 			"keyframes": [
 				{
@@ -658,34 +658,18 @@
 					"elements": {
 						"LowerTorso": { "offsetX": 6.2, "offsetY": -12.6, "offsetZ": 0.0 },
 						"UpperTorso": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 12.0 },
-						"LowerArmR": { "rotationX": -13.0, "rotationY": -7.0, "rotationZ": -22.0 },
-						"LowerArmL": { "rotationX": 45.0, "rotationY": 0.0, "rotationZ": -20.0 },
-            "Head": { "offsetX": 0.0, "offsetY": 0.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -10.0 },
 						"UpperArmR": { "offsetX": 1.3, "offsetY": 0.3, "offsetZ": 0.0, "rotationX": 9.0, "rotationY": -28.0, "rotationZ": -62.0 },
-						"UpperArmL": { "offsetX": 1.0, "offsetY": 0.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 20.0, "rotationZ": -52.0 },
-						"UpperFootL": { "offsetX": 0.0, "offsetY": 1.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 8.0, "rotationZ": -80.0 },
-						"LowerFootL": { "offsetX": 0.0, "offsetY": 1.5, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 80.0 },
-						"UpperFootR": { "offsetX": 0.0, "offsetY": 1.0, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": -8.0, "rotationZ": -85.0 },
-						"LowerFootR": { "offsetX": 0.0, "offsetY": 1.5, "offsetZ": 0.0, "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 78.0 }
-					}
-				},
-        {
-					"frame": 23,
-					"elements": {
-						"UpperArmL": { "rotationX": 0.0, "rotationY": 21.0, "rotationZ": -49.0 }
+						"LowerArmR": { "rotationX": -13.0, "rotationY": -7.0, "rotationZ": -22.0 }
 					}
 				},
 				{
 					"frame": 30,
 					"elements": {
-						"UpperTorso": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 11.0 },
-						"Head": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": -9.0 },
-						"LowerFootL": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 69.0 },
-						"LowerFootR": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 90.0 }
+						"UpperTorso": { "rotationX": 0.0, "rotationY": 0.0, "rotationZ": 11.0 }
 					}
 				}
 			]
-    },
+		},
     "file": "game:shapes/entity/humanoid/seraph-faceless.json"
   },
   {
@@ -753,7 +737,7 @@
 					}
 				}
 			]
-    },
+		}
     "file": "game:shapes/entity/humanoid/seraph-faceless.json"
   }
 ]
