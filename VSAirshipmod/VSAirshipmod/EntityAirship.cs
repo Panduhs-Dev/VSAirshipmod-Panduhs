@@ -307,8 +307,9 @@ namespace VSAirshipmod
             {
                 double HightOverSea = Pos.Y - Api.World.SeaLevel;
                 double HightOverLand = Pos.Y - Api.World.BlockAccessor.GetRainMapHeightAt((int)Pos.X, (int)Pos.Z);
+                float Rain = Api.World.BlockAccessor.GetClimateAt(Pos.AsBlockPos).WorldgenRainfall;
                 Vec3d BaseWind = Api.World.BlockAccessor.GetWindSpeedAt(Pos.XYZ);
-                return BaseWind.RotatedCopy(MathF.Max((float)HightOverSea-10f,0f)/10f) * Math.Max((HightOverLand - 5)/500f,0f);
+                return BaseWind.RotatedCopy(MathF.Max((float)HightOverSea-10f,0f)/10f + (MathF.Max((float)HightOverSea - 50f, 0f) / 25f ) * Rain) * Math.Max((HightOverLand - 5)/500f,0f);
             }
         }
         public virtual float SpeedMultiplier { get; set; } = 1f;
