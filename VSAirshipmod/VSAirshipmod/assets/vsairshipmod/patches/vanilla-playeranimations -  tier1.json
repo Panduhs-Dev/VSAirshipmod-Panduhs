@@ -6,11 +6,30 @@
 			"code": "T1PilotUp",
 			"animation": "t1pilotup",
 			"clientSide": true,
-			"blendMode": "Average",
 			"easeInSpeed": 2,
 			"elementWeight": {
+				"UpperArmR": 0,
+				"LowerArmR": 0,
+				"UpperArmL": 100,
+				"LowerArmL": 100,
+				"LowerTorso": 0,
+				"UpperTorso": 0,
+				"UpperFootR": 0,
+				"UpperFootL": 0,
+				"LowerFootR": 0,
+				"LowerFootL": 0
 			},
 			"elementBlendMode": {
+				"LowerTorso": "AddAverage",
+				"UpperTorso": "AddAverage",
+				"UpperArmR": "AddAverage",
+				"UpperArmL": "AddAverage",
+				"LowerArmR": "AddAverage",
+				"LowerArmL": "AddAverage",
+				"UpperFootR": "AddAverage",
+				"UpperFootL": "AddAverage",
+				"LowerFootR": "AddAverage",
+				"LowerFootL": "AddAverage"
 			}
 		},
     "file": "game:entities/humanoid/player.json",
@@ -74,11 +93,31 @@
 			"code": "T1PilotDown",
 			"animation": "t1pilotdown",
 			"clientSide": true,
-			"blendMode": "Average",
+
 			"easeInSpeed": 2,
 			"elementWeight": {
+				"UpperArmR": 100,
+				"LowerArmR": 100,
+				"UpperArmL": 0,
+				"LowerArmL": 0,
+				"LowerTorso": 0,
+				"UpperTorso": 0,
+				"UpperFootR": 0,
+				"UpperFootL": 0,
+				"LowerFootR": 0,
+				"LowerFootL": 0
 			},
 			"elementBlendMode": {
+				"LowerTorso": "AddAverage",
+				"UpperTorso": "AddAverage",
+				"UpperArmR": "AddAverage",
+				"UpperArmL": "AddAverage",
+				"LowerArmR": "AddAverage",
+				"LowerArmL": "AddAverage",
+				"UpperFootR": "AddAverage",
+				"UpperFootL": "AddAverage",
+				"LowerFootR": "AddAverage",
+				"LowerFootL": "AddAverage"
 			}
 		},
     "file": "game:entities/humanoid/player.json",
@@ -142,12 +181,9 @@
 			"code": "T1PilotIdle",
 			"animation": "t1pilotidle",
 			"clientSide": true,
-			"blendMode": "Average",
 			"easeInSpeed": 2,
-			"elementWeight": {
-			},
-			"elementBlendMode": {
-			}
+			"Weight": 1,
+			"BlendMode": "AddAverage"
 		},
     "file": "game:entities/humanoid/player.json",
     "side": "Server"
@@ -189,11 +225,30 @@
 			"code": "T1PilotRowing",
 			"animation": "t1pilotrowing",
 			"clientSide": true,
-			"blendMode": "Average",
 			"easeInSpeed": 2,
 			"elementWeight": {
+				"UpperArmR": 100,
+				"LowerArmR": 100,
+				"UpperArmL": 100,
+				"LowerArmL": 100,
+				"LowerTorso": 0,
+				"UpperTorso": 0,
+				"UpperFootR": 0,
+				"UpperFootL": 0,
+				"LowerFootR": 0,
+				"LowerFootL": 0
 			},
 			"elementBlendMode": {
+				"LowerTorso": "AddAverage",
+				"UpperTorso": "AddAverage",
+				"UpperArmR": "AddAverage",
+				"UpperArmL": "AddAverage",
+				"LowerArmR": "AddAverage",
+				"LowerArmL": "AddAverage",
+				"UpperFootR": "AddAverage",
+				"UpperFootL": "AddAverage",
+				"LowerFootR": "AddAverage",
+				"LowerFootL": "AddAverage"
 			}
 		},
     "file": "game:entities/humanoid/player.json",
@@ -306,11 +361,30 @@
 			"code": "T1PilotRowingLeft",
 			"animation": "t1pilotrowingleft",
 			"clientSide": true,
-			"blendMode": "Average",
 			"easeInSpeed": 2,
 			"elementWeight": {
+				"UpperArmR": 0,
+				"LowerArmR": 0,
+				"UpperArmL": 100,
+				"LowerArmL": 100,
+				"LowerTorso": 0,
+				"UpperTorso": 0,
+				"UpperFootR": 0,
+				"UpperFootL": 0,
+				"LowerFootR": 0,
+				"LowerFootL": 0
 			},
 			"elementBlendMode": {
+				"LowerTorso": "AddAverage",
+				"UpperTorso": "AddAverage",
+				"UpperArmR": "AddAverage",
+				"UpperArmL": "AddAverage",
+				"LowerArmR": "AddAverage",
+				"LowerArmL": "AddAverage",
+				"UpperFootR": "AddAverage",
+				"UpperFootL": "AddAverage",
+				"LowerFootR": "AddAverage",
+				"LowerFootL": "AddAverage"
 			}
 		},
     "file": "game:entities/humanoid/player.json",
@@ -406,11 +480,30 @@
 			"code": "T1PilotRowingRight",
 			"animation": "t1pilotrowingright",
 			"clientSide": true,
-			"blendMode": "Average",
 			"easeInSpeed": 2,
 			"elementWeight": {
+				"UpperArmR": 100,
+				"LowerArmR": 100,
+				"UpperArmL": 0,
+				"LowerArmL": 0,
+				"LowerTorso": 0,
+				"UpperTorso": 0,
+				"UpperFootR": 0,
+				"UpperFootL": 0,
+				"LowerFootR": 0,
+				"LowerFootL": 0
 			},
 			"elementBlendMode": {
+				"LowerTorso": "AddAverage",
+				"UpperTorso": "AddAverage",
+				"UpperArmR": "AddAverage",
+				"UpperArmL": "AddAverage",
+				"LowerArmR": "AddAverage",
+				"LowerArmL": "AddAverage",
+				"UpperFootR": "AddAverage",
+				"UpperFootL": "AddAverage",
+				"LowerFootR": "AddAverage",
+				"LowerFootL": "AddAverage"
 			}
 		},
     "file": "game:entities/humanoid/player.json",
