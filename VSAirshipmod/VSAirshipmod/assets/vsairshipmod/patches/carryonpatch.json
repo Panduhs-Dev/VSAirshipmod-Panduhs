@@ -1,0 +1,58 @@
+[
+  {
+    "file": "entities/air/tier1entity",
+    "side": "Server",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "carryon:attachablecarryable"
+    },
+    "dependsOn": [
+      {
+        "modid": "carryon"
+      }
+    ]
+  },
+  {
+    "file": "entities/air/tier1entity",
+    "side": "Server",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "carryon:attachablecarryable"
+    },
+    "dependsOn": [
+      {
+        "modid": "carryon"
+      }
+    ]
+  },
+  {
+    "file": "entities/air/tier2entity",
+    "side": "Server",
+    "op": "add",
+    "path": "/server/behaviors/-",
+    "value": {
+      "code": "carryon:attachablecarryable"
+    },
+    "dependsOn": [
+      {
+        "modid": "carryon"
+      }
+    ]
+  },
+  {
+    "file": "entities/air/tier2entity",
+    "side": "Server",
+    "op": "add",
+    "path": "/client/behaviors/-",
+    "value": {
+      "code": "carryon:attachablecarryable"
+    },
+    "dependsOn": [
+      {
+        "modid": "carryon"
+      }
+    ]
+  }   
+]

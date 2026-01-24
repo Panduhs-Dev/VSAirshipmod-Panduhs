@@ -115,7 +115,7 @@ namespace VSAirshipmod
             {
                 this.engine_sound = capi.World.LoadSound(new SoundParams()
                 {
-                    Location = new AssetLocation("sounds/effect/gears"),
+                    Location = new AssetLocation("vsairshipmod:sounds/riftward_edit"),
                     DisposeOnFinish = false,
                     Position = this.Pos.XYZ.ToVec3f(),
                     ShouldLoop = true,

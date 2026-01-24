@@ -482,6 +482,12 @@
 			//stage 51
 			{ requireStacks: [],
 				actionLangCode: "Launch"
+			},
+			//stage 52
+			{
+				removeElements: [
+					"ORIGIN/T2/ORIGIN0-lectern"
+				] 
 			}
 		]
 	},
