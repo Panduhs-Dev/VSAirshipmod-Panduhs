@@ -289,7 +289,11 @@
       }
     },
     "behaviors": [
-      { "code": "repulseagents", "movable": false },
+      {
+        "code": "repulseagents",
+        "movable": false,
+        "ignorePlayers": true
+      },
       { "code": "passivephysicsmultibox" },
       { "code": "interpolateposition" },
       { "code": "selectionboxes" },
@@ -303,7 +307,11 @@
   },
   "server": {
     "behaviors": [
-      { "code": "repulseagents", "movable": false },
+      {
+        "code": "repulseagents",
+        "movable": false,
+        "ignorePlayers": true
+      },
       { "code": "passivephysicsmultibox" },
       { "code": "selectionboxes" },
       { "code": "rideableaccessories" },

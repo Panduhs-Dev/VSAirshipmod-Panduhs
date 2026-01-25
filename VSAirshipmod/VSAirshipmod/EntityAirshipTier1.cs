@@ -108,7 +108,7 @@ namespace VSAirshipmod
         /// Amount of time in minutes given per temporal gear.
         /// </summary>
         private static int MinutesPerGear = 15;//Plumb to config!
-
+        /*
         /// <summary>
         /// Causes the airship to play its flying animation
         /// </summary>
@@ -116,6 +116,7 @@ namespace VSAirshipmod
         /// Not <see cref="Entity.OnGround"/>
         /// </value>
         public override bool IsFlying => !OnGround;
+        */
 
 
         //string weatherVaneAnimCode;
@@ -173,7 +174,50 @@ namespace VSAirshipmod
 
             base.OnTesselation(ref entityShape, shapePathForLogging);
         }
+        private ILoadedSound engine_sound;
+        private bool engineSoundPlaying = false;
+        private void apply_engine_sound(EntityAirshipSeat seat)
+        {
+            ICoreClientAPI capi = this.Api as ICoreClientAPI;
+            if (capi == null) return;
 
+            // Load sound only if not already loaded
+            if (this.engine_sound == null)
+            {
+                this.engine_sound = capi.World.LoadSound(new SoundParams()
+                {
+                    Location = new AssetLocation("game:sounds/environment/fire"),
+                    DisposeOnFinish = false,
+                    Position = this.Pos.XYZ.ToVec3f(),
+                    ShouldLoop = true,
+                });
+
+                if (this.engine_sound == null)
+                {
+                    capi.Logger.Warning("[AirshipTier2] Failed to load engine sound!");
+                    return;
+                }
+            }
+
+            // Update position
+            this.engine_sound.SetPosition((float)this.Pos.X, (float)this.Pos.Y, (float)this.Pos.Z);
+
+            //Sound depending on propeller animation
+            if ((seat is not null && seat.controls.Jump || Idler) && !engineSoundPlaying)
+            {
+                this.engine_sound.Start();
+                engineSoundPlaying = true;
+                //capi.Logger.Notification("[AirshipTier2] Started engine sound.");
+            }
+            else if (((seat is null || !seat.controls.Jump) && !Idler) && engineSoundPlaying)
+            {
+                this.engine_sound.Stop();
+                engineSoundPlaying = false;
+                //capi.Logger.Notification("[AirshipTier2] Stopped engine sound.");
+            }
+            if (engineSoundPlaying)
+                this.engine_sound.SetVolume(seat.controls.Jump ? 0.5f : 0.25f);
+        }
 
         public override void OnRenderFrame(float dt, EnumRenderStage stage)
         {
@@ -184,7 +228,7 @@ namespace VSAirshipmod
 
             long ellapseMs = capi.InWorldEllapsedMilliseconds;
             float forwardpitch = 0;
-            if (IsFlying)//(!onGround)//
+            if (IsFlying || Swimming)
             {
                 double gamespeed = capi.World.Calendar.SpeedOfTime / 60f;
                 float intensity = 0.15f + GlobalConstants.CurrentWindSpeedClient.X * 0.9f;
@@ -502,7 +546,7 @@ namespace VSAirshipmod
             }
 
 
-            if (!IsFlying && HorizontalVelocity == 0) return;
+            if (OnGround && HorizontalVelocity == 0) return;
 
 
             var pos = SidedPos;
@@ -748,6 +792,7 @@ namespace VSAirshipmod
             if (animRight) seat.Passenger.AnimManager.StartAnimation(MountAnimations["PilotTurnRight"]);
             if (animUp)    seat.Passenger.AnimManager.StartAnimation(MountAnimations["PilotGoUp"]);
             if (animDown)  seat.Passenger.AnimManager.StartAnimation(MountAnimations["PilotGoDown"]);
+
         }
 
 
@@ -759,9 +804,10 @@ namespace VSAirshipmod
 
             var bh = GetBehavior<EntityBehaviorSeatable>();
             bh.Controller = null;
+            EntityAirshipSeat seat = null;
             foreach (var sseat in bh.Seats)
             {
-                var seat = sseat as EntityAirshipSeat;
+                seat = sseat as EntityAirshipSeat;
                 if (seat == null || seat.Passenger == null) continue;
                 
                 if (!(seat.Passenger is EntityPlayer))
@@ -849,6 +895,8 @@ namespace VSAirshipmod
 
 
             }
+
+            apply_engine_sound(seat);
             return new Vec3d(linearMotion, horizontalMotion, angularMotion);
         }
 
