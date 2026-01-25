@@ -341,7 +341,19 @@ namespace VSAirshipmod
                             //Api.Logger.Notification($"Temporal fuel fraction: {fraction}, frame: {animTemporal.CurrentFrame}");
                         }
 
+                        if (!AnimManager.IsAnimationActive("weathervane"))
+                        {
+                            AnimManager.StartAnimation("weathervane");
+                        }
 
+                        float targetWindDir = GameMath.Mod((float)Math.Atan2(WindDirection.X, WindDirection.Z) + GameMath.TWOPI - Pos.Yaw, GameMath.TWOPI);
+                        anim = AnimManager.GetAnimationState("weathervane");
+                        if (anim != null)
+                        {
+                            anim.CurrentFrame = Math.Clamp((targetWindDir * GameMath.RAD2DEG) % 360 / 10f, 0f, 35f);
+                            anim.BlendedWeight = 1f;
+                            //anim.EasingFactor = 1f;
+                        }
 
 
                     }
@@ -650,6 +662,16 @@ namespace VSAirshipmod
                     pos.Motion.X = targetmotion.X;
                     pos.Motion.Z = targetmotion.Z;
                 }
+            }
+            else
+            {
+                pos.Motion.X = 0.0;
+                pos.Motion.Z = 0.0;
+            }
+            if (!IsEmptyOfPlayers())
+            {
+                pos.Motion.X += WindDirection.X / 2;
+                pos.Motion.Y += WindDirection.Y / 2;
             }
 
             if (HorizontalVelocity > 0.0)

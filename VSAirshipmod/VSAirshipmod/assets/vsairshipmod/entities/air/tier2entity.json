@@ -173,6 +173,7 @@
           "selectionBox": "LeftStorageAP",
           "controllable": false,
           "mountRotation": { "y": 180 },
+          "AngleMode": "Push",
           "mountOffset": {
             "x": 1.5,
             "z": 1.5
@@ -186,6 +187,7 @@
           "selectionBox": "RightStorageAP",
           "controllable": false,
           "mountRotation": { "y": 180 },
+          "AngleMode": "Push",
           "mountOffset": {
             "x": 1.5,
             "z": 1.5
@@ -507,6 +509,13 @@
         "animationSpeed": 1,
         "easeInSpeed": 2000,
         "easeOutSpeed": 100
+      },
+      {
+        "code": "weathervane",
+        "animation": "weathervane",
+        "animationSpeed": 0,
+        "weight": 1
+        //"blendMode": "AddAverage"
       }
     ],
     "texturesByType": {
