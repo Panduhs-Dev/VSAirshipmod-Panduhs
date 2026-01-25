@@ -103,7 +103,8 @@
 				],
 				addElements: [
 					"ORIGIN/C0-coraclebuild/ORIGINBoat/ORIGIN7Pelt",
-					"ORIGIN/T2/ORIGIN13-rigging1"
+					"ORIGIN/T2/ORIGIN13-rigging1",
+					"ORIGIN/T2/ORIGIN10-RollerSplit2"
 				] },
 			//stage 8
 			{ requireStacks: [ 
@@ -265,10 +266,12 @@
 			{ requireStacks: [ 
 				{ type: "item", code: "rope", quantity: 1 },
 				{ type: "block", code: "supportbeam-{wood}", quantity: 4 },
-				{ type: "item", code: "metalnailsandstrips-tinbronze", quantity: 2 }
+				{ type: "item", code: "metalnailsandstrips-tinbronze", quantity: 2 },
+				{ type: "item", code: "rod-bismuthbronze", quantity: 5 }
 			  ],
 				addElements: [
-					"ORIGIN/T2/ORIGIN32-sternposts"
+					"ORIGIN/T2/ORIGIN32-sternposts",
+					"ORIGIN/T2/ORIGIN61-ring1"
 				] },
 			//stage 26
 			{ requireStacks: [ 
@@ -293,10 +296,12 @@
 				] },
 			//stage 29
 			{ requireStacks: [ 
-				{ type: "item", code: "plank-{wood}", quantity: 3 }
+				{ type: "item", code: "plank-{wood}", quantity: 3 },
+			  { type: "item", code: "rod-bismuthbronze", quantity: 5 }
 			  ],
 				addElements: [
-					"ORIGIN/T2/ORIGIN36-props"
+					"ORIGIN/T2/ORIGIN36-props",
+					"ORIGIN/T2/ORIGIN62-ring2"
 				] },
 			//stage 30
 			{ requireStacks: [ 
@@ -316,18 +321,24 @@
 				] },
 			//stage 32
 			{ requireStacks: [ 
-				{ type: "block", code: "linen-normal-down", quantity: 4 }
+				{ type: "block", code: "linen-normal-down", quantity: 4 },
+				{ type: "item", code: "rod-bismuthbronze", quantity: 5 }
 			  ],
 				addElements: [
-					"ORIGIN/T2/ORIGIN39-tents2"
+					"ORIGIN/T2/ORIGIN39-tents2",
+					"ORIGIN/T2/ORIGIN63-ring3"
 				] },
 			//stage 33
 			{ requireStacks: [ 
-				{ type: "item", code: "rope", quantity: 24 }, // 8ropes +16 ropes for the balloon rings
+				{ type: "item", code: "rope", quantity: 24 },
 				{ type: "block", code: "supportbeam-{wood}", quantity: 24 },
-				{ type: "item", code: "plank-{wood}", quantity: 4 },
-				{ type: "item", code: "rod-bismuthbronze", quantity: 15 } //MAYBE MOVE THIS STAGE SOMEWHERE EARLIER
+				{ type: "item", code: "plank-{wood}", quantity: 4 }
 			  ],
+				removeElements: [
+					"ORIGIN/T2/ORIGIN61-ring1",
+					"ORIGIN/T2/ORIGIN62-ring2",
+					"ORIGIN/T2/ORIGIN63-ring3"
+				],
 				addElements: [
 					"ORIGIN/T2/ORIGIN40-ropeknots",
 					"ORIGIN/T2/ORIGIN41-hoseportground",
