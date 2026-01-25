@@ -9,7 +9,7 @@
 			"D": { type: "item", code: "game:axe-*", isTool: true, toolDurabilityCost: 30 },
 			"E": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 30 },
 			"F": { type: "item", code: "game:inkandquill", quantity: 1},
-			"G": { type: "block", code: "game:figurehead-*", name: "type", quantity: 0, attributes: { "material": "birch" } },
+			"G": { type: "block", code: "game:figurehead-*", name: "type", attributes: { "material": "birch" }, "isTool": true, "toolDurabilityCost": 0 },
 			"H": { type: "item", code: "game:paper-parchment", quantity: 1}
 		},
 		width: 3,
@@ -26,7 +26,7 @@
 			"D": { type: "item", code: "game:axe-*", isTool: true, toolDurabilityCost: 30 },
 			"E": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 30 },
 			"F": { type: "item", code: "game:inkandquill", quantity: 1},
-			"G": { type: "block", code: "game:figurehead-*", name: "type", quantity: 0, attributes: { "material": "oak" } },
+			"G": { type: "block", code: "game:figurehead-*", name: "type", attributes: { "material": "oak" }, "isTool": true, "toolDurabilityCost": 0 },
 			"H": { type: "item", code: "game:paper-parchment", quantity: 1}
 		},
 		width: 3,
@@ -43,7 +43,7 @@
 			"D": { type: "item", code: "game:axe-*", isTool: true, toolDurabilityCost: 30 },
 			"E": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 30 },
 			"F": { type: "item", code: "game:inkandquill", quantity: 1},
-			"G": { type: "block", code: "game:figurehead-*", name: "type", quantity: 0, attributes: { "material": "maple" } },
+			"G": { type: "block", code: "game:figurehead-*", name: "type", attributes: { "material": "maple" }, "isTool": true, "toolDurabilityCost": 0 },
 			"H": { type: "item", code: "game:paper-parchment", quantity: 1}
 		},
 		width: 3,
@@ -60,7 +60,7 @@
 			"D": { type: "item", code: "game:axe-*", isTool: true, toolDurabilityCost: 30 },
 			"E": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 30 },
 			"F": { type: "item", code: "game:inkandquill", quantity: 1},
-			"G": { type: "block", code: "game:figurehead-*", name: "type", quantity: 0, attributes: { "material": "pine" } },
+			"G": { type: "block", code: "game:figurehead-*", name: "type", attributes: { "material": "pine" }, "isTool": true, "toolDurabilityCost": 0 },
 			"H": { type: "item", code: "game:paper-parchment", quantity: 1}
 		},
 		width: 3,
@@ -77,7 +77,7 @@
 			"D": { type: "item", code: "game:axe-*", isTool: true, toolDurabilityCost: 30 },
 			"E": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 30 },
 			"F": { type: "item", code: "game:inkandquill", quantity: 1},
-			"G": { type: "block", code: "game:figurehead-*", name: "type", quantity: 0, attributes: { "material": "acacia" } },
+			"G": { type: "block", code: "game:figurehead-*", name: "type", attributes: { "material": "acacia" }, "isTool": true, "toolDurabilityCost": 0 },
 			"H": { type: "item", code: "game:paper-parchment", quantity: 1}
 		},
 		width: 3,
@@ -94,7 +94,7 @@
 			"D": { type: "item", code: "game:axe-*", isTool: true, toolDurabilityCost: 30 },
 			"E": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 30 },
 			"F": { type: "item", code: "game:inkandquill", quantity: 1},
-			"G": { type: "block", code: "game:figurehead-*", name: "type", quantity: 0, attributes: { "material": "kapok" } },
+			"G": { type: "block", code: "game:figurehead-*", name: "type", attributes: { "material": "kapok" }, "isTool": true, "toolDurabilityCost": 0 },
 			"H": { type: "item", code: "game:paper-parchment", quantity: 1}
 		},
 		width: 3,
@@ -111,7 +111,7 @@
 			"D": { type: "item", code: "game:axe-*", isTool: true, toolDurabilityCost: 30 },
 			"E": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 30 },
 			"F": { type: "item", code: "game:inkandquill", quantity: 1},
-			"G": { type: "block", code: "game:figurehead-*", name: "type", quantity: 0, attributes: { "material": "baldcypress" } },
+			"G": { type: "block", code: "game:figurehead-*", name: "type", attributes: { "material": "baldcypress" }, "isTool": true, "toolDurabilityCost": 0 },
 			"H": { type: "item", code: "game:paper-parchment", quantity: 1}
 		},
 		width: 3,
@@ -128,7 +128,7 @@
 			"D": { type: "item", code: "game:axe-*", isTool: true, toolDurabilityCost: 30 },
 			"E": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 30 },
 			"F": { type: "item", code: "game:inkandquill", quantity: 1},
-			"G": { type: "block", code: "game:figurehead-*", name: "type", quantity: 0, attributes: { "material": "larch" } },
+			"G": { type: "block", code: "game:figurehead-*", name: "type", attributes: { "material": "larch" }, "isTool": true, "toolDurabilityCost": 0 },
 			"H": { type: "item", code: "game:paper-parchment", quantity: 1}
 		},
 		width: 3,
@@ -145,7 +145,7 @@
 			"D": { type: "item", code: "game:axe-*", isTool: true, toolDurabilityCost: 30 },
 			"E": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 30 },
 			"F": { type: "item", code: "game:inkandquill", quantity: 1},
-			"G": { type: "block", code: "game:figurehead-*", name: "type", quantity: 0, attributes: { "material": "redwood" } },
+			"G": { type: "block", code: "game:figurehead-*", name: "type", attributes: { "material": "redwood" }, "isTool": true, "toolDurabilityCost": 0 },
 			"H": { type: "item", code: "game:paper-parchment", quantity: 1}
 		},
 		width: 3,
@@ -162,7 +162,7 @@
 			"D": { type: "item", code: "game:axe-*", isTool: true, toolDurabilityCost: 30 },
 			"E": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 30 },
 			"F": { type: "item", code: "game:inkandquill", quantity: 1},
-			"G": { type: "block", code: "game:figurehead-*", name: "type", quantity: 0, attributes: { "material": "ebony" } },
+			"G": { type: "block", code: "game:figurehead-*", name: "type", attributes: { "material": "ebony" }, "isTool": true, "toolDurabilityCost": 0 },
 			"H": { type: "item", code: "game:paper-parchment", quantity: 1}
 		},
 		width: 3,
@@ -179,7 +179,7 @@
 			"D": { type: "item", code: "game:axe-*", isTool: true, toolDurabilityCost: 30 },
 			"E": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 30 },
 			"F": { type: "item", code: "game:inkandquill", quantity: 1},
-			"G": { type: "block", code: "game:figurehead-*", name: "type", quantity: 0, attributes: { "material": "walnut" } },
+			"G": { type: "block", code: "game:figurehead-*", name: "type", attributes: { "material": "walnut" }, "isTool": true, "toolDurabilityCost": 0 },
 			"H": { type: "item", code: "game:paper-parchment", quantity: 1}
 		},
 		width: 3,
@@ -196,7 +196,7 @@
 			"D": { type: "item", code: "game:axe-*", isTool: true, toolDurabilityCost: 30 },
 			"E": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 30 },
 			"F": { type: "item", code: "game:inkandquill", quantity: 1},
-			"G": { type: "block", code: "game:figurehead-*", name: "type", quantity: 0, attributes: { "material": "purpleheart" } },
+			"G": { type: "block", code: "game:figurehead-*", name: "type", attributes: { "material": "purpleheart" }, "isTool": true, "toolDurabilityCost": 0 },
 			"H": { type: "item", code: "game:paper-parchment", quantity: 1}
 		},
 		width: 3,
@@ -213,7 +213,7 @@
 			"D": { type: "item", code: "game:axe-*", isTool: true, toolDurabilityCost: 30 },
 			"E": { type: "item", code: "game:chisel-*", isTool: true, toolDurabilityCost: 30 },
 			"F": { type: "item", code: "game:inkandquill", quantity: 1},
-			"G": { type: "block", code: "game:figurehead-*", name: "type", quantity: 0, attributes: { "material": "aged" } },
+			"G": { type: "block", code: "game:figurehead-*", name: "type", attributes: { "material": "aged" }, "isTool": true, "toolDurabilityCost": 0 },
 			"H": { type: "item", code: "game:paper-parchment", quantity: 1}
 		},
 		width: 3,
