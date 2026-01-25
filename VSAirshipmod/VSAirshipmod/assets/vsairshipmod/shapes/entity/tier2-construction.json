@@ -64395,7 +64395,7 @@
 							]
 						},
 						{
-							"name": "ORIGIN61-ring2",
+							"name": "ORIGIN62-ring2",
 							"from": [ 0.0, 0.0, 0.0 ],
 							"to": [ 1.0, 1.0, 1.0 ],
 							"faces": {
@@ -64679,7 +64679,7 @@
 							]
 						},
 						{
-							"name": "ORIGIN61-ring3",
+							"name": "ORIGIN63-ring3",
 							"from": [ 0.0, 0.0, 0.0 ],
 							"to": [ 1.0, 1.0, 1.0 ],
 							"faces": {
