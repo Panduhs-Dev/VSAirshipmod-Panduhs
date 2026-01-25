@@ -403,7 +403,7 @@ namespace VSAirshipmod
         }
         public virtual int MaxAltitude
         {
-            get => WatchedAttributes.GetInt("MaxAltitude", 150);
+            get => WatchedAttributes.GetInt("MaxAltitude", 200);
             set => WatchedAttributes.SetInt("MaxAltitude", value);
         }
 

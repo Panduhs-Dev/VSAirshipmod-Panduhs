@@ -671,7 +671,7 @@ namespace VSAirshipmod
             if (!IsEmptyOfPlayers())
             {
                 pos.Motion.X += WindDirection.X / 2;
-                pos.Motion.Y += WindDirection.Y / 2;
+                pos.Motion.Z += WindDirection.Z / 2;
             }
 
             if (HorizontalVelocity > 0.0)
