@@ -311,7 +311,7 @@ namespace VSAirshipmod
 			List<BlockPos> waterEdgeList = waterEdgeByFacing[orient];
 			IBlockAccessor ba = this.api.World.BlockAccessor;
 			bool placeable = true;
-			bool waterLauch;
+			//bool waterLauch;
 			BlockPos cpos = blockSel.Position;
 			BlockPos mingPos = siteList[0].AddCopy(0, 1, 0).Add(cpos);
 			BlockPos maxgPos = siteList[1].AddCopy(-1, 0, -1).Add(cpos);
@@ -337,15 +337,15 @@ namespace VSAirshipmod
 					placeable = false;
 				}
 			}, false);
-			BlockPos minlPos = waterEdgeList[0].AddCopy(0, 1, 0).Add(cpos);
-			BlockPos maxlPos = waterEdgeList[1].AddCopy(-1, 0, -1).Add(cpos);
-			this.WalkBlocks(minlPos, maxlPos, delegate(Block block, int x, int y, int z)
-			{
-				if (waterLaunch == true && !block.IsLiquid())
-				{
-					placeable = false;
-				}
-			}, 2);
+			//BlockPos minlPos = waterEdgeList[0].AddCopy(0, 1, 0).Add(cpos);
+			//BlockPos maxlPos = waterEdgeList[1].AddCopy(-1, 0, -1).Add(cpos);
+			//this.WalkBlocks(minlPos, maxlPos, delegate(Block block, int x, int y, int z)
+			//{
+			//	if (waterLaunch == true && !block.IsLiquid())
+			//	{
+			//		placeable = false;
+			//	}
+			//}, 2);
 			return placeable;
 		}
 
