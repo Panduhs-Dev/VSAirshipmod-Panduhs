@@ -619,9 +619,9 @@ namespace VSAirshipmod
                 {
                     ForwardSpeed += (5 * target - ForwardSpeed) * lerpFactor;
                 }
-                else if (target == 0 && (ForwardSpeed >= 0.01|| ForwardSpeed <= -0.01))
+                else if (target == 0 && (ForwardSpeed >= 0.01 || ForwardSpeed <= -0.01) || (!IsFlying && !Swimming))
                 {
-                    ForwardSpeed += (target - ForwardSpeed) * lerpFactor * (IsEmptyOfPlayers() ? EmptyStoppingPower * (OnGround ? 5f : 1f) : 1f);
+                    ForwardSpeed += (-ForwardSpeed) * lerpFactor * (IsEmptyOfPlayers() || !IsFlying ? EmptyStoppingPower * (OnGround ? 5f : 1f) : 1f);
                 }
                 else
                 {
@@ -681,8 +681,7 @@ namespace VSAirshipmod
                     pos.Motion.Y = 0.1 * this.HorizontalVelocity;
                 }
             }
-
-            if (HorizontalVelocity < 0.0 && !(OnGround || Swimming))
+            else if (HorizontalVelocity < 0.0 && !(OnGround || Swimming))
             {
                 pos.Motion.Y = 0.1 * this.HorizontalVelocity;
             }
