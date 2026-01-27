@@ -1176,7 +1176,7 @@ namespace VSAirshipmod
         public override void OnEntityDespawn(EntityDespawnData despawn)
         {
             base.OnEntityDespawn(despawn);
-
+            this.engine_sound?.Dispose();
             capi?.Event.UnregisterRenderer(this, EnumRenderStage.Before);
         }
 

@@ -198,7 +198,7 @@ namespace VSAirshipmod
 
                 if (this.engine_sound == null)
                 {
-                    capi.Logger.Warning("[AirshipTier2] Failed to load engine sound!");
+                    capi.Logger.Warning("[AirshipTier1] Failed to load burner sound!");
                     return;
                 }
             }

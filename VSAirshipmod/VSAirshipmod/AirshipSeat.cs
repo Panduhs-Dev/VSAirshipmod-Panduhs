@@ -61,10 +61,10 @@ namespace Vintagestory.GameContent
         {
             if (Passenger != null)
             {
-                Passenger.AnimManager?.StopAnimation(animations["ready"]);
-                Passenger.AnimManager?.StopAnimation(animations["forwards"]);
-                Passenger.AnimManager?.StopAnimation(animations["backwards"]);
-                Passenger.AnimManager?.StopAnimation(animations["idle"]);
+                foreach ((string key,string animation) in animations)
+                {
+                    Passenger.AnimManager?.StopAnimation(animation);
+                }
                 Passenger.AnimManager?.StopAnimation(config.Animation);
                 Passenger.SidedPos.Roll = 0;
             }
