@@ -378,7 +378,7 @@ namespace VSAirshipmod
 				{
 					for (int z = minz; z <= maxz; z++)
 					{
-						Block block = ba.GetBlock(x, y, z);
+						Block block = ba.GetBlock(new BlockPos(x, y, z));
 						onBlock(block, x, y, z);
 					}
 				}

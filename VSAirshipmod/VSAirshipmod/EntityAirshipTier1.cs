@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -912,6 +913,8 @@ namespace VSAirshipmod
             int seleBox = (byEntity as EntityPlayer).EntitySelection?.SelectionBoxIndex ?? -1;
             var bhs = GetBehavior<EntityBehaviorSelectionBoxes>();
 
+            var player = byEntity as EntityPlayer;
+
             if (bhs != null && seleBox > 0)
             {
                 var apap = bhs.selectionBoxes[seleBox - 1];
@@ -957,7 +960,8 @@ namespace VSAirshipmod
                 if (RustyGear != null)
                 {
                     var stack = new ItemStack(RustyGear, 1);
-                    World.SpawnItemEntity(stack, byEntity.ServerPos.XYZ);
+                    if (!player.TryGiveItemStack(stack))
+                        World.SpawnItemEntity(stack, byEntity.ServerPos.XYZ);
                 }
                 return;
             }

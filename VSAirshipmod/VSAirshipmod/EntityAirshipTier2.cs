@@ -940,7 +940,8 @@ namespace VSAirshipmod
                         if (RustyGear != null)
                         {
                             var stack = new ItemStack(RustyGear, 1);
-                            World.SpawnItemEntity(stack, byEntity.ServerPos.XYZ);
+                            if (!player.TryGiveItemStack(stack))
+                                World.SpawnItemEntity(stack, byEntity.ServerPos.XYZ);
                         }
                     }
                     return;

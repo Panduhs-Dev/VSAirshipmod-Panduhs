@@ -532,15 +532,15 @@ namespace VSAirshipmod
 			}
 		}
  		public void StopAllAnimations()
-{
-    var activeAnims = this.AnimManager?.ActiveAnimationsByAnimCode;
-    if (activeAnims == null || activeAnims.Count == 0) return;
+		{
+			var activeAnims = this.AnimManager?.ActiveAnimationsByAnimCode;
+			if (activeAnims == null || activeAnims.Count == 0) return;
 
-    foreach (var anim in activeAnims.Keys.ToList())
-    {
-        this.AnimManager.StopAnimation(anim);
-    }
-}
+			foreach (var anim in activeAnims.Keys.ToList())
+			{
+				this.AnimManager.StopAnimation(anim);
+			}
+		}
 
 
 		// Token: 0x04001012 RID: 4114
