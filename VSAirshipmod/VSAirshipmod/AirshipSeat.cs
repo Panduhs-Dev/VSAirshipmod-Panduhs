@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 using VSAirshipmod;
 
 #nullable disable
@@ -47,7 +49,11 @@ namespace Vintagestory.GameContent
 
         public override bool CanUnmount(EntityAgent entityAgent)
         {
-            return !(Entity as EntityAirship).IsFlying || controls.Sprint || controls.ShiftKey;
+            bool can = !(Entity as EntityAirship).IsFlying || controls.Sprint || controls.ShiftKey;
+            if (!can){
+                (entityAgent.Api as ICoreClientAPI)?.TriggerIngameError(this,"Can't_Dismount","Can't dismount in air without pressing Sprint key");
+            }
+            return can;
         }
 
         public override void DidMount(EntityAgent entityAgent)
