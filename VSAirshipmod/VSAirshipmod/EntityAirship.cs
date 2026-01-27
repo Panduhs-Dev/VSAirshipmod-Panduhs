@@ -406,7 +406,7 @@ namespace VSAirshipmod
         /// </summary>
         public virtual double MaxAltitude
         {
-            get => WatchedAttributes.GetDouble("MaxAltitude", 0.6);
+            get => WatchedAttributes.GetDouble("MaxAltitude", 0.9);
             set => WatchedAttributes.SetDouble("MaxAltitude", Math.Clamp(value,0.0,1.0));
         }
 
@@ -417,7 +417,7 @@ namespace VSAirshipmod
             SpeedMultiplier = properties.Attributes["speedMultiplier"].AsFloat(1f);
             TurnMultiplier = properties.Attributes["turnMultiplier"].AsFloat(1f);
             TemporalGearMaxCount = properties.Attributes["TemporalGearMaxCount"].AsInt(1);
-            MaxAltitude = properties.Attributes["MaxAltitude"].AsDouble(0.6);
+            MaxAltitude = properties.Attributes["MaxAltitude"].AsDouble(0.9);
             /*if (Fuel == 0)
                 Fuel = this.Attributes.GetFloat("Fuel");*/
 
