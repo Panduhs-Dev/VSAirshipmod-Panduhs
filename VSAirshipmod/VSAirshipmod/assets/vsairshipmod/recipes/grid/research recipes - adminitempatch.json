@@ -10,7 +10,7 @@
 		},
 		width: 3,
 		height: 3,
-		output: { type: "item", code: "researchpaperitem", quantity: 1}
+		output: { type: "item", code: "researchpaperitem", quantity: 2}
 	},
 	{
 		ingredientPattern:"_A_,BCD,_E_",
@@ -23,7 +23,7 @@
 		},
 		width: 3,
 		height: 3,
-		output: { type: "item", code: "researchpaperitem", quantity: 1}
+		output: { type: "item", code: "researchpaperitem", quantity: 2}
 	},
 	{
 		ingredientPattern:"_A_,BCD,_E_",
@@ -36,7 +36,7 @@
 		},
 		width: 3,
 		height: 3,
-		output: { type: "item", code: "researchpaperitem", quantity: 1}
+		output: { type: "item", code: "researchpaperitem", quantity: 2}
 	},
 	{
 		ingredientPattern:"_A_,BCD,_E_",
@@ -49,6 +49,6 @@
 		},
 		width: 3,
 		height: 3,
-		output: { type: "item", code: "researchpaperitem", quantity: 1}
+		output: { type: "item", code: "researchpaperitem", quantity: 2}
 	}
 ]
