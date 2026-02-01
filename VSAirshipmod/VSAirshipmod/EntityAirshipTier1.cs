@@ -109,6 +109,8 @@ namespace VSAirshipmod
         /// Amount of time in minutes given per temporal gear.
         /// </summary>
         private static int MinutesPerGear = 15;//Plumb to config!
+
+        float pitchStrength = 2f;
         /*
         /// <summary>
         /// Causes the airship to play its flying animation
@@ -134,6 +136,7 @@ namespace VSAirshipmod
             if (TemporalFuelUsage == -1)
                 TemporalFuelUsage = properties.Attributes["TemporalFuelUsage"].AsInt(MinutesPerGear * 60 * 1000);
 
+            pitchStrength = properties.Attributes["pitchStrength"].AsFloat(2f);
             //Listener for TemporalGearCount changes marks the shape modified like sail boat unfurling
             //WatchedAttributes.RegisterModifiedListener("TemporalFuelUsage", MarkShapeModified);
 
@@ -236,14 +239,14 @@ namespace VSAirshipmod
             if (IsFlying || Swimming)
             {
                 double gamespeed = capi.World.Calendar.SpeedOfTime / 60f;
-                float intensity = 0.15f + GlobalConstants.CurrentWindSpeedClient.X * 0.9f;
+                float intensity = (0.15f + GlobalConstants.CurrentWindSpeedClient.X * 0.9f) * (!Swimming ? Math.Min((float)Pos.Y / 100f, 1f) : 1f);
                 float diff = GameMath.DEG2RAD / 2f * intensity;
                 mountAngle.X = GameMath.Sin((float)(ellapseMs / 1000.0 * 2 * gamespeed)) * 8 * diff;
                 mountAngle.Y = GameMath.Cos((float)(ellapseMs / 2000.0 * 2 * gamespeed)) * 3 * diff;
                 mountAngle.Z = -GameMath.Sin((float)(ellapseMs / 3000.0 * 2 * gamespeed)) * 8 * diff;
 
                 curRotMountAngleZ += ((float)AngularVelocity * 5 * Math.Sign(ForwardSpeed) - curRotMountAngleZ) * dt * 5;
-                forwardpitch = (float)ForwardSpeed * 1.3f;
+                forwardpitch = -((float)this.ForwardSpeed * this.pitchStrength);
             }
             else
             {

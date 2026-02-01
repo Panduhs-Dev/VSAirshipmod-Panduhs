@@ -249,10 +249,15 @@ namespace VSAirshipmod
         {
             get
             {
+                if (OnGround)
+                    return false;
+                if (Pos.Motion.Y > 0f)
+                    return true;
                 var ba = World?.BlockAccessor;
                 if (ba == null) return false;
-
-                var below = ba.GetBlockBelow(Pos.AsBlockPos);
+                EntityPos Dpos = Pos.Copy();
+                Dpos.Y -= 0.1;
+                var below = ba.GetBlock(Dpos.AsBlockPos);
                 return below?.Code?.ToString() == "game:air";
             }
         }
@@ -450,17 +455,17 @@ namespace VSAirshipmod
         public void DescendingEffects(Vec3d pos)
         {
             var particles = new SimpleParticleProperties(
-                0.5f, 0.6f,                                 //MinQuantity particle per tick, AddQuantity extra for randomness
-                ColorUtil.ToRgba(200, 200, 200, 210),       //Color of particles R,G,B, Alpha)
-                new Vec3d(pos.X - 0.3, pos.Y, pos.Z - 0.3), //MinPos: start corner of "spawn box"
-                new Vec3d(pos.X + 0.1, pos.Y + 0.5, pos.Z + 0.1), // MaxPos: opposite corner of "spawn box"
-                new Vec3f(-0.1f, 0.01f, -0.1f),           // MinVelocity: base velocity in XYZ
-                new Vec3f(0.1f, 0.05f, 0.1f),             //AddVelocity: added random velocity range
-                1f,                                     // LifeLength: base lifespan of each particle in seconds
-                -0.6f,                                    // MinSize: minimum particle size
-                0.9f,                                 // MaxSize: maximum particle size
-                0.1f,                                     // SizeEvolve?
-                EnumParticleModel.Quad                     // Model, set to quad so its like 2D planes
+                0.5f, 0.6f,                                         // MinQuantity particle per tick, AddQuantity extra for randomness
+                ColorUtil.ToRgba(200, 200, 200, 210),               // Color of particles R,G,B, Alpha)
+                new Vec3d(pos.X - 0.3, pos.Y, pos.Z - 0.3),         // MinPos: start corner of "spawn box"
+                new Vec3d(pos.X + 0.1, pos.Y + 0.5, pos.Z + 0.1),   // MaxPos: opposite corner of "spawn box"
+                new Vec3f(-0.1f, 0.01f, -0.1f),                     // MinVelocity: base velocity in XYZ
+                new Vec3f(0.1f, 0.05f, 0.1f),                       // AddVelocity: added random velocity range
+                1f,                                                 // LifeLength: base lifespan of each particle in seconds
+                -0.6f,                                              // MinSize: minimum particle size
+                0.9f,                                               // MaxSize: maximum particle size
+                0.1f,                                               // SizeEvolve?
+                EnumParticleModel.Quad                              // Model, set to quad so its like 2D planes
             );
 
             // Opacity evolution: fade linearly over lifespan

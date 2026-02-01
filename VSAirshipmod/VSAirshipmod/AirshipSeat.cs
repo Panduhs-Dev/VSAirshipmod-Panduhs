@@ -147,7 +147,7 @@ namespace Vintagestory.GameContent
                 } 
                 else if(action == EnumEntityAction.Sneak)
                 {
-                    (Passenger.Api as ICoreClientAPI)?.TriggerIngameError(this, "Can't_Dismount", "Can't dismount in air without pressing Sprint key");
+                    ((Passenger as EntityPlayer)?.Api as ICoreClientAPI)?.TriggerIngameError(this, "Can't_Dismount", "Can't dismount in air without pressing Sprint key");
                 }
                 
             }
