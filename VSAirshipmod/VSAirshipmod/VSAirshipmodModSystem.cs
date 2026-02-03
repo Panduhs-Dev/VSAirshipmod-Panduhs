@@ -51,7 +51,7 @@ namespace VSAirshipmod
         {
             public static void Postfix(ref ProjectileEntity __instance)
             {
-                Entity mount = (__instance.Api.World.GetEntityById(__instance.ShooterId) as EntityAgent).MountedOn?.Entity;
+                Entity mount = (__instance?.Api.World.GetEntityById(__instance.ShooterId) as EntityAgent)?.MountedOn?.Entity;
                 if(mount is not null)
                     __instance.CollidedWith.Add(mount.EntityId);
             }
