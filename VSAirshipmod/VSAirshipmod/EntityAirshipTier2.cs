@@ -284,7 +284,7 @@ namespace VSAirshipmod
 
             long ellapseMs = capi.InWorldEllapsedMilliseconds;
             float forwardpitch = 0;
-            if (IsFlying)//(Swimming)//
+            if (IsFlying || Swimming)//(Swimming)//
             {
                 double gamespeed = capi.World.Calendar.SpeedOfTime / 60f;
                 float intensity = (0.15f + GlobalConstants.CurrentWindSpeedClient.X * 0.9f) * (!Swimming ? Math.Min((float)Pos.Y/100f,1f) : 1f);
@@ -366,12 +366,12 @@ namespace VSAirshipmod
         {
             base.Initialize(properties, api, chunk);
 
-             ForwardAcceleration = properties.Attributes["ForwardAcceleration"].AsDouble(0.05);
-             TurnSpeed = properties.Attributes["TurnSpeed"].AsDouble(0.25);
-             TurnAcceleration = properties.Attributes["TurnAcceleration"].AsDouble(0.15);
-             RiseSpeed = properties.Attributes["RiseSpeed"].AsDouble(15);
-             RiseAcceleration = properties.Attributes["RiseAcceleration"].AsDouble(0.07);
-             pitchStrength  = properties.Attributes["pitchStrength"].AsFloat(0.5f);
+            ForwardAcceleration = properties.Attributes["ForwardAcceleration"].AsDouble(0.05);
+            TurnSpeed = properties.Attributes["TurnSpeed"].AsDouble(0.25);
+            TurnAcceleration = properties.Attributes["TurnAcceleration"].AsDouble(0.15);
+            RiseSpeed = properties.Attributes["RiseSpeed"].AsDouble(15);
+            RiseAcceleration = properties.Attributes["RiseAcceleration"].AsDouble(0.07);
+            pitchStrength  = properties.Attributes["pitchStrength"].AsFloat(0.5f);
             EmptyStoppingPower = properties.Attributes["EmptyStoppingPower"].AsFloat(5f);
 
             //Listener for TemporalGearCount changes marks the shape modified like sail boat unfurling
@@ -598,50 +598,51 @@ namespace VSAirshipmod
 
 
 
-                double target = motion.X * SpeedMultiplier * 3;
-                double diff = Math.Abs(target - ForwardSpeed);
-                double normalized = target != 0.0 ? Math.Clamp(diff / target, 0.0, 1.0) : 0.0;
+            double target = motion.X * SpeedMultiplier * 3;
+            double diff = Math.Abs(target - ForwardSpeed);
+            double normalized = target != 0.0 ? Math.Clamp(diff / target, 0.0, 1.0) : 0.0;
 
-                double accelPower = Math.Clamp(1.0 - ForwardAcceleration * 0.4, 0.1, 1.0);
-                double slowPower  = Math.Clamp(1.0 - ForwardAcceleration * 0.2, 0.1, 1.0);
+            double accelPower = Math.Clamp(1.0 - ForwardAcceleration * 0.4, 0.1, 1.0);
+            double slowPower  = Math.Clamp(1.0 - ForwardAcceleration * 0.2, 0.1, 1.0);
 
-                double shaped = Math.Pow(normalized, accelPower) * Math.Pow(1.0 - normalized, slowPower);
-                double accelBoost = 1.0 + shaped * (ForwardAcceleration * 0.3);
-                double lerpFactor = 1.0 - Math.Exp(-ForwardAcceleration * accelBoost * dt);
+            double shaped = Math.Pow(normalized, accelPower) * Math.Pow(1.0 - normalized, slowPower);
+            double accelBoost = 1.0 + shaped * (ForwardAcceleration * 0.3);
+            double lerpFactor = 1.0 - Math.Exp(-ForwardAcceleration * accelBoost * dt);
 
-                lerpFactor = Math.Min(lerpFactor, 0.03);
+            lerpFactor = Math.Min(lerpFactor, 0.03);
 
-                if (target < 0 && ForwardSpeed >= 0.01 )
-                {
-                    ForwardSpeed += (3 * target - ForwardSpeed) * lerpFactor;
-                }
-                else if (target > 0 && ForwardSpeed <= -0.01)
-                {
-                    ForwardSpeed += (5 * target - ForwardSpeed) * lerpFactor;
-                }
-                else if (target == 0 && (ForwardSpeed >= 0.01 || ForwardSpeed <= -0.01) || (!IsFlying && !Swimming))
-                {
-                    ForwardSpeed += (-ForwardSpeed) * lerpFactor * (IsEmptyOfPlayers() || !IsFlying ? EmptyStoppingPower * (OnGround ? 5f : 1f) : 1f);
-                }
-                else
-                {
-                    ForwardSpeed += (target - ForwardSpeed) * lerpFactor;
-                }
+            if (target < 0 && ForwardSpeed >= 0.01 )
+            {
+                ForwardSpeed += (3 * target - ForwardSpeed) * lerpFactor;
+            }
+            else if (target > 0 && ForwardSpeed <= -0.01)
+            {
+                ForwardSpeed += (5 * target - ForwardSpeed) * lerpFactor;
+            }
+            else if (target == 0 && (ForwardSpeed >= 0.01 || ForwardSpeed <= -0.01) || (!IsFlying && !Swimming))
+            {
+                ForwardSpeed += (-ForwardSpeed) * lerpFactor * (IsEmptyOfPlayers() || !IsFlying ? EmptyStoppingPower * (OnGround ? 5f : 1f) : 1f);
+            }
+            else
+            {
+                ForwardSpeed += (target - ForwardSpeed) * lerpFactor;
+            }
 
+            if (IsEmptyOfPlayers() && !(OnGround || Swimming)) motion.Y = -0.1;
 
             this.AngularVelocity += (motion.Z * (double)TurnSpeed - this.AngularVelocity) * (double)dt*TurnAcceleration;
 
             this.HorizontalVelocity += (motion.Y * (double)RiseSpeed - this.HorizontalVelocity) * (double)dt*RiseAcceleration;
 
 
+            if (!IsFlying) this.HorizontalVelocity = Math.Max(this.HorizontalVelocity, -0.01);
 
 
 
 
 
 
-
-            applyGravity = IsEmptyOfPlayers() ? true : false;
+            applyGravity = IsEmptyOfPlayers() && !IsFlying ? true : false;
 
             if (!IsFlying && HorizontalVelocity == 0) return;
 
@@ -681,9 +682,9 @@ namespace VSAirshipmod
                     pos.Motion.Y = 0.1 * this.HorizontalVelocity;
                 }
             }
-            else if (HorizontalVelocity < 0.0 && !(OnGround || Swimming))
+            else if (HorizontalVelocity < 0.0  && !(OnGround || Swimming))
             {
-                pos.Motion.Y = 0.1 * this.HorizontalVelocity;
+                pos.Motion.Y = 0.1 * this.HorizontalVelocity ;
             }
 
             /*if ((CoalStackSize <= 0 && motion.Y <= 0f) && (!OnGround || !Swimming))
