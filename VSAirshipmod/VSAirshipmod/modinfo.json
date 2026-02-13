@@ -10,8 +10,8 @@
     "Freakyuser396"
   ],
     "description": "AIRSHIPS ARE WORK IN PROGRESS! MOD VERSION IS FOR TESTING",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "dependencies": {
-        "game": "1.21.5"
+        "game": "1.21.6"
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using VSAirshipmod;
@@ -142,7 +143,7 @@ namespace Vintagestory.GameContent
             if (Entity?.Api is ICoreClientAPI capi)
             {
                 if (capi.World.Player.Entity == Passenger && action == EnumEntityAction.Sneak && (Entity as EntityAirship).IsFlying)
-                    capi.TriggerIngameError(this, "dismountwarnining", "vsairshipmod:dismount-warning");
+                    capi.TriggerIngameError(this, "dismountwarnining", Lang.Get("vsairshipmod:dismount-warning"));
                 return;
             }
 
