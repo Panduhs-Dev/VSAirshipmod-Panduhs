@@ -344,7 +344,7 @@ namespace VSAirshipmod
         }
 
 
-        public void DidUnmount(EntityAgent entityAgent)
+        public virtual void DidUnmount(EntityAgent entityAgent)
         {
             MarkShapeModified();
         }

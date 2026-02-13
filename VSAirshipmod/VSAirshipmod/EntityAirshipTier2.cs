@@ -52,10 +52,18 @@ namespace VSAirshipmod
         }
         public bool HasCoal => !string.IsNullOrEmpty(CoalItemCode) && CoalStackSize > 0;
 
-        private const int browncoalfueltimeinseconds = 90; //plumb these to configs
-        private const int blackcoalfueltimeinseconds = 60; //plumb these to configs
-        private const int anthracitefueltimeinseconds = 30; //plumb these to configs
-        private const int charcoalfueltimeinseconds = 10; //plumb these to configs
+        //private const int browncoalfueltimeinseconds = 90; //plumb these to configs
+        //private const int blackcoalfueltimeinseconds = 60; //plumb these to configs
+        //private const int anthracitefueltimeinseconds = 30; //plumb these to configs
+        //private const int charcoalfueltimeinseconds = 10; //plumb these to configs
+
+        public int browncoalfueltimeinseconds = VSAirshipmodModSystem.Config.Tier2browncoalfueltimeinseconds;
+        public int blackcoalfueltimeinseconds = VSAirshipmodModSystem.Config.Tier2blackcoalfueltimeinseconds;
+        public int anthracitefueltimeinseconds = VSAirshipmodModSystem.Config.Tier2anthracitefueltimeinseconds;
+        public int charcoalfueltimeinseconds = VSAirshipmodModSystem.Config.Tier2charcoalfueltimeinseconds;
+
+
+        public long Tier2SpeedMultiplier2 = VSAirshipmodModSystem.Config.Tier2SpeedMultiplier2;
 
         const int MaxCoalStack = 64;
 
@@ -103,7 +111,8 @@ namespace VSAirshipmod
             float pitchStrength = 0.5f;
 
 
-        static int MinutesPerGear = 15;//Central spot to set this, will be good for configs or something too :P
+        //static int MinutesPerGear = 15;//Central spot to set this, will be good for configs or something too :P
+        public int MinutesPerGear = VSAirshipmodModSystem.Config.Tier2MinutesPerGear; //Yes it was past me hyper :P
 
 
         private void apply_engine_sound()
@@ -598,7 +607,7 @@ namespace VSAirshipmod
 
 
 
-            double target = motion.X * SpeedMultiplier * 3;
+            double target = motion.X * SpeedMultiplier*Tier2SpeedMultiplier2 * 3;// "Tier2SpeedMultiplier2" is a quick solution for some day 1 speed config stuff through the config, probably replace since its on top of the JSON one. . .
             double diff = Math.Abs(target - ForwardSpeed);
             double normalized = target != 0.0 ? Math.Clamp(diff / target, 0.0, 1.0) : 0.0;
 
@@ -1030,9 +1039,10 @@ namespace VSAirshipmod
                             if (!HasCoal)
                             {
                                 CoalItemCode = path;
-                                CoalBurnDuration = burn;
+                                //CoalBurnDuration = burn;
                                 //HasCoal = true;
                             }
+                            CoalBurnDuration = burn;//update directly whenever a new valid piece is added incase config change
 
                             //Actually calculate how many can be added take without exceeding MaxCoalStack
                             int spaceLeft = MaxCoalStack - current;

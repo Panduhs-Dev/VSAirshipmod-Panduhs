@@ -60,6 +60,49 @@ namespace VSAirshipmod
         {
             harmony?.UnpatchAll(Mod.Info.ModID);
         }
+
+
+
+        //config stuff
+        private ICoreServerAPI sapi;
+        public static AirshipModConfig Config { get; private set; }
+
+        public class AirshipModConfig {//these are the values, define as the defaults
+            public int Tier1MinutesPerGear = 15;
+            public int Tier1SecondsPerFuel = 6;
+            public int Tier2browncoalfueltimeinseconds = 90;
+            public int Tier2blackcoalfueltimeinseconds = 60;
+            public int Tier2anthracitefueltimeinseconds = 30;
+            public int Tier2charcoalfueltimeinseconds = 10;
+            public int Tier2MinutesPerGear = 15;
+            public long Tier2SpeedMultiplier2 = 1;//this is a multiplier on the JSON one, kinda skuffed
+            public long Tier1SpeedMultiplier2 = 1;//this one too
+        }
+
+
+        public override void StartServerSide(ICoreServerAPI api)
+        {
+            base.StartServerSide(api);
+            sapi = api;
+
+            try
+            {
+                Config = sapi.LoadModConfig<AirshipModConfig>("AirshipModConfig.json");
+                if (Config == null)
+                {
+                    Config = new AirshipModConfig(); // use defaults
+                    sapi.StoreModConfig(Config, "AirshipModConfig.json");
+                }
+            }
+            catch (System.Exception e)
+            {
+                sapi.Logger.Error("[AirshipModConfig] Error loading config, using defaults: {0}", e);
+                Config = new AirshipModConfig();
+            }
+
+        }
+
+
     }
 }
 
