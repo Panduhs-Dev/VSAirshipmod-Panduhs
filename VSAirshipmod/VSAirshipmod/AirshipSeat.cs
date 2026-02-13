@@ -136,10 +136,16 @@ namespace Vintagestory.GameContent
             }
         }
 
-
-        long airshipLastSneakTap = 0;
         internal void onControls(EnumEntityAction action, bool on, ref EnumHandling handled)
         {
+
+            if (Entity?.Api is ICoreClientAPI capi)
+            {
+                if (capi.World.Player.Entity == Passenger && action == EnumEntityAction.Sneak && (Entity as EntityAirship).IsFlying)
+                    capi.TriggerIngameError(this, "dismountwarnining", "vsairshipmod:dismount-warning");
+                return;
+            }
+
             if (action != EnumEntityAction.Sneak || !on) return;
 
             var airship = Entity as EntityAirship;
@@ -149,7 +155,7 @@ namespace Vintagestory.GameContent
             //If not flying single tap dismounts immediately
             if (!airship.IsFlying)
             {
-                agent.TryUnmount();
+                agent?.TryUnmount();
                 controls.StopAllMovement();
                 return;
             }
@@ -157,7 +163,7 @@ namespace Vintagestory.GameContent
             //if (agent.Api.Side == EnumAppSide.Server) return;
 
             long nowMs = agent.World.ElapsedMilliseconds;
-            long lastTapMs = airshipLastSneakTap;
+            long lastTapMs = agent.Attributes.GetLong("airshipLastSneakTap", 0);
 
             if (lastTapMs < nowMs)
             {
@@ -167,15 +173,15 @@ namespace Vintagestory.GameContent
                 {
                     agent.TryUnmount();
                     controls.StopAllMovement();
-                    airshipLastSneakTap = 0;
+                    agent.Attributes.SetLong("airshipLastSneakTap", 0);
                     return;
                 }
             }
 
             //Record single tap
-            airshipLastSneakTap = nowMs;
+            agent.Attributes.SetLong("airshipLastSneakTap", nowMs);
 
-            ((agent as EntityPlayer)?.Api as ICoreClientAPI)?.TriggerIngameError(this, "dismountwarnining", "vsairshipmod:dismount-warning");
+            
         }
     }
 
