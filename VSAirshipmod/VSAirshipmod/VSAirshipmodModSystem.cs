@@ -147,6 +147,7 @@ namespace VSAirshipmod
 
         public override void StartClientSide(ICoreClientAPI api)
         {
+            base.StartClientSide(api);
             api.Network.GetChannel("Config").SetMessageHandler<ConfigPacket>(handleConfig);
         }
 
