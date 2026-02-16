@@ -1,0 +1,140 @@
+{
+  "game:tabname-airship": "Mod de Dirigível!",
+
+  //itens de pesquisa
+  "vsairshipmod:item-aerostatica": "Aerostática!",
+  "vsairshipmod:itemdesc-aerostatica": "A recordação refinada de tecnologias de pesquisa sobre Aeróstatos!",
+  "vsairshipmod:item-componentscroll-tier1": "Pergaminho de componente de Queimador de Aeronave!",
+  "vsairshipmod:itemdesc-componentscroll-tier1": "Um pergaminho secreto revelando a pista final para construir uma Aeronave nível 1!",
+  "vsairshipmod:item-componentscroll-tier2": "Pergaminho de componente de Gaseificador de Aerobarco!",
+  "vsairshipmod:itemdesc-componentscroll-tier2": "Um pergaminho secreto revelando a pista final para construir um Aerobarco nível 2!",
+  "vsairshipmod:item-researchpaperitem": "Pesquisa de Aeróstato",
+  "vsairshipmod:itemdesc-researchpaperitem": "Os livros que você transcreveu foram lidos uma última vez antes de se desfazerem em pó ilegível. Felizmente, você conseguiu extrair algumas pistas úteis e menções a pesquisas interessantes.",
+  "vsairshipmod:item-schematic-tier1": "Esquema de Aeronave (nível 1)",
+  "vsairshipmod:itemdesc-schematic-tier1": "Um esquema descrevendo como construir uma Aeronave nível 1!",
+  "vsairshipmod:item-schematic-tier2": "Esquema de Aerobarco (nível 2)",
+  "vsairshipmod:itemdesc-schematic-tier2": "Um esquema descrevendo como construir um Aerobarco nível 2!",
+  "vsairshipmod:item-strangecloth": "Tecido estranho",
+  "vsairshipmod:itemdesc-strangecloth": "Uma pilha curiosa de retalhos de tecido. Parece ser hermético, hidrofóbico e resistente a chamas!",
+
+  //Itens gerais de dirigível
+  "vsairshipmod:item-airshipmotorshaft": "Peça de eixo de motor de relojoaria",
+  "vsairshipmod:itemdesc-airshipmotorshaft": "O primeiro de dois componentes do motor de relojoaria.",
+  "vsairshipmod:item-airshipmotorbrace": "Peça de suporte de motor de relojoaria",
+  "vsairshipmod:itemdesc-airshipmotorbrace": "O segundo de dois componentes do motor de relojoaria.",
+
+  //Processo do tecido do balão
+  "vsairshipmod:item-coatingmix": "Mistura para revestimento de balão",
+  "vsairshipmod:itemdesc-coatingmix": "Espesso e pegajoso, misturar isso com água criará o líquido de revestimento de balão.",
+  "vsairshipmod:item-coatingliquid": "Líquido de revestimento de balão",
+  "incontainer-item-coatingliquid": "Líquido de revestimento de balão",
+  "vsairshipmod:item-treatedcloth*": "Tecido de balão tratado",
+  "vsairshipmod:itemdesc-treatedcloth*": "Tecido tratado para construção de dirigíveis.",
+  "vsairshipmod:item-airshipfat": "Gordura Picada",
+  "vsairshipmod:itemdesc-airshipfat": "Gordura animal que foi picada em pedaços menores para uso como combustível de queimador em uma <a href=\"handbook://item-vsairshipmod:airship-tier1-oak\">Aeronave Nível 1</a>",
+
+  //itens acopláveis
+  "vsairshipmod:item-airshipdeed": "Escritura de propriedade",
+  "vsairshipmod:itemdesc-airshipdeed": "Este documento enfadonho descreve a propriedade proprietária e a certificação adequada para voar com segurança e responsa-blá blá blá, Oh uau! há também uma cópia extra, só por precaução. (feito apenas para nível 2 e acima.)",
+
+  "vsairshipmod:item-airshipchest-golden-aged": "Baú de dirigível envelhecido (dourado)",
+  "vsairshipmod:item-airshipchest-golden": "Baú de dirigível dourado",
+  "vsairshipmod:item-airshipchest-owl-aged": "Baú de dirigível envelhecido (coruja)",
+  "vsairshipmod:item-airshipchest-owl": "Baú de dirigível coruja",
+  "vsairshipmod:itemdesc-airshipchest-*": "Há entalhes na parte inferior para ajudar a fixá-lo em um dirigível",
+
+  "vsairshipmod:block-figurehead-bear": "Mastro de figura de proa (urso)",
+  "vsairshipmod:block-figurehead-eidolon": "Mastro de figura de proa (espectro)",
+  "vsairshipmod:block-figurehead-erel": "Mastro de figura de proa (erel)",
+  "vsairshipmod:block-figurehead-gear": "Mastro de figura de proa (engrenagem)",
+  "vsairshipmod:block-figurehead-seamonster": "Mastro de figura de proa (monstro marinho)",
+  "vsairshipmod:block-figurehead-siren": "Mastro de figura de proa (sereia)",
+  "vsairshipmod:block-figurehead-skull": "Mastro de figura de proa (caveira)",
+  "vsairshipmod:block-figurehead-thunderlord": "Mastro de figura de proa (senhor dos trovões)",
+  "vsairshipmod:block-figurehead-wolf": "Mastro de figura de proa (lobo)",
+  "vsairshipmod:blockdesc-figurehead-*": "Uma réplica menor e mais leve que cabe em dirigíveis",
+
+  //itens nível 1
+  "vsairshipmod:item-vsairshipmodroller-tier1": "Kit de estaleiro de Aeronave nível 1 (14x7)",
+  "vsairshipmod:itemdesc-vsairshipmodroller-tier1": "Um estaleiro de construção compactado.",
+  "vsairshipmod:item-*vsairshipmodconstruction-tier1-*": "Estaleiro de Aeronave nível 1",
+  "creature-vsairshipmod:vsairshipmodconstruction-tier1-*-SeleAP": "<br><font color='yellow'>• Estante de Estaleiro •</font>",
+  "vsairshipmod:item-airship-tier1-*": "Aeronave Embalada",
+  "vsairshipmod:itemdesc-*airship-tier1-*": "É bem pesado, independente de quanto combustível ainda há nele.'",
+
+  //itens nível 2
+  "vsairshipmod:item-vsairshipmodroller-tier2": "Kit de estaleiro de Aerobarco nível 2 (16x11)",
+  "vsairshipmod:itemdesc-vsairshipmodroller-tier2": "Um estaleiro de construção compactado.",
+  "vsairshipmod:item-*vsairshipmodconstruction-tier2-*": "Estaleiro de Aerobarco nível 2",
+  "creature-vsairshipmod:vsairshipmodconstruction-tier2-*-SeleAP": "<br><font color='yellow'>• Estante de Estaleiro •</font>",
+
+  "vsairshipmod:item-*airship-tier2-acacia": "Aerobarco Nível 2 (acácia)",
+  "vsairshipmod:item-*airship-tier2-aged": "Aerobarco Nível 2 (envelhecido)",
+  "vsairshipmod:item-*airship-tier2-baldcypress": "Aerobarco Nível 2 (cipreste-calvo)",
+  "vsairshipmod:item-*airship-tier2-birch": "Aerobarco Nível 2 (bétula)",
+  "vsairshipmod:item-*airship-tier2-ebony": "Aerobarco Nível 2 (ébano)",
+  "vsairshipmod:item-*airship-tier2-kapok": "Aerobarco Nível 2 (sumaúma)",
+  "vsairshipmod:item-*airship-tier2-larch": "Aerobarco Nível 2 (larício)",
+  "vsairshipmod:item-*airship-tier2-maple": "Aerobarco Nível 2 (bordo)",
+  "vsairshipmod:item-*airship-tier2-oak": "Aerobarco Nível 2 (carvalho)",
+  "vsairshipmod:item-*airship-tier2-pine": "Aerobarco Nível 2 (pinheiro)",
+  "vsairshipmod:item-*airship-tier2-purpleheart": "Aerobarco Nível 2 (pau-roxo)",
+  "vsairshipmod:item-*airship-tier2-redwood": "Aerobarco Nível 2 (sequoia)",
+  "vsairshipmod:item-*airship-tier2-walnut": "Aerobarco Nível 2 (nogueira)",
+  "vsairshipmod:itemdesc-airship-tier2-*": "Não seja um trapaceiro lol :)'",
+
+  //dirigível nível 1
+  "creature-vsairshipmod:airship-tier1-*-lanternstorageAP": "<br><font color='yellow'>• Espaço para lanterna •</font>",
+  "creature-vsairshipmod:airship-tier1-*-riderseatAP": "<br><font color='yellow'>• Assento do Piloto! •</font>",
+  "creature-vsairshipmod:airship-tier1-*-shieldstorageAP": "<br><font color='yellow'>• Espaço para escudo •</font>",
+  "creature-vsairshipmod:airship-tier1-*-burnervalveAP": "<br><font color='yellow'>• Alternar flutuação •</font>",
+  "vsairshipmod:item-creature-airship-tier1-*": "Aeronave Nível 1",
+  "vsairshipmod:item-handbooktext-vsairshipmod:vsairshipmodroller-tier1":"Estaleiros são colocados em terreno plano como uma zona de construção e local de lançamento de uma <a href=\"handbooksearch://aeronave embalada\">aeronave.</a> Use a tecla <hk>toolmodeselect</hk> para abrir um pequeno menu para mudar a orientação da caixa de pré-visualização. Preste atenção às dimensões incluídas no nome e à pré-visualização de posicionamento. O dirigível será lançado na direção da orientação que você escolher!<br><br>(Você estará em pé ao lado da frente do estaleiro T1 ao colocá-lo no chão.)",
+  "vsairshipmod:item-handbooktext-*airship-tier1-*":"<strong>Como Construir</strong><br><br>Aeronaves são construídas em um estaleiro designado em terra plana e serão lançadas de onde foram construídas. Depois de lançada, você pode carregar a aeronave como uma mochila segurando <hk>shift</hk> e clicando nela com o <hk>botão direito do mouse</hk>. (Você não conseguirá embalá-la se ela tiver acessórios.) Ela pode ser implantada segurando <hk>ctrl</hk> e rolando até o slot da mochila, então clicando com o <hk>botão direito do mouse</hk> no chão. A aeronave também pode ser colocada como armazenamento no chão. Segure <hk>shift</hk> e clique com o <hk>botão direito do mouse</hk> para colocá-la no chão. Ela pode ser desmontada para um retorno parcial de materiais segurando o <hk>botão direito do mouse</hk> com uma <a href=\"handbooksearch://serra\">serra</a> na mão. Veja a entrada <a href=\"handbook://vsairshipmod-tier1-buildinfo\">Construindo uma Aeronave</a> para mais informações sobre a construção.<br><br><strong>Movimento</strong><br><br>Depois de lançar sua aeronave, clique com o <hk>botão direito do mouse</hk> no topo do barril para sentar no assento. A aeronave só pode voar se tiver uma <a href=\"handbooksearch://engrenagem temporal\">Engrenagem Temporal</a> e tiver sido abastecida com <a href=\"handbooksearch://comida podre\">Comida Podre</a> e/ou <a href=\"handbook://item-vsairshipmod:airshipfat\">gordura picada.</a> Segurar [Barra de Espaço] aciona o queimador para mover a aeronave para cima; se você parar de queimar, a aeronave descerá. Alternativamente, você também pode segurar a tecla <hk>ctrl</hk> para abrir a escotilha de ventilação superior para descer imediatamente. Quando você estiver no ar, pode usar as teclas de navegação normais para se mover. A maneira mais rápida de viajar longas distâncias é ganhar altitude e pegar as correntes de vento!<br><br><strong>As seguintes regras se aplicam para as correntes de vento:</strong><br>1. A precipitação de uma área afeta a direção do vento naquela área.<br>2. O clima determina o quão ventoso está para você pegar as correntes.<br>3. Sua distância do chão determina a força com que o vento o empurra.<br><br>Para esclarecer, se o clima atual for apenas uma \"brisa leve\", você será empurrado apenas na velocidade máxima de uma brisa leve na altitude máxima.<br><br><strong>INDICAÇÃO VISUAL</strong><br><br>Os cataventos ao seu lado mostram para qual direção o vento está soprando na sua altitude atual.<br><br>O medidor no barril indica o combustível restante. <br><br>O medidor de vidro atrás de você indica a quilometragem restante na Engrenagem Temporal em uso.<br><br><strong>ALTERNAR FLUTUAÇÃO</strong><br><br>Acima da sua cabeça há uma válvula que permite ativar um modo de flutuação que queima passivamente uma pequena quantidade extra de combustível. Isso também impede que o vento o afete. Este recurso é especificamente para uso como uma utilidade de voo amigável à tradição na construção de estruturas verticais. Também pode ser usado como um meio de se recuperar quando o vento o dominar em um canto do qual você não consegue sair. Este recurso é limitado apenas à aeronave Nível 1.<br><br><strong>Equipando</strong><br><br>Acessórios são adicionados via <hk>ctrl</hk> + <hk>botão direito do mouse</hk>.<br><br>Você pode colocar um <a href=\"handbooksearch://escudo\">escudo</a> na frente do barril de combustível.<br><br>Você pode prender uma <a href=\"handbooksearch://lanterna\">lanterna</a> ao arco de metal preso ao balão acima de você.",
+  "game:vsairshipmod-tier1-buildinfo-title": "Mecânica do Mod: Construindo uma Aeronave Nível 1",
+  "game:vsairshipmod-tier1-buildinfo-text": "<strong>Construção da Aeronave</strong><br><br>Construir uma <a href=\"handbook://item-vsairshipmod:airship-tier1-oak\">aeronave Nível 1</a> requer uma grande quantidade de materiais e muitos passos, mas tudo começa com um <a href=\"handbook://item-vsairshipmod:vsairshipmodroller-tier1\">Kit de estaleiro de Aeronave nível 1 (14x7).</a><br><br>Depois de transcrever <a href=\"handbook://item-vsairshipmod:researchpaperitem\">pesquisa de dirigível</a> suficiente para criar a <a href=\"handbook://item-vsairshipmod:aerostatica\">aerostática</a>, use-a para criar um <a href=\"handbook://item-vsairshipmod:schematic-tier1\">esquema de aeronave (Nível 1)</a>. Use este esquema para criar o kit de estaleiro.<br><br>Se você segurar o kit de estaleiro na sua barra de atalhos, uma caixa de esquema no mundo de 7 blocos de largura por 14 blocos de comprimento aparecerá à sua frente. Coloque o kit de estaleiro em uma área plana e certifique-se de que o estaleiro esteja virado na direção em que você quer que a aeronave seja lançada. Você pode mudar a direção para a qual o estaleiro está virado usando a tecla [F]. Depois de colocado, você estará em pé ao lado da frente do estaleiro.<br><br>Depois disso, se você tiver a ajuda de interação de blocos ligada (alterne com <hk>blockinteractionhelp</hk>), olhar para a estante do estaleiro mostrará os próximos passos. Você precisará de toras e tábuas do mesmo tipo de madeira.<br><br>Para o balão de uma aeronave Nível 1, você precisará juntar <a href=\"handbooksearch://barbante de linho\">barbante de linho</a> suficiente para produzir um total calculado visualmente de 100 unidades de <a href=\"handbooksearch://tecido simples\">tecido simples.</a> Certifique-se de preparar uma estufa de plantação de linho com o fertilizante certo!<br><br>(Nós também fizemos um mod independente que adiciona produção multiplicada em máquinas de artesanato movidas a moinho de vento para ajudar com esta alta demanda de tecido. Este mod se chamado Heranças de Alfaiate.)<br><br>Todo o tecido simples precisará ser tratado com <a href=\"handbook://item-vsairshipmod:coatingliquid\">líquido de revestimento de balão.</a><br><br>A configuração do mod permitirá que você defina a quantidade de líquido de revestimento de balão consumida por selagem, o que permite que você mude a quantidade total eventual de itens necessários para criar <a href=\"handbook://item-vsairshipmod:coatingmix\">mistura de revestimento de balão</a> suficiente para o processo de revestimento. Para mais informações e explicações detalhadas sobre isso, por favor visite a descrição da página do modDB e procure por COATING LIQUID GRIND CONFIGURATION. Obrigado!<br><br><a href=\"handbook://item-vsairshipmod:airship-tier1-oak\">Veja a aeronave Nível 1</a> para mais informações sobre como equipar sua nova aeronave.<br><br>Você pode carregar a aeronave como uma mochila segurando <hk>shift</hk> e clicando com o <hk>botão direito do mouse</hk> nela. (Você não conseguirá embalá-la se ela tiver acessórios.)<br><br>Como uma mochila, ela pode ser desempacotada e implantada segurando <hk>ctrl</hk> e rolando até o slot da mochila, então clicando com o <hk>botão direito do mouse</hk> para colocá-la no chão.<br><br>A aeronave também pode ser colocada como armazenamento no chão. Segure <hk>shift</hk> e clique com o <hk>botão direito do mouse</hk> para colocá-la no chão.<br><br>Ela pode ser desmontada para um retorno parcial de materiais segurando o <hk>botão direito do mouse</hk> com uma <a href=\"handbooksearch://serra\">serra</a> na mão.",
+
+  //dirigível nível 2
+  "creature-vsairshipmod:airship-tier2-*-LanternStorageAP": "<br><font color='yellow'>• Espaço para lanterna •</font>",
+  "creature-vsairshipmod:airship-tier2-*-LeftSeatAP": "<br><font color='yellow'>• Assento de passageiro / Pequeno espaço de carga •</font>",
+  "creature-vsairshipmod:airship-tier2-*-RightSeatAP": "<br><font color='yellow'>• Assento do Piloto! •</font>",
+  "creature-vsairshipmod:airship-tier2-*-ShieldStorage*AP": "<br><font color='yellow'>• Espaço para escudo •</font>",
+  "creature-vsairshipmod:airship-tier2-*-LeftStorageAP": "<br><font color='yellow'>• Carga / Espaço de passageiro •</font>",
+  "creature-vsairshipmod:airship-tier2-*-RightStorageAP": "<br><font color='yellow'>• Carga / Espaço de passageiro •</font>",
+  "creature-vsairshipmod:airship-tier2-*-ThrottleLockAP": "<br><font color='yellow'>• Travamento de Cruzeiro •</font>",
+  "creature-vsairshipmod:airship-tier2-*-CoalBarrelAP": "<br><font color='yellow'>• Barril de carvão •</font>",
+  "creature-vsairshipmod:airship-tier2-*-GearCubeAP": "<br><font color='yellow'>• Espaço para eixo de engrenagem temporal •</font>",
+  "creature-vsairshipmod:airship-tier2-*-CookingPotAP": "<br><font color='yellow'>• Lugar perfeito para uma panela de petiscos •</font>",
+  "creature-vsairshipmod:airship-tier2-*-FigureHead*AP": "<br><font color='yellow'>• Espaço para figura de proa •</font>",
+  "creature-vsairshipmod:airship-tier2-*-DeedBeamAP": "<br><font color='yellow'>• Espaço para Escritura de Dirigível •</font>",
+  "creature-vsairshipmod:airship-tier2-*-ToolStorage*AP": "<br><font color='yellow'>• Um espaço para um machado, pá, picareta ou picareta de prospecção •</font>",
+  "creature-vsairshipmod:airship-tier2-*-LPaqueAP": "<br><font color='yellow'>• Placa de identificação •</font>",
+  "creature-vsairshipmod:airship-tier2-*-CargoStorage*AP": "<br><font color='yellow'>• Espaços de carga para sacos de dormir ou baús de dirigível •</font>",
+  "vsairshipmod:item-handbooktext-vsairshipmod:vsairshipmodroller-tier2":"Estaleiros são colocados em terreno plano como uma zona de construção e local de lançamento de um <a href=\"handbooksearch://aerobarco nível 2\">aerobarco.</a> Use a tecla <hk>toolmodeselect</hk> para abrir um pequeno menu para mudar a orientação da caixa de pré-visualização. Preste atenção às dimensões incluídas no nome e à pré-visualização de posicionamento. O dirigível será lançado na direção da orientação que você escolher!<br><br>(Você estará em pé ao lado do lado direito do estaleiro T2 ao colocá-lo no chão.)",
+  "game:vsairshipmod-tier2-buildinfo-title": "Mecânica do Mod: Construindo um Aerobarco Nível 2",
+  "game:vsairshipmod-tier2-buildinfo-text": "<strong>Construção do Aerobarco</strong><br><br>Construir um <a href=\"handbooksearch://aerobarco nível 2\">Aerobarco Nível 2</a> requer uma grande quantidade de materiais e muitos passos, mas tudo começa com um <a href=\"handbook://item-vsairshipmod:vsairshipmodroller-tier2\">Kit de estaleiro de Aerobarco nível 2 (16x11).</a><br><br>Depois de transcrever <a href=\"handbook://item-vsairshipmod:researchpaperitem\">pesquisa de dirigível</a> suficiente para criar a <a href=\"handbook://item-vsairshipmod:aerostatica\">aerostática</a>, use-a para criar um <a href=\"handbook://item-vsairshipmod:schematic-tier2\">esquema de aerobarco (Nível 2)</a>. Use este esquema para criar o kit de estaleiro. Se você segurar o kit de estaleiro na sua barra de atalhos, uma caixa de esquema no mundo de 16 blocos de largura por 11 blocos de comprimento aparecerá à sua frente. Coloque o kit de estaleiro em uma área plana e certifique-se de que o estaleiro esteja virado na direção em que você quer que o aerobarco seja lançado. Você pode mudar a direção para a qual o estaleiro está virado usando a tecla <hk>toolmodeselect</hk>. Depois de colocado, você estará em pé ao lado do lado direito do estaleiro.<br><br>Depois disso, se você tiver a ajuda de interação de blocos ligada (alterne com <hk>blockinteractionhelp</hk>), olhar para a estante do estaleiro mostrará os próximos passos.<br><br>Você precisará de toras e tábuas do mesmo tipo de madeira. Para o balão de um aerobarco Nível 2, você precisará juntar <a href=\"handbooksearch://barbante de linho\">barbante de linho</a> suficiente para produzir um total calculado visualmente de 224 unidades de <a href=\"handbooksearch://tecido simples\">tecido simples.</a> <br><br>Certifique-se de preparar uma estufa de plantação de linho com o fertilizante certo!<br><br>(Nós também fizemos um mod independente que adiciona produção multiplicada em máquinas de artesanato movidas a moinho de vento para ajudar com esta alta demanda de tecido. Este mod se chamado Heranças de Alfaiate.)<br><br>Todo o tecido precisará ser tratado com <a href=\"handbook://item-vsairshipmod:coatingliquid\">líquido de revestimento de balão.</a> A configuração do mod permitirá que você defina a quantidade de líquido de revestimento de balão consumida por selagem, o que permite que você mude a quantidade total eventual de itens necessários para criar <a href=\"handbook://item-vsairshipmod:coatingmix\">mistura de revestimento de balão</a> suficiente para o processo de revestimento.<br><br>Para mais informações e explicações detalhadas sobre isso, por favor visite a descrição da página do modDB e procure por COATING LIQUID GRIND CONFIGURATION. Obrigado!<br><br>Veja o <a href=\"handbooksearch://aerobarco nível 2\">Aerobarco Nível 2</a> para mais informações sobre como equipar seu novo aerobarco.<br><br>Ele pode ser desmontado para um retorno parcial de materiais segurando o <hk>botão direito do mouse</hk> com uma <a href=\"handbooksearch://serra\">serra</a> na mão.",
+  "vsairshipmod:item-handbooktext-vsairshipmod:airship-tier2-*":"<strong>Como Construir</strong><br><br> Aero-barcos são construídos em um estaleiro designado em terra plana e serão lançados de onde foram construídos. Eles não podem ser recolhidos. Podem ser desmontados para um retorno parcial de materiais segurando o <hk>botão direito do mouse</hk> com uma <a href=\"handbooksearch://serra\">serra</a> na mão. Veja a entrada <a href=\"handbook://vsairshipmod-tier2-buildinfo\">Construindo um Aerobarco</a> para mais informações sobre a construção.<br><br><strong>Movimento</strong><br><br>Depois de construir seu aerobarco, clique com o <hk>botão direito do mouse</hk> no assento de boreste à popa (o assento cercado por alavancas) para sentar nesse assento: este assento pode controlar o aerobarco. O aerobarco só pode voar se for abastecido com <strong>(ordenado do pior combustível para o melhor) </strong> <a href=\"handbooksearch://carvão vegetal\">carvão vegetal</a>, <a href=\"handbooksearch://antracito\">antracito</a>, <a href=\"handbooksearch://carvão mineral\">carvão mineral</a>, ou <a href=\"handbooksearch://linhito\">linhito.</a><br>O motor de relojoaria só funciona se tiver pelo menos uma <a href=\"handbooksearch://engrenagem temporal\">Engrenagem Temporal.</a><br><br>Segurar [Barra de Espaço] abre a válvula de gás no gaseificador para mover o aerobarco para cima. Segurar <hk>ctrl</hk> abre a escotilha de ventilação superior para mover o aerobarco para baixo. Você perderá altitude à força quando o gaseificador ficar sem combustível. (Embora admitidamente irrealista, isto é intencional para equilíbrio de jogo.) Quando você estiver no ar, pode usar as teclas de navegação normais para se mover. Alternativamente ou em caso de emergência, você pode voar sem usar o motor ganhando altitude e pegando exclusivamente as correntes de vento a uma velocidade mais lenta.<br><br><strong>As seguintes regras se aplicam para as correntes de vento:</strong><br>1. A precipitação de uma área afeta a direção do vento naquela área.<br>2. O clima determina o quão ventoso está para você pegar as correntes.<br>3. Sua distância do chão determina a força com que o vento o empurra.<br><br>Para esclarecer, se o clima atual for apenas uma \"brisa leve\", você será empurrado apenas na velocidade máxima de uma brisa leve na altitude máxima.<br><br><strong>INDICAÇÃO VISUAL</strong><br><br>Os cataventos acima de você mostram para qual direção o vento está soprando na sua altitude atual.<br><br>O medidor no barril indica o combustível restante. <br><br>O medidor de vidro atrás de você indica a quilometragem restante na <a href=\"handbooksearch://engrenagem temporal\">Engrenagem Temporal</a> em uso.<br><br><strong>Equipando</strong><br><br>Acessórios são adicionados via <hk>ctrl</hk> + <hk>botão direito do mouse</hk>.<br>Uma <a href=\"handbook://item-vsairshipmod:airshipdeed\">escritura de propriedade</a> é anexada ao mastro horizontal para reivindicar o aerobarco.<br>Uma <a href=\"handbooksearch://lanterna\">lanterna</a> pode ser anexada na grande engrenagem de madeira na proa.<br>Um <a href=\"handbooksearch://escudo\">escudo</a> pode ser anexado em cada uma das quatro extremidades externas das vigas transversais.<br>Uma <a href=\"handbooksearch://panela de barro\">panela de barro</a> ou uma <a href=\"handbooksearch://vasilha de cerâmica\">vasilha de cerâmica</a> pode ser colocada no topo do gaseificador.<br>Um <a href=\"handbooksearch://saco de dormir de feno\">saco de dormir</a> ou um <a href=\"handbooksearch://baú de dirigível\">baú de tesouro de dirigível</a> podem ser encaixados nos espaços de carga que alinham o mastro.<br>Uma <a href=\"handbooksearch://figura de proa de dirigível\">figura de proa de dirigível</a> pode ser anexada em ambas as extremidades do mastro.<br>Uma pá, machado, picareta ou picareta de prospecção pode ser pendurada na lateral do barco.<br>Uma vasilha ou baú pode ser colocado nos dois espaços da frente.",
+
+  // Coisas do hYPERION
+  "vsairshipmod:float-fuel": "{0} Combustível Restante",
+  "vsairshipmod:idle": "Dirigível Parado",
+  "vsairshipmod:int-temporalgearcount": "{0} Engrenagens Temporais Restantes",
+  "vsairshipmod:int-temporalfuelusage": "Próxima engrenagem acaba em: {0}",
+  "vsairshipmod:temporalfueldepletedhorizontal": "Engrenagens esgotadas: Incapaz de operar o motor!",
+  "vsairshipmod:int-coalstacksize": "{0} Pedaços de Carvão Restantes",
+  "vsairshipmod:coalfueldepletedvertical": "Carvão insuficiente: Incapaz de manter a sustentação!",
+  "vsairshipmod:int-coalfuelusage": "Tempo total de voo com carvão restante: {0}",
+  "vsairshipmod:cannotremovefuelinflight": "Não é possível remover combustível durante o voo!",
+  "vsairshipmod:engineatmax3gears": "Este motor só pode receber três engrenagens!",
+  "vsairshipmod:insert-temporal-gear": "Adicionar Engrenagens Temporais",
+  "vsairshipmod:toggle-cruise": "Alternar Modo Cruzeiro",
+  "vsairshipmod:remove-coal": "Remover Carvão",
+  "vsairshipmod:add-coal": "Adicionar Carvão",
+
+
+
+
+
+
+
+}

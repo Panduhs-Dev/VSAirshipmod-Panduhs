@@ -6,11 +6,11 @@
     "Rivvion",
     "TygrysT",
     "DarthSack",
-    "Pal-5000",
+    "Pal-5000 / Hyperion",
     "Freakyuser396"
   ],
-    "description": "AIRSHIPS ARE WORK IN PROGRESS! MOD VERSION IS FOR TESTING",
-    "version": "0.2.5",
+    "description": "Adds realistic lore friendly airships!",
+    "version": "1.0.1",
     "dependencies": {
         "game": "1.21.6"
     }
