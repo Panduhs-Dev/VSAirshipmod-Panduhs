@@ -1,3 +1,4 @@
+using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -304,7 +305,7 @@ namespace VSAirshipmod
 						{
 							ingred.FillPlaceHolder(val.Key, val.Value);
 						}
-						ingred.Resolve(this.Api.World, "Require stack for construction stage " + j.ToString() + " on entity " + this.Code);
+                        ingred.Resolve(this.Api.World, "Require stack for construction stage " + j.ToString() + " on entity " + this.Code + (this.storedWildCards.Count > 0 ? "\n" + this.storedWildCards.Join(delimiter: "\n") : ""));
 						if (!skipMatCost && ingred.SatisfiesAsIngredient(slot.Itemstack, false))
 						{
 							int amountToTake = Math.Min(ingred.Quantity, slot.Itemstack.StackSize);
