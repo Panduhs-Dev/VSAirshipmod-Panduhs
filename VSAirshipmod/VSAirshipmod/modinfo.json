@@ -12,6 +12,6 @@
     "description": "Adds realistic lore friendly airships!",
     "version": "1.0.5",
   "dependencies": {
-    "game": "1.21.5"
+    "game": "1.21.6"
   }
 }
