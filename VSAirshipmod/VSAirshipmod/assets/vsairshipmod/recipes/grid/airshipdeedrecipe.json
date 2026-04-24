@@ -3,9 +3,9 @@
 		"code": "deedrecipe",
 		ingredientPattern:"ABC,_D_,EFE",
 		ingredients: {
-			"A": { type: "item", code: "game:gear-temporal", "isTool": true, "toolDurabilityCost": 0 },
+			"A": { type: "item", code: "game:gear-temporal", "consume": false },
 			"B": { type: "item", code: "game:candle", "quantity": 1},
-			"C": { type: "block", "code": "game:metal-parts", "quantity": 1, "isTool": true, "toolDurabilityCost": 0 },
+			"C": { type: "block", "code": "game:metal-parts", "quantity": 1, "consume": false },
 			"D": { type: "item", code: "game:metalnailsandstrips-*",  quantity:1},
 			"E": { type: "item", code: "game:paper-parchment", quantity: 1},
 			"F": { type: "item", code: "game:inkandquill", "quantity": 1}
