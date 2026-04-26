@@ -85,7 +85,7 @@ namespace VSAirshipmod
             }
             catch (Exception ex)
             {
-                api.Logger.Warning("[vsairshipmod] Failed applying CombatOverhaul projectile patch: {0}", ex.Message);
+                api.Logger.Warning("[vsairshipmod] Failed applying CombatOverhaul projectile patch: {0}", ex.ToString());
             }
         }
 
